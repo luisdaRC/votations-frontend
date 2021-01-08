@@ -36,9 +36,9 @@ export const RUTAS_PERMITIDAS = {
 };
 
 export const MODULOS = {
-  "ADMINISTRADOR": 'votations-admin',
-  "SUPER_ADMINISTRADOR": 'votations-admin',
-  "SECRETARIO": 'votations-secretary',
-  "PROPIETARIO": 'votations-owner',
-  'REVISOR': 'votations-revisor'
+  ADMINISTRADOR: 'votations-admin',
+  SUPER_ADMINISTRADOR: 'votations-admin',
+  SECRETARIO: 'votations-secretary',
+  PROPIETARIO: 'votations-owner',
+  REVISOR: 'votations-revisor'
 };
