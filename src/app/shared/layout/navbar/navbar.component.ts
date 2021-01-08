@@ -10,6 +10,7 @@ declare const  $;
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+// Editar para que las rutas sean accesibles desde los distintos usuarios
 export class NavbarComponent implements OnInit {
 
   public title: string = 'SGPH';
@@ -44,7 +45,7 @@ export class NavbarComponent implements OnInit {
       || this.userService.getRol('ADMINISTRADOR')){
       this.router.navigate(['/sgph/inicio']);
     }else{
-      this.router.navigate(['/sgph-user/inicio']);
+      this.router.navigate(['/sgph-owner/inicio']);
     }
 
   }
@@ -55,7 +56,7 @@ export class NavbarComponent implements OnInit {
       || this.userService.getRol('ADMINISTRADOR')){
       this.router.navigate(['/sgph/mi-perfil']);
     }else{
-      this.router.navigate(['/sgph-user/mi-perfil']);
+      this.router.navigate(['/sgph-owner/mi-perfil']);
     }
   }
 

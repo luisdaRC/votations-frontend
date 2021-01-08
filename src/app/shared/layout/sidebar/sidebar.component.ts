@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
   public perfil(): void {
 
     if (this.userService.getRol('PROPIETARIO')){
-      this.router.navigate(['/sgph-user/mi-perfil']);
+      this.router.navigate(['/sgph-owner/mi-perfil']);
     }
     if ( this.userService.getRol('ADMINISTRADOR')
       || this.userService.getRol('SUPER_ADMINISTRADOR')){

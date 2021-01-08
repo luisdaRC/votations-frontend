@@ -4,7 +4,7 @@ export const REVISOR_FISCAL = [
     subtitles: [
       {
         name: 'Votación',
-        icon: 'fas fa-user',
+        icon: 'fas fa-owner',
         route: '/votations/list'
       }
     ]

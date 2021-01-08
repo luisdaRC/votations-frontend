@@ -3,18 +3,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminRoutingModule } from './admin.routes';
+import { OwnerRoutingModule } from './owner.routes';
 import { SharedModule } from '../shared/shared.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-// Components
 
-import { AdComponent } from './registry/ad/ad.component'; // Componente listo?
-import { RevisorComponent } from './registry/revisor/revisor.component'; // Componente listo?
-import { SecretaryComponent } from './registry/secretary/secretary.component'; // Componente listo?
-import { AdminComponent } from './admin.component';
-import { InicioComponent } from './inicio/inicio.component'; // Componente listo?
-import { ProfileAdminComponent } from './profile/profile.component'; // Componente listo?
+// Components
+import { InicioComponent } from './inicio/inicio.component';
+import { ProfileOwnerComponent } from './profile/profile.component';
+import { VoteComponent } from './vote/vote.component';
+import { OwnerComponent } from './owner.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,7 +37,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
-    AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent],
+    OwnerComponent, VoteComponent, InicioComponent, ProfileOwnerComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -49,7 +47,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatSlideToggleModule,
     MatCardModule,
     MatGridListModule, // Si están en angular
-    AdminRoutingModule,
+    OwnerRoutingModule,
     SharedModule,
     SweetAlert2Module,
     BsDropdownModule.forRoot(),
@@ -69,4 +67,4 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatSnackBarModule
   ]
 })
-export class AdminModule { }
+export class OwnerModule { }

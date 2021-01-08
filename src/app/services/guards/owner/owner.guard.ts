@@ -5,7 +5,7 @@ import { UserService } from '../../sgph/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuard implements CanActivate  {
+export class OwnerGuard implements CanActivate  {
 
   constructor(private userService: UserService,  private router: Router){
 

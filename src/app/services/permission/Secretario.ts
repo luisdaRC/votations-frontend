@@ -4,7 +4,7 @@ export const SECRETARIO = [
     subtitles: [
       {
         name: 'Lista de asistentes',
-        icon: 'fas fa-user',
+        icon: 'fas fa-owner',
         route: '/votations/asistentes'
       },
       {

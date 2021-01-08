@@ -24,7 +24,7 @@ export const RUTAS_PERMITIDAS = {
   "GENERALES": {
     "ADMINISTRADOR": "/.*",
     "SUPER_ADMINISTRADOR": "/.*",
-    "RESIDENTE": "/sgph-user"
+    "RESIDENTE": "/sgph-owner"
   },
 
   "ESPESIFICAS": {
