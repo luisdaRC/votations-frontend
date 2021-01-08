@@ -1,1 +1,170 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/lightning-admin";
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.text-blue {
+  color: #3ec1d5;
+}
+.card-info {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+  0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  padding: 15px 0;
+  background-color: white;
+}
+
+// Angular Material
+.mat-stepper-label-position-bottom
+.mat-horizontal-stepper-header
+.mat-step-label {
+  width: 83px !important;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: transparent;
+}
+
+.mat-icon-button:focus {
+  outline: none;
+}
+
+// Sidebar
+
+.page-wrapper.toggled .sidebar {
+  left: -300px;
+}
+
+.titles {
+  font-size: 25px;
+}
+
+.color-green {
+  color: green;
+  margin-right: 15px;
+}
+
+.font-17 {
+  font-size: 17px;
+}
+.font-14 {
+  font-size: 14px;
+}
+
+button:focus{
+  outline: none;
+
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.color-green {
+  color: green;
+}
+.color-red {
+  color: red;
+}
+
+.mh-200 {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.cdk-overlay-container {
+  .cdk-overlay-pane {
+    margin-top: 43px;
+  }
+}
+
+/********************/
+/* REPONSIVE TABLE */
+/********************/
+@media (max-width: 768px) {
+  mat-cell:first-of-type,
+  mat-footer-cell:first-of-type,
+  mat-header-cell:first-of-type {
+    padding-left: 0px;
+  }
+  mat-cell:last-of-type,
+  mat-footer-cell:last-of-type,
+  mat-header-cell:last-of-type {
+    padding-right: 0px;
+  }
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mat-table {
+    overflow: auto;
+    max-height: 295px;
+  }
+
+  .mobile-label {
+    width: 100px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px 0 24px;
+    min-height: 26px;
+  }
+  .mat-cell,
+  .mat-footer-cell {
+    margin-bottom: 6px;
+  }
+}
+/**************************/
+/* END - REPONSIVE TABLE */
+/*************************/
+
+
+.w-100-auto{
+  width: 100%;
+}
+@media(min-width: 1024px){
+  .w-100-auto{
+    width: auto;
+  }
+}
+
+.chat-active{
+  background-color: #f8f9fa;
+}
+
+.color-gain{
+  color: gainsboro;
+}
+
+#filePond{
+  margin-bottom: 0px;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #3ec1d5;
+}

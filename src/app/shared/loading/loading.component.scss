@@ -1,0 +1,9 @@
+#startup {
+  top: calc(50% - 3rem);
+  left: calc(50% - 3rem);
+  position: fixed;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  z-index: 100;
+}

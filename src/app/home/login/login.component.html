@@ -1,0 +1,85 @@
+<!-- Inicio nav -->
+<!--header><link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+</header-->
+<!--doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Votations</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  < Google Font -->
+  <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <-- FontAwesome -->
+  <!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
+Hacer que el login funcione, luego ir al sitio del admin
+  Intentar viendo tutoriales para saber si se ponen estilos en los headers obligatoriamente o sino,
+  para saber cómo hacen estos manes.
+
+  Descubrir de donde es que se llama al login para que se carguen los estilos
+<body-->
+
+<div class="animated fadeIn">
+
+  <nav id="header-nav" class="navbar navbar-expand-lg  header-area">
+
+    <h1 class="text-white ml-4">
+      SG<span class="text-blue">PH</span>
+    </h1>
+
+    <span class="navbar-toggler collapsed light" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar"
+          aria-expanded="false" aria-label="Toggle navigation">
+
+      <em class="fas fa-bars fa-lg enlace"></em>
+    </span>
+
+    <div class="navbar-collapse collapse" id="myNavbar">
+
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <button [routerLink]="['/']" type="button" class="btn btn-outline-info text-white mr-2">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            VOLVER
+          </button>
+        </li>
+
+        <li class="nav-item mt-2 mt-lg-0">
+          <button [routerLink]="[ '/registry' ]" routerl type="button" class="btn  btn-info text-white">
+            <em class="fas fa-sign-in-alt"></em>
+            REGÍSTRATE
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Fin nav -->
+
+  <div class="col-12 col-md-4 offset-md-4 mt-5 text-center p-md-4 container-login">
+
+    <form class="mt-3" [formGroup]="form" (ngSubmit)="iniciarSesion()">
+      <h1>SG<span class="text-blue">PH</span></h1>
+      <hr>
+
+      <mat-form-field class="w-100">
+        <input matInput formControlName="email" type="email" id="correo" placeholder="Correo electrónico">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput formControlName="password" id="contrasena" type="password" placeholder="Contraseña">
+      </mat-form-field>
+
+      <button [disabled]="this.form.invalid" class="btn btn-primary btn-block mt-4" id="iniciar-sesion" type="submit">Iniciar sesión</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+
+    </form>
+  </div>
+</div>
+<!--/body-->
