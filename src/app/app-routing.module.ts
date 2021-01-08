@@ -10,7 +10,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'admin', loadChildren: () => import ('src/app/votations-admin/admin.module').then(m => m.AdminModule), canActivate: [SessionGuard, AdminGuard] },
-  // Crear módulos en cada una de las rutas definidas.
+  // Crear módulos en cada una de las rutas definidas
 //  { path: 'votations-owner', loadChildren: () => import ('src/app/votations-owner/owner.module').then(m => m.OwnerModule), canActivate: [SessionGuard, UserGuard] },
 //  { path: 'votations-secretary', loadChildren: () => import ('src/app/votations-secretary/secretary.module').then(m => m.SecretaryModule), canActivate: [SessionGuard, SecretaryGuard] },
 //  { path: 'votations-revisor', loadChildren: () => import ('src/app/votations-revisor/revisor.module').then(m => m.RevisorModule), canActivate: [SessionGuard, RevisorGuard] },
