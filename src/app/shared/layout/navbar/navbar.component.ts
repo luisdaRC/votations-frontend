@@ -13,7 +13,7 @@ declare const  $;
 // Editar para que las rutas sean accesibles desde los distintos usuarios
 export class NavbarComponent implements OnInit {
 
-  public title: string = 'SGPH';
+  public title = 'SGPH';
   public picture: string;
   public isCollapsed = true;
 
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.picture="../../../../assets/img/angular2.png"
+    this.picture = '../../../../assets/img/angular2.png';
     $(function () {
       $('[data-toggle="tooltip"]').tooltip({
         trigger: 'hover'
@@ -38,26 +38,34 @@ export class NavbarComponent implements OnInit {
 
   public setSGPHoptions(){
 
-    this.title="SGPH"
+    this.title = 'SGPH';
     this.sidebarservice.setValuesSGPH();
 
-    if(this.userService.getRol('SUPER_ADMINISTRADOR')
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')
       || this.userService.getRol('ADMINISTRADOR')){
-      this.router.navigate(['/sgph/inicio']);
-    }else{
-      this.router.navigate(['/sgph-owner/inicio']);
-    }
+      this.router.navigate(['/admin/inicio']);
+    }else if (this.userService.getRol('PROPIETARIO')){
+      this.router.navigate(['/owner/inicio']);
+    } /*else if (this.userService.getRol('SECRETARIO')){
+      this.router.navigate('/secretary/inicio');
+    }else if (this.userService.getRol('REVISOR')){
+      this.router.navigate('/revisor/inicio')
+    }*/
 
   }
 
-  profile(){
+  profile() {
     this.isCollapsed = true;
-    if(this.userService.getRol('SUPER_ADMINISTRADOR')
-      || this.userService.getRol('ADMINISTRADOR')){
-      this.router.navigate(['/sgph/mi-perfil']);
-    }else{
-      this.router.navigate(['/sgph-owner/mi-perfil']);
-    }
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')
+      || this.userService.getRol('ADMINISTRADOR')) {
+      this.router.navigate(['/admin/profile']);
+    } else if (this.userService.getRol('PROPIETARIO')) {
+      this.router.navigate(['/owner/profile']);
+    } /*else if (this.userService.getRol('SECRETARIO')){
+      this.router.navigate('/secretary/profile');
+    }else if (this.userService.getRol('REVISOR')){
+      this.router.navigate('/revisor/profile')
+    }*/
   }
 
 

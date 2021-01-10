@@ -1,21 +1,21 @@
-export const ADMINISTRADOR = [
+export const ADMINISTRADOR = [ // En este administrador seguir las rutas del admin de estos manes
   {
-    title: 'REGISTRAR', // Añadir funciones de revisor y secretario
+    title: 'REGISTRAR',
     subtitles: [
       {
         name:  'Anuncio',
         icon: 'fas fa-ad',
-        route: '/sgph/registry/anuncio'
+        route: '/admin/registry/ad'
       },
       {
         name:  'Revisor fiscal',
         icon: 'fas fa-revisor',
-        route: '/sgph/registry/revisor'
+        route: '/admin/registry/revisor'
       },
       {
         name:  'Secretario de asamblea',
         icon: 'fas fa-secretary',
-        route: '/sgph/registry/secretary'
+        route: '/admin/registry/secretary'
       }
     ]
   }

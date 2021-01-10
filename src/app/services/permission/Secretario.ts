@@ -1,4 +1,4 @@
-export const SECRETARIO = [
+export const SECRETARIO = [ // En este secretario seguir las rutas del propitario de estos manes
   {
     title: 'VER',
     subtitles: [

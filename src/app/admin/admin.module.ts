@@ -48,7 +48,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatGridListModule, // Si están en angular
+    MatGridListModule,
     AdminRoutingModule,
     SharedModule,
     SweetAlert2Module,
@@ -63,7 +63,6 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatCheckboxModule,
     MatSortModule,
     MatTableModule,
-    SharedModule,
     MatTabsModule,
     MatExpansionModule,
     MatSnackBarModule

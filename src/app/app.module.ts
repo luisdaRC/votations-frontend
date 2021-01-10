@@ -18,14 +18,13 @@ import { ToastrModule } from 'ngx-toastr';
 import {registerLocaleData} from '@angular/common';
 import localeEsCo from '@angular/common/locales/es';
 import { CalendarModule } from 'angular-calendar';
-import { OwnerComponent } from './votations-owner/owner.component';
+import { OwnerComponent } from './owner/owner.component';
 registerLocaleData(localeEsCo, 'es-CO');
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    OwnerComponent
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,

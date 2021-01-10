@@ -48,7 +48,7 @@ export class PropiedadHorizontalService {
   }
 
   public pathPersona(persona: any, email: string) {
-    return this.http.patch(environment.url_sgph + 'persona/' + email, persona, this.userService.getTokenHeaders())
+    return this.http.patch(environment.url_sgph + 'persona/' + email, persona, this.userService.getTokenHeaders());
   }
 
 
@@ -65,8 +65,12 @@ export class PropiedadHorizontalService {
     return this.http.get(`${environment.url_sgph}residente?idPropiedadHorizontal=${this.userService.getUsuario().idPropiedadHorizontal}&size=${size}&page=${page}`, this.userService.getTokenHeaders());
   }
 
+  public getEstadisticas() {
+    return this.http.get(environment.url_sgph + 'propiedad-horizontal/estadisticas?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());;
+  }
+
   public getBienPrivado(index: number) {
-    return this.http.get(environment.url_sgph + 'bien-privado/' + index, this.userService.getTokenHeaders())
+    return this.http.get(environment.url_sgph + 'bien-privado/' + index, this.userService.getTokenHeaders());
   }
 
   public postAnuncio(anuncio: any) {
@@ -93,10 +97,33 @@ export class PropiedadHorizontalService {
   }
 
   public getIdPh() {
-    return this.http.get(environment.url_sgph + 'propiedad-horizontal/list', this.userService.getTokenHeaders())
+    return this.http.get(environment.url_sgph + 'propiedad-horizontal/list', this.userService.getTokenHeaders());
   }
 
   public getListPh(ids: number[]) {
-    return this.http.get(environment.url_sgph.concat("propiedad-horizontal/listNames").concat(this.getQueryParamsIdPh(ids)), this.userService.getTokenHeaders());
+    return this.http.get(environment.url_sgph.concat('propiedad-horizontal/listNames').concat(this.getQueryParamsIdPh(ids)), this.userService.getTokenHeaders());
+  }
+
+
+  private getQueryParamsIdPh(ids: number[]) {
+
+    let queryParamsResult = '?idsPropiedadHorizontal=';
+    if (ids.length > 0) {
+      queryParamsResult = queryParamsResult.concat(ids[0].toString());
+      const listIds = this.withoutThis(ids, ids[0]); // Take a look at doing by myself what this function does
+      listIds.forEach(idPh => {
+        queryParamsResult = queryParamsResult.concat('?idsPropiedadHorizontal=' + idPh.toString());
+      });
+    }
+    return queryParamsResult;
+  }
+
+  private withoutThis (ids: number[], id: number){
+    let newArray = [];
+    let i;
+    for (i = 1; i < ids.length; i++){
+        newArray[i] = ids[i];
+    }
+    return newArray;
   }
 }
