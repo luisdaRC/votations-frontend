@@ -9,13 +9,23 @@ export const SUPER_ADMINISTRADOR = [ // En este administrador seguir las rutas d
       },
       {
         name:  'Revisor fiscal',
-        icon: 'fas fa-revisor',
+        icon: 'fas fa-user-tie',
         route: '/admin/registry/revisor'
       },
       {
         name:  'Secretario de asamblea',
-        icon: 'fas fa-secretary',
+        icon: 'fas fa-user',
         route: '/admin/registry/secretary'
+      }
+    ]
+  },
+  {
+    title: 'PRUEBA', // Hacer que el acordeón se recoja
+    subtitles: [
+      {
+        name: 'Pruebita',
+        icon: 'fas fa-swimer',
+        route: '/admin/registry/ad'
       }
     ]
   }

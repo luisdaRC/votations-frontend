@@ -10,7 +10,7 @@ declare const  $;
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-// Editar para que las rutas sean accesibles desde los distintos usuarios
+
 export class NavbarComponent implements OnInit {
 
   public title = 'SGPH';
@@ -28,12 +28,12 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.picture = '../../../../assets/img/angular2.png';
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip({
+    $('[data-toggle="tooltip"]').tooltip({
         trigger: 'hover'
       });
-    });
+
   }
 
   public setSGPHoptions(){

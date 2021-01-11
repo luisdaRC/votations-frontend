@@ -1,4 +1,4 @@
-export const ADMINISTRADOR = [ // En este administrador seguir las rutas del admin de estos manes
+export const ADMINISTRADOR = [
   {
     title: 'REGISTRAR',
     subtitles: [
@@ -9,12 +9,12 @@ export const ADMINISTRADOR = [ // En este administrador seguir las rutas del adm
       },
       {
         name:  'Revisor fiscal',
-        icon: 'fas fa-revisor',
+        icon: 'fas fa-user-tie',
         route: '/admin/registry/revisor'
       },
       {
         name:  'Secretario de asamblea',
-        icon: 'fas fa-secretary',
+        icon: 'fas fa-user',
         route: '/admin/registry/secretary'
       }
     ]

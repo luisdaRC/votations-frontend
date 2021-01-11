@@ -20,7 +20,7 @@ export class InicioComponent implements OnInit {
     public userService: UserService,
     private phService: PropiedadHorizontalService) { }
 
-  ngOnInit(): void { // Empezar a llenar este componente y los demás de admin
+  ngOnInit() { // Empezar a llenar este componente y los demás de admin
 
     this.phService.getEstadisticas().subscribe(data => {
       this.data = data;

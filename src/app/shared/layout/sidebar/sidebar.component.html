@@ -15,7 +15,7 @@
     <input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">
   </div>
 
-  <nav id="accordion" *ngFor="let menu of sidebarservice.menus;let j=index;" class="sidebar-menu accordion">
+  <nav id="accordion" *ngFor="let menu of sidebarservice.menus;index as j;" class="sidebar-menu accordion">
 
     <div data-toggle="collapse" [attr.data-target]="'#collapse'+j" [attr.aria-controls]="'collapse'+j"
          class="menu-header mt-3 mb-2 pointer">
@@ -23,7 +23,7 @@
       <span class="font-14"
             id="menu-{{menu.title}}">
         {{menu.title}}
-        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-down" aria-hidden="false"></i>
       </span>
 
     </div>
@@ -31,7 +31,7 @@
     <ul [id]="'collapse'+j" aria-labelledby="heading1" data-parent="#accordion" [ngClass]="{'show': j===0}"
         class="menu-items inactive collapse">
 
-      <li *ngFor="let subtitle of menu.subtitles;let i=index">
+      <li *ngFor="let subtitle of menu.subtitles;index as i">
         <a id="submenu-{{subtitle.name | removeBlanck}}" (click)="this.appService.toggleSidebar()" [routerLink]="subtitle.route">
           <i style="width: 20px; height: 35px;" class="{{subtitle.icon}}"></i>
           <span>{{subtitle.name}}</span>

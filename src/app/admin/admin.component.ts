@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../services/extras/sidebar.service';
 import { AppService } from '../services/extras/app.service';
-import { UserService } from '../services/sgph/user.service';
+
 @Component({
-  selector: 'app-votations-admin',
+  selector: 'app-admin', // TAKE A LOOK AT THIS IF I DONT FIND ANY OTHER REASON WHY THE START COMPONENT DOESN'T SERVE
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
     private appService: AppService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   public getClasses() {

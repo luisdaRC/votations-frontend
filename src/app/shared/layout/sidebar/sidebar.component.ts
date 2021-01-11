@@ -4,16 +4,12 @@ import { UserService } from '../../../services/sgph/user.service';
 import { SidebarService } from '../../../services/extras/sidebar.service';
 import { AppService } from '../../../services/extras/app.service';
 
-
-
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
 
   constructor(
     public appService: AppService,
@@ -24,7 +20,6 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {  }
-
 
   public perfil(): void {
 
@@ -43,6 +38,5 @@ export class SidebarComponent implements OnInit {
     }
 
   }
-
 
 }

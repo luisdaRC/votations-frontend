@@ -54,7 +54,7 @@ export class SidebarService {
     if (this.userService.getRol('SECRETARIO')){
       this.menus = SECRETARIO;
     }
-    if(this.userService.getRol('SUPER_ADMINISTRADOR')){
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
       this.menus = SUPER_ADMINISTRADOR;
     }
   }

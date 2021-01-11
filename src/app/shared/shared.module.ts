@@ -5,6 +5,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { RemoveBlanckPipe } from '../pipes/remove-blanck.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,7 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LoadingComponent,
     NavbarComponent,
     SidebarComponent,
-    LoadingComponent
+    RemoveBlanckPipe
   ],
   imports: [
     CommonModule,
