@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   public iniciarSesion(): void {
 
-    this.userService.postIniciarSesion(this.form.value).subscribe(
+    this.userService.postIniciarSesion(this.form.value).subscribe( // Se puede hacer un llamado al otro método de iniciar sesión de revisor y secretario antes de que el error sea lanzado
 
       (data: any) => {
         if (data.roles.length === 0){

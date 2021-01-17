@@ -19,12 +19,16 @@ import {registerLocaleData} from '@angular/common';
 import localeEsCo from '@angular/common/locales/es';
 import { CalendarModule } from 'angular-calendar';
 import { OwnerComponent } from './owner/owner.component';
+import { LandingPageComponent } from './home/landing-page/landing-page.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 registerLocaleData(localeEsCo, 'es-CO');
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LandingPageComponent,
+    SuperAdminComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -14,6 +14,8 @@ export class PropiedadHorizontalService {
   constructor(private http: HttpClient, private userService: UserService) {
   }
 
+// Study the way nilson and ariel register a new user with new role to apply the same. Start with ariel interview
+
   public postAdministrador(administrador: any) {
     return this.http.post(environment.url_sgph + 'propiedad-horizontal/administrador', administrador, this.userService.getTokenHeaders());
   }
@@ -66,7 +68,7 @@ export class PropiedadHorizontalService {
   }
 
   public getEstadisticas() {
-    return this.http.get(environment.url_sgph + 'propiedad-horizontal/estadisticas?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());;
+    return this.http.get(environment.url_sgph + 'propiedad-horizontal/estadisticas?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());
   }
 
   public getBienPrivado(index: number) {
@@ -118,8 +120,8 @@ export class PropiedadHorizontalService {
     return queryParamsResult;
   }
 
-  private withoutThis (ids: number[], id: number){
-    let newArray = [];
+  private withoutThis(ids: number[], id: number){
+    const newArray = [];
     let i;
     for (i = 1; i < ids.length; i++){
         newArray[i] = ids[i];

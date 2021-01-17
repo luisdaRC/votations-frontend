@@ -15,7 +15,7 @@
     <input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">
   </div>
 
-  <nav id="accordion" *ngFor="let menu of sidebarservice.menus;index as j;" class="sidebar-menu accordion">
+  <nav id="accordion" *ngFor="let menu of sidebarservice.menus;index as j;" class="sidebar-menu accordion"> <!--This accordion isn't serving as it should-->
 
     <div data-toggle="collapse" [attr.data-target]="'#collapse'+j" [attr.aria-controls]="'collapse'+j"
          class="menu-header mt-3 mb-2 pointer">

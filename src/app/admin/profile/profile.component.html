@@ -1,1 +1,45 @@
-<p>profile-admin works!</p>
+<div class="container">
+  <div class="row bg-white card-info"> <!--DEFINIR QUÉ PONER EN ADMIN-PROFILE-->
+
+    <div class="col-12 text-center mb-3">
+      <p class="font-weight-bold titles"> PERFIL </p>
+    </div>
+
+    <div class="col-12 col-lg-5 offset-lg-1 ">
+
+      <div class="mt-2 mb-1">
+        <h5>Detalles</h5>
+        <div class="mt-4 mb-2"><span class="font-weight-bold">Nombre PH:  </span>  {{user.nombrePH}} </div>
+      </div>
+
+      <div class="mt-2 mb-1">
+        <div class="mt-4 mb-2"><span class="font-weight-bold">Correo Electrónico:  </span>  {{user.email}} </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5 mb-lg-4">
+      <div class="mb-2">
+        <h5>Cambiar contraseña</h5>
+      </div>
+      <form class="mt-3" [formGroup]="form">
+
+        <mat-form-field class="w-100">
+          <input matInput formControlName="contrasenaActual" type="password" placeholder="Contraseña Actual">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput formControlName="contrasenaNueva" type="password" placeholder="Contraseña Nueva">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput formControlName="contrasenaNuevaConfirmada" type="password" placeholder="Confirmar contraseña">
+        </mat-form-field>
+        <div class="row">
+          <div class="col-12 col-lg-6 offset-lg-3">
+            <button  (click)="cambiarContrasena()" [disabled]="this.form.invalid" class="btn btn-primary btn-block">Cambiar contraseña</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

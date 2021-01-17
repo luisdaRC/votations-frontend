@@ -85,26 +85,26 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  public postIniciarSesion(user: Usuario) {
+  public postIniciarSesion(user: Usuario) { // Planear cómo iniciar sesión mediante dos post. 1 al sgph y otro al microservicio de nosotros
     return this.http.post(environment.url_sgph + 'auth/signin', user).pipe(map((data: any) => {
       this.saveStorage(data.token, data.refresh, {
         email: data.email,
         idPersona: data.id,
         roles: data.roles,
         nombre: data.nombre,
-        apellido: data.apellido ,
+        apellido: data.apellido,
         idPropiedadHorizontal: data.idPropiedadHorizontal,
-        nombrePH: data.nombrePH ,
+        nombrePH: data.nombrePH,
         cambiarContraseña: data.cambiarContraseña
       });
       return data;
     }));
   }
-/*
-  public postCambiarContrasena(pass){
-    return this.http.post(environment.url + 'auth/change-password',pass,this.getTokenHeaders());
 
-  }*/
+  public postCambiarContrasena(pass){ // Usar para realizar cambios de pass de revisor y secretario
+    return this.http.post(environment.url_auth  + 'auth/change-password', pass, this.getTokenHeaders());
+
+  }
 
   public setPhByUser(idPropiedadHorizontal){
     this.usuario.idPropiedadHorizontal = idPropiedadHorizontal;

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/sgph/user.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-admin',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileAdminComponent implements OnInit {
 
-  constructor() { }
+  public user = this.userService.getUsuario();
+  public form = new FormGroup({
+    contrasenaActual: new FormControl('', [Validators.required]),
+    contrasenaNueva: new FormControl('', [Validators.required]),
+    contrasenaNuevaConfirmada: new FormControl('', [Validators.required])
+  });
+
+  constructor(
+    public router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public cambiarContrasena(): void {
+
   }
 
 }

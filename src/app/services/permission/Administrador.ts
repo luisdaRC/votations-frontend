@@ -8,14 +8,24 @@ export const ADMINISTRADOR = [
         route: '/admin/registry/ad'
       },
       {
-        name:  'Revisor fiscal',
+        name:  'Usuario para Revisor Fiscal',
         icon: 'fas fa-user-tie',
         route: '/admin/registry/revisor'
       },
       {
-        name:  'Secretario de asamblea',
+        name:  'Usuario para Secretario',
         icon: 'fas fa-user',
         route: '/admin/registry/secretary'
+      }
+    ]
+  },
+  {
+    title: 'INGRESAR DATOS DE SECRETARIO',
+    subtitles: [
+      {
+        name: 'Registrar identificación de secretario',
+        icon: 'fas fa-user',
+        route: '/admin/registry/secretaryIdentification'
       }
     ]
   }

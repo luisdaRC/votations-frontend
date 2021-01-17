@@ -15,6 +15,7 @@ import { SecretaryComponent } from './registry/secretary/secretary.component'; /
 import { AdminComponent } from './admin.component';
 import { InicioComponent } from './inicio/inicio.component'; // Componente listo?
 import { ProfileAdminComponent } from './profile/profile.component'; // Componente listo?
+import { SecretaryIdentificationComponent } from './registry/secretary-identification/secretary-identification.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,13 +34,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 @NgModule({
   declarations: [
-    AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent],
+    AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent,
+    SecretaryIdentificationComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -65,7 +67,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatTableModule,
     MatTabsModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule
   ]
 })
 export class AdminModule { }
