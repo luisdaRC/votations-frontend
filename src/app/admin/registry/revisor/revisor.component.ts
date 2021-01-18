@@ -37,9 +37,13 @@ export class RevisorComponent implements OnInit {
 // Notas: -Añadir campo estado a moción, para saber si esa votación está activa o finalizada
 // -En el endpoint "persona/list" se supoone que retorna la info:[persona y bien privado] (buscar en back si es así) con sólo el idPropiedad
 // -Que PersonalApoyo tenga un campo estado, para poder habilitar/deshabilitar ese usuario si así es necesario
-// El punto anterior puede no ser necesario si el admin puede cambiar sus contraseñas
-// Esa tabla PersonalApoyo que esté relacionada con la tabla PropiedadHor para poder saber de qué PH son,
+// -El punto anterior puede no ser necesario si el admin puede cambiar sus contraseñas
+// -Esa tabla PersonalApoyo que esté relacionada con la tabla PropiedadHor para poder saber de qué PH son,
 // aunque el admin cuando los cree envíe en el POST el idPropiedad.
+// -El secretario debe ser obligatriamente un propietario no se le puede dar este cargo a cualquier persona.
+// que desde la interfaz del admin se tenga la opción de consultar si x persona es propietario por tipo y número de documento, si sí,
+// se procede a registrar al secretario de esa asamblea.
+// -La asamblea tiene que guardar el numero de documento del secretario por motivos de responsabilidad del transcurso de la misma.
 
 
 
