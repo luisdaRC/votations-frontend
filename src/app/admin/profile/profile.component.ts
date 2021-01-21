@@ -27,7 +27,19 @@ export class ProfileAdminComponent implements OnInit {
   }
 
   public cambiarContrasena(): void {
+    this.userService.postCambiarContrasena(this.form.value).subscribe(data => {
+      this.userService.getUsuario().cambiarContraseña = false;
+      Swal.fire({
+        title: ' ¡Contraseña Actualizada!',
+        text: 'Se ha actualizado la contraseña correctamente',
+        icon: 'success',
+        showConfirmButton: true,
+        onClose: () => {
+          this.router.navigate(['/admin']);
+        }
+      });
 
+    });
   }
 
 }

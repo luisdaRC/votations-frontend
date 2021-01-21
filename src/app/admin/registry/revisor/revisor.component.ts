@@ -15,22 +15,62 @@ export class RevisorComponent implements OnInit {
 // en el core se crea el admin (con repecto a campos en el front).
 
   // Form
-  public formRevisor = new FormGroup({
-    administrador: new FormGroup({
+  public formRevisor = new FormGroup({ // Rol y estado se ponen fijos en el back
+    revisor: new FormGroup({
+      nombres: new FormControl('', [Validators.required]),
+      apellido: new FormControl('', [Validators.required]),
+      tipoDocumento: new FormControl('', [Validators.required]),
+      numeroDocumento: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
   });
 
+  // Attributes
+  public existeRevisor = false;
+// Decidí hacer un registro secretario y revisor separados, porque es más claro para el usuario saber lo que hará
   constructor(private phService: PropiedadHorizontalService,
-              private router: Router) { }
+              private router: Router,
+              public userService: UserService) { }
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {
+    this.getExisteRevisor();
+  }
 // Una tabla revisor y una tabla secretario con todos los datos que los identifiquen
 // como ciudadanos y el idPropiedad y en base a ellos iniciar sesión o permitir acciones.
-  public registrarRevisor: void(){
-    // this.phService.
+
+  public getExisteRevisor(){
+    this.phService.getRevisor().subscribe((data: any) => {
+      this.existeRevisor = data.existeRevisor;
+    });
   }
+
+  public registrarRevisor(): void{
+    const revisorFiscal = Object.assign(this.formRevisor.value.revisor);
+
+    const revisor = {
+      revisorFiscal,
+      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal
+    };
+
+    this.phService.postRevisor(revisor).subscribe(
+      (data: any) => {
+
+        Swal.fire({
+          title: ' ¡Registro Exitoso!',
+          text: 'El revisor ' + data.nombres + ' ya puede iniciar sesión con el email y contraseña ingresados',
+          icon: 'success',
+          showConfirmButton: true,
+          onClose: () => {
+            this.formRevisor.reset();
+            this.router.navigate(['/admin']);
+          }
+        });
+
+      }
+    );
+
+    }
 
 }
 

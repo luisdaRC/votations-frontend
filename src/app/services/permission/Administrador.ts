@@ -3,7 +3,7 @@ export const ADMINISTRADOR = [
     title: 'REGISTRAR',
     subtitles: [
       {
-        name:  'Anuncio',
+        name: 'Anuncio',
         icon: 'fas fa-ad',
         route: '/admin/registry/ad'
       },
@@ -20,12 +20,12 @@ export const ADMINISTRADOR = [
     ]
   },
   {
-    title: 'INGRESAR DATOS DE SECRETARIO',
+    title: 'ELIMINAR',
     subtitles: [
       {
-        name: 'Registrar identificación de secretario',
+        name: 'Usuarios de Personal de apoyo',
         icon: 'fas fa-user',
-        route: '/admin/registry/secretaryIdentification'
+        route: '/admin/delete/support-personal'
       }
     ]
   }

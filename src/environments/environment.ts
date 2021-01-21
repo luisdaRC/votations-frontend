@@ -10,7 +10,7 @@ export const environment = {
   url_verificacion_identidad: '',
   url_actividades_asamblearias: '',
   url_votaciones: '',
-  url_auth: '' // Descartar si funciona lo planeado
+  url_control: ''
 
 };
 

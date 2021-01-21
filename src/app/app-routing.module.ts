@@ -6,6 +6,8 @@ import { OwnerGuard } from './services/guards/owner/owner.guard';
 import { AdminGuard } from './services/guards/admin/admin.guard';
 import { SecretaryGuard } from './services/guards/secretary/secretary.guard'; // Pending for module creation
 import { RevisorGuard } from './services/guards/revisor/revisor.guard'; // Pending for module creation
+// Also pending superAdmin Guard
+
 const routes: Routes = [
 
   { path: '', component: LoginComponent },

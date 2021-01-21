@@ -1,31 +1,31 @@
-export const SUPER_ADMINISTRADOR = [ // En este administrador seguir las rutas del admin de estos manes
+export const SUPER_ADMINISTRADOR = [
   {
     title: 'REGISTRAR',
     subtitles: [
       {
-        name:  'Anuncio',
+        name: 'Anuncio',
         icon: 'fas fa-ad',
         route: '/admin/registry/ad'
       },
       {
-        name:  'Revisor fiscal',
+        name:  'Usuario para Revisor fiscal',
         icon: 'fas fa-user-tie',
         route: '/admin/registry/revisor'
       },
       {
-        name:  'Secretario de asamblea',
+        name:  'Usuario para Secretario',
         icon: 'fas fa-user',
         route: '/admin/registry/secretary'
       }
     ]
   },
   {
-    title: 'PRUEBA', // Hacer que el acordeón se recoja
+    title: 'ELIMINAR', // HACER QUE EL ACORDEÓN FUNCIONE
     subtitles: [
       {
-        name: 'Pruebita',
-        icon: 'fas fa-swimer',
-        route: '/admin/registry/ad'
+        name: 'Usuarios de Personal de apoyo',
+        icon: 'fas fa-user',
+        route: '/admin/delete/support-personal'
       }
     ]
   }
