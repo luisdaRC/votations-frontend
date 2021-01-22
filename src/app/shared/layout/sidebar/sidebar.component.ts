@@ -26,9 +26,11 @@ export class SidebarComponent implements OnInit {
     if (this.userService.getRol('PROPIETARIO')){
       this.router.navigate(['/owner/profile']);
     }
-    if ( this.userService.getRol('ADMINISTRADOR')
-      || this.userService.getRol('SUPER_ADMINISTRADOR')){
+    if (this.userService.getRol('ADMINISTRADOR')){
       this.router.navigate(['/admin/profile']);
+    }
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+      this.router.navigate(['/super-admin/profile']);
     }
     if (this.userService.getRol('SECRETARIO')){
       this.router.navigate(['/secretary/profile']);

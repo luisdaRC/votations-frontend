@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 import { UserService } from '../../services/sgph/user.service';
 import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
+import Swal from 'sweetalert2';
+import { PropiedadHorizontal } from '../../models/PropiedadHorizontal.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -11,23 +14,56 @@ import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizo
 export class InicioComponent implements OnInit {
 
   public data: any;
+  public ids: number[];
+  public ph: PropiedadHorizontal;
   public myPieChart: HTMLElement;
   public myBarChart: HTMLElement;
   public showPieChart = false;
   public showBars = false;
+  public existePH = false;
 
   constructor(
     public userService: UserService,
-    private phService: PropiedadHorizontalService) { }
+    private phService: PropiedadHorizontalService,
+    private router: Router) { }
 
   ngOnInit() {
-
+    this.getExistePH();
     this.phService.getEstadisticas().subscribe(data => {
       this.data = data;
       this.setData();
       this.validateStats();
     });
   }
+
+  public post(){
+    this.ids[0] = Number(this.userService.getIdPh());
+    this.phService.getListPh(this.ids).subscribe((data: any) => {
+      this.ph.id = data.id;
+      this.ph.direccion = data.direccion;
+      this.ph.nombre = data.nombre;
+      this.ph.tipo = data.tipo;
+    });
+    this.phService.postPH(this.ph).subscribe(data => {
+
+      Swal.fire({
+        title: ' ¡Actualización Exitosa!',
+        text: 'La propiedad ha sido actualizada correctamente',
+        icon: 'success',
+        confirmButtonText: 'Listo',
+        onClose: () => {
+          this.router.navigate(['/super-admin']);
+        }
+      });
+    });
+  }
+
+  public getExistePH(){ // Si no existe se muestra el mensaje
+    this.phService.getPH().subscribe((data: any) => {
+      this.existePH = data.existePH;
+    });
+  }
+
   private setData(): void {
 
     const ctx2 = document.getElementById('myPieChart');
@@ -109,4 +145,5 @@ export class InicioComponent implements OnInit {
     && this.data.numeroPropietarios === 0  ?
       this.showPieChart = true : this.showPieChart = false;
   }
+
 }

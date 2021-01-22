@@ -3,7 +3,7 @@ import { SidebarService } from '../services/extras/sidebar.service';
 import { AppService } from '../services/extras/app.service';
 
 @Component({
-  selector: 'app-admin', // TAKE A LOOK AT THIS IF I DONT FIND ANY OTHER REASON WHY THE START COMPONENT DOESN'T SERVE
+  selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })

@@ -33,8 +33,11 @@ export class UserService {
   }
 
   public isAdmin(){
-    return this.getRoles().includes('ADMINISTRADOR')
-      ||  this.getRoles().includes('SUPER_ADMINISTRADOR');
+    return this.getRoles().includes('ADMINISTRADOR');
+  }
+
+  public isSuperAdmin(){
+    return this.getRoles().includes('SUPER_ADMINISTRADOR');
   }
 
   public getRoles(){

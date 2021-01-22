@@ -13,7 +13,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
-// import { MatOptionModule } from '@angular/material/option';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
@@ -35,7 +34,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSortModule,
     MatTableModule,
     MatInputModule,
- //   MatOptionModule,
     MatProgressSpinnerModule
   ],
   exports: [LoadingComponent, NavbarComponent, SidebarComponent]

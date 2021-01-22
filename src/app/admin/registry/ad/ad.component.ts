@@ -21,23 +21,16 @@ export class AdComponent implements OnInit {
   });
 
   public fileName = '...';
+  minDate: Date;
 
   constructor(private phHorizontal: PropiedadHorizontalService,
-              private router: Router) { }
+              private router: Router) {
+/*    const currentDate = new Date().getMilliseconds(); https://material.angular.io/components/datepicker/overview#date-validation
+    this.minDate = new Date(currentDate + 15 * 86400000);*/
+  }
 
   public ngOnInit(): void {
   }
-
-/*
-  public onFileSelect(event): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.formAnuncio.get('archivo').setValue(file);
-      this.fileName = file.name;
-
-    }
-  }
-  */
 
   public registrar(): void {
     this.phHorizontal.postAnuncio(this.formAnuncio.value).subscribe(data => {
@@ -49,7 +42,7 @@ export class AdComponent implements OnInit {
         confirmButtonText: 'Listo',
         onClose: () => {
           this.formAnuncio.reset();
-          this.router.navigate(['/admin'])
+          this.router.navigate(['/admin']);
         }
       });
     });

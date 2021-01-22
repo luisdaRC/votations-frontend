@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminRoutingModule } from './admin.routes';
+import { SuperAdminRoutingModule } from './super-admin.routes';
 import { SharedModule } from '../shared/shared.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 // Components
 
-import { AdComponent } from './registry/ad/ad.component'; // Componente listo?
-import { RevisorComponent } from './registry/revisor/revisor.component'; // Componente listo?
-import { SecretaryComponent } from './registry/secretary/secretary.component'; // Componente listo?
-import { AdminComponent } from './admin.component';
+import { DataComponent } from './update/data/data.component'; // Componente listo?
+import { SuperAdminComponent } from './super-admin.component';
 import { InicioComponent } from './inicio/inicio.component'; // Componente listo?
-import { ProfileAdminComponent } from './profile/profile.component'; // Componente listo?
-import { SupportPersonalComponent } from './delete/support-personal/support-personal.component';
+import { ProfileSuperAdminComponent } from './profile/profile.component'; // Componente listo?
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,15 +31,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-
 
 @NgModule({
   declarations: [
-    AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent,
-    SupportPersonalComponent],
+    SuperAdminComponent, DataComponent, InicioComponent, ProfileSuperAdminComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -51,11 +45,11 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatSlideToggleModule,
     MatCardModule,
     MatGridListModule,
-    AdminRoutingModule,
+    SuperAdminRoutingModule,
     SharedModule,
     SweetAlert2Module,
-    BsDropdownModule.forRoot(),
-    CollapseModule.forRoot(),
+    BsDropdownModule, // Ver si sirve sin el forRoot()
+    CollapseModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -66,9 +60,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatTableModule,
     MatTabsModule,
     MatExpansionModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatSnackBarModule
   ]
 })
-export class AdminModule { }
+export class SuperAdminModule { }

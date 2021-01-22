@@ -92,5 +92,3 @@ export class RevisorComponent implements OnInit {
 
 // Al igual que cómo va a votar el propietario dada su relación con bien privado
 // y lo que debe y cómo debe guardar el administrador con respecto al registro de secretario y revisor.
-
-// En el perfil del super-admin, encargarlo de actualizar los datos de bienes privado y personas con endpoint persona/list.

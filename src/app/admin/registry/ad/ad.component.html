@@ -38,10 +38,10 @@
       <div class="col-12 col-lg-6 col-xl-5 mt-4">
 
         <mat-form-field class="w-100">
-
-          <input id="fechaEvento" matInput formControlName="fechaEvento" [matDatepicker]="fechaEvento" placeholder="Fecha del evento">
+<!--Para añadir los +15 dias al calendario se agrega la propiedad [min]="minDate" a datepicker-toggle-->
+          <input id="fechaEvento" matInput formControlName="fechaEvento" [matDatepicker]="fechaEvento" disabled placeholder="Fecha del evento">
           <mat-datepicker-toggle id="mat-date" matSuffix [for]="fechaEvento"></mat-datepicker-toggle>
-          <mat-datepicker id="fecha-evento-date" #fechaEvento></mat-datepicker>
+          <mat-datepicker id="fecha-evento-date" #fechaEvento disabled="false"></mat-datepicker>
 
         </mat-form-field>
       </div>
@@ -51,16 +51,6 @@
           <textarea id="mensaje"  formControlName="mensaje" matInput placeholder="Ingrese mensaje"></textarea>
         </mat-form-field>
       </div>
-
-      <!-- <div class="col-12 col-lg-6 col-xl-5 mt-4">
-
-         <div class="custom-file">
-          <input (change)="onFileSelect($event)" type="file" class="custom-file-input" id="inputGroupFile04"
-            aria-describedby="inputGroupFileAddon04">
-          <label class="custom-file-label" for="inputGroupFile04">{{fileName}}</label>
-        </div>
-      </div> -->
-
     </div>
 
     <div class="row mt-4">
@@ -72,5 +62,6 @@
         <button id="volver" type="button" class="btn btn-link text-dark"> <u [routerLink]="['../../inicio']">Volver</u></button>
       </div>
     </div>
+
   </div>
 </form>

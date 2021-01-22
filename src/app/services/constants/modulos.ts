@@ -37,7 +37,7 @@ export const RUTAS_PERMITIDAS = {
 
 export const MODULOS = {
   ADMINISTRADOR: 'admin',
-  SUPER_ADMINISTRADOR: 'admin',
+  SUPER_ADMINISTRADOR: 'super-admin',
   SECRETARIO: 'secretary',
   PROPIETARIO: 'owner',
   REVISOR: 'revisor'

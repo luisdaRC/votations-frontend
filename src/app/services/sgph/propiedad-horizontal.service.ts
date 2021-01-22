@@ -14,8 +14,6 @@ export class PropiedadHorizontalService {
   constructor(private http: HttpClient, private userService: UserService) {
   }
 
-// Study the way nilson and ariel register a new user with new role to apply the same. Start with ariel interview
-
   public postAdministrador(administrador: any) {
     return this.http.post(environment.url_sgph + 'propiedad-horizontal/administrador', administrador, this.userService.getTokenHeaders());
   }
@@ -112,7 +110,7 @@ export class PropiedadHorizontalService {
     let queryParamsResult = '?idsPropiedadHorizontal=';
     if (ids.length > 0) {
       queryParamsResult = queryParamsResult.concat(ids[0].toString());
-      const listIds = this.withoutThis(ids, ids[0]); // Take a look at doing by myself what this function does
+      const listIds = this.withoutThis(ids, ids[0]);
       listIds.forEach(idPh => {
         queryParamsResult = queryParamsResult.concat('?idsPropiedadHorizontal=' + idPh.toString());
       });
@@ -129,8 +127,24 @@ export class PropiedadHorizontalService {
     return newArray;
   }
 
+  public getPersonaList() {
+    return this.http.get(environment.url_sgph + 'persona/list?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());
+
+  }
+
 // Peticiones a microservicio de [control de data(extraer de core e insertar en DB) desde superadmin] Y
 // [usuarios(revisor-secretario) desde admin].
+
+  public postPH(ph: any) {
+    return this.http.post(environment.url_control + 'propiedad-horizontal/', ph, this.userService.getTokenHeaders());
+  }
+
+  public getPH() { // Para saber si la PH existe en nuestros registros
+    let headers = this.userService.getTokenHeaders().headers;
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.http.get(environment.url_control + 'propiedad-horizontal/', {headers});
+  }
 
   public postRevisor(revisor: any) {
     return this.http.post(environment.url_control + 'propiedad-horizontal/revisor', revisor, this.userService.getTokenHeaders());
@@ -158,4 +172,7 @@ export class PropiedadHorizontalService {
     return this.http.patch(environment.url_control + 'propiedad-horizontal/personal' + personal, this.userService.getTokenHeaders());
   }
 
+  public postUpdate(persona: any) {
+    return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, this.userService.getTokenHeaders());
+  }
 }

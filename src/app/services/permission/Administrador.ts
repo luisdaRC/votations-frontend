@@ -23,7 +23,7 @@ export const ADMINISTRADOR = [
     title: 'ELIMINAR',
     subtitles: [
       {
-        name: 'Usuarios de Personal de apoyo',
+        name: 'Personal de apoyo',
         icon: 'fas fa-user',
         route: '/admin/delete/support-personal'
       }

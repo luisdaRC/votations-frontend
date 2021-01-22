@@ -15,6 +15,9 @@ const routes: Routes = [
     children: [
       {path: 'inicio', component: InicioComponent},
       {path: 'profile', component: ProfileAdminComponent},
+
+// Casi finalizado el módulo front de admin, falta el detalle de accordion y buscar por qué con rol
+// superadmin no carga /registry/ad (parece ser cuestión de permiso, ¿pero donde? Pronto lo sabremos).
       {path: 'registry/ad', component: AdComponent},
       {path: 'registry/revisor', component: RevisorComponent},
       {path: 'registry/secretary', component: SecretaryComponent},
