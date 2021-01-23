@@ -100,32 +100,32 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_sgph + 'propiedad-horizontal/list', this.userService.getTokenHeaders());
   }
 
-  public getListPh(ids: number[]) {
+  public getListPh(ids: string) {
     return this.http.get(environment.url_sgph.concat('propiedad-horizontal/listNames').concat(this.getQueryParamsIdPh(ids)), this.userService.getTokenHeaders());
   }
 
 
-  private getQueryParamsIdPh(ids: number[]) {
+  private getQueryParamsIdPh(ids: string) {
 
-    let queryParamsResult = '?idsPropiedadHorizontal=';
-    if (ids.length > 0) {
+    const queryParamsResult = '?idsPropiedadHorizontal='.concat(ids);
+/*    if (ids.length > 0) {
       queryParamsResult = queryParamsResult.concat(ids[0].toString());
       const listIds = this.withoutThis(ids, ids[0]);
       listIds.forEach(idPh => {
         queryParamsResult = queryParamsResult.concat('?idsPropiedadHorizontal=' + idPh.toString());
       });
-    }
+    }*/
     return queryParamsResult;
   }
 
-  private withoutThis(ids: number[], id: number){
+/*  private withoutThis(ids: number[], id: number){
     const newArray = [];
     let i;
     for (i = 1; i < ids.length; i++){
         newArray[i] = ids[i];
     }
     return newArray;
-  }
+  }*/
 
   public getPersonaList() {
     return this.http.get(environment.url_sgph + 'persona/list?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());
@@ -175,4 +175,10 @@ export class PropiedadHorizontalService {
   public postUpdate(persona: any) {
     return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, this.userService.getTokenHeaders());
   }
+
+  // Añadir aquí rest requests para actividades de negocio de revisor y secretario
+  // ¿A qué microservicio corresponden estas requests? -Creo que a actividades asamblearias
+  // Yes. -Excepto al micro de verificación.
+  // -Propietario con su microservicio votar.
+
 }

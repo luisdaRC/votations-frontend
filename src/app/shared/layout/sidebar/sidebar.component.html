@@ -29,8 +29,8 @@
 
     </div>
 
-    <ul [id]="'collapse'+j" aria-labelledby="heading1" data-parent="#accordion" [ngClass]="{'show': j===0}"
-        class="menu-items inactive collapse"> Con j>=0 sirve con todas expandidas
+    <ul [id]="'collapse'+j" aria-labelledby="heading1" data-parent="#accordion" [ngClass]="{'show': j>=0}"
+        class="menu-items inactive collapse">
 
       <li *ngFor="let subtitle of menu.subtitles;index as i">
         <a id="submenu-{{subtitle.name | removeBlanck}}" (click)="this.appService.toggleSidebar()" [routerLink]="subtitle.route">

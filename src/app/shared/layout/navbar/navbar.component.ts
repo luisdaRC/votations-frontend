@@ -30,9 +30,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
 
     this.picture = '../../../../assets/img/angular2.png';
-    $('[data-toggle="tooltip"]').tooltip({
+/*    $('[data-toggle="tooltip"]').tooltip({
         trigger: 'hover'
-      });
+      });*/
 
   }
 
@@ -41,8 +41,9 @@ export class NavbarComponent implements OnInit {
     this.title = 'SGPH';
     this.sidebarservice.setValuesSGPH();
 
-    if (this.userService.getRol('SUPER_ADMINISTRADOR')
-      || this.userService.getRol('ADMINISTRADOR')){
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+      this.router.navigate(['/super-admin/inicio']);
+    }else if (this.userService.getRol('ADMINISTRADOR')){
       this.router.navigate(['/admin/inicio']);
     }else if (this.userService.getRol('PROPIETARIO')){
       this.router.navigate(['/owner/inicio']);
@@ -56,8 +57,9 @@ export class NavbarComponent implements OnInit {
 
   profile() {
     this.isCollapsed = true;
-    if (this.userService.getRol('SUPER_ADMINISTRADOR')
-      || this.userService.getRol('ADMINISTRADOR')) {
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+      this.router.navigate(['/super-admin/profile']);
+    }else if (this.userService.getRol('ADMINISTRADOR')) {
       this.router.navigate(['/admin/profile']);
     } else if (this.userService.getRol('PROPIETARIO')) {
       this.router.navigate(['/owner/profile']);
@@ -78,7 +80,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public logout(){
-    $('#cerrar-session').tooltip('hide');
+    // $('#cerrar-session').tooltip('hide');
     this.sidebarservice.menus = [];
     this.userService.logout();
     this.router.navigate(['/']);

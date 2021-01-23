@@ -3,7 +3,6 @@ import Chart from 'chart.js';
 import { UserService } from '../../services/sgph/user.service';
 import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
 import Swal from 'sweetalert2';
-import { PropiedadHorizontal } from '../../models/PropiedadHorizontal.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,8 +13,7 @@ import { Router } from '@angular/router';
 export class InicioComponent implements OnInit {
 
   public data: any;
-  public ids: number[];
-  public ph: PropiedadHorizontal;
+  public ph: any;
   public myPieChart: HTMLElement;
   public myBarChart: HTMLElement;
   public showPieChart = false;
@@ -37,14 +35,10 @@ export class InicioComponent implements OnInit {
   }
 
   public post(){
-    this.ids[0] = Number(this.userService.getIdPh());
-    this.phService.getListPh(this.ids).subscribe((data: any) => {
-      this.ph.id = data.id;
-      this.ph.direccion = data.direccion;
-      this.ph.nombre = data.nombre;
-      this.ph.tipo = data.tipo;
+    this.phService.getListPh(this.userService.getIdPh()).subscribe((data: any) => {
+      this.ph = data;
     });
-    this.phService.postPH(this.ph).subscribe(data => {
+    this.phService.postPH(this.ph).subscribe(data => {// Quizá (sólo quizá) no esté funcionando por href en inicio
 
       Swal.fire({
         title: ' ¡Actualización Exitosa!',
