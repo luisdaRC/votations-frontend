@@ -1,6 +1,5 @@
-// Revisar desde la perspectiva del negocio, cómo se debe realizar este caso de uso.
-// ¿Sólo se le mostrará la última votación y los propietarios que votaron o los resultados
-// de todas las votaciones que se han realizado en la PH?.
+// Se le mostrarán todas las votaciones que se hicieron en esa asamblea
+// Necesito saber quién da por finalizada la asamblea para definir si la tabla asamblea necesita un campo estado
 export const REVISOR_FISCAL = [
   {
     title: 'LISTAR',
