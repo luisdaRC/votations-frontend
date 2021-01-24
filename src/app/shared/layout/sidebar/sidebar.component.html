@@ -1,0 +1,43 @@
+
+<aside class="sidebar shadow-sm">
+
+  <div (click)="perfil()" class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3 pointer ">
+    <div class="text-center mb-3">
+      <i class="fas fa-user-circle color-gain fa-4x"></i>
+    </div>
+    <div class="profile-details text-center pb-4">
+      <p class="text-uppercase name" id="usuario-nombre" >
+        {{ this.userService.getUsuario().nombre || this.userService.getUsuario().nombrePH  }} {{ this.userService.getUsuario().apellido || '' }}
+      </p>
+      <small class="text-uppercase role" id="usuario-role" >{{this.userService.getUsuario().roles.toString().replace('_',' ')}}</small>
+    </div>
+  </div>
+  <div class="sidebar-search pt-1 pb-1 pl-3 pr-3">
+    <input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">
+  </div>
+
+  <nav id="accordion" *ngFor="let menu of sidebarservice.menus;index as j;" class="sidebar-menu accordion">
+    <!--This accordion isn't serving as it should. Buscar documentación. Jugar con las j, poner valores.-->
+    <div data-toggle="collapse" [attr.data-target]="'#collapse'+j" [attr.aria-controls]="'collapse'+j"
+         class="menu-header mt-3 mb-2 pointer">
+
+      <span class="font-14"
+            id="menu-{{menu.title}}">
+        {{menu.title}}
+        <i class="fa fa-chevron-circle-down" aria-hidden="false"></i>
+      </span>
+
+    </div>
+
+    <ul [id]="'collapse'+j" aria-labelledby="heading1" data-parent="#accordion" [ngClass]="{'show': j>=0}"
+        class="menu-items inactive collapse">
+
+      <li *ngFor="let subtitle of menu.subtitles;index as i">
+        <a id="submenu-{{subtitle.name | removeBlanck}}" (click)="this.appService.toggleSidebar()" [routerLink]="subtitle.route">
+          <i style="width: 20px; height: 35px;" class="{{subtitle.icon}}"></i>
+          <span>{{subtitle.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

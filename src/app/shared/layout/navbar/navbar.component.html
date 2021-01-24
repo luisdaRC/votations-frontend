@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-dark flex-fill">
+
+  <!-- header -->
+  <div class="navbar-header pl-2 pr-2 ml-3 text-center pointer"  (click)="setSGPHoptions()">
+    <a class="navbar-brand m-0 w-100">
+      <h1 *ngIf="!appService.isSidebarPinned" class="text-white ml-4">{{title | slice : 0 : 2 }}<span class="text-blue">{{title | slice : 2  }}</span></h1>
+    </a>
+  </div>
+  <!-- sidebar toggler -->
+  <div class="sidebar-toggler ml-auto mr-3">
+    <a class="btn nav-link" (click)="toggleSidebar()"><i class="fa fa-bars"></i></a>
+  </div>
+  <!-- right menu toggler -->
+  <div class="nav-toggler-right mr-4 d-md-none d-flex">
+    <button class="" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseBasic">
+      <i class="fas fa-user-circle icon"></i>
+    </button>
+
+  </div>
+
+  <ul class="navbar-nav flex-fill mt-1 align-items-center left-nav pointer">
+    <li class="nav-item navicon">
+      <a class="btn nav-link" (click)="toggleSidebarPin()"><i class="fa fa-bars"></i></a>
+    </li>
+  </ul>
+
+  <!-- right menu -->
+  <div class="collapse navbar-collapse right-nav" id="collapseBasic" [collapse]="isCollapsed">
+    <ul class="navbar-nav ">
+      <li data-toggle="tooltip" data-placement="top" title="Chat" (click)="isCollapsed = !isCollapsed" *ngIf="!userService.getRol('SUPER_ADMINISTRADOR')" [routerLink]="['chat']" id="ir-chat" class="nav-item pointer">
+        <a class="btn nav-link">
+          <i  class="far fa-envelope color-white"></i>
+          <span class="link-text">Chat</span>
+          <!-- <span class="badge badge-pill badge-success">5</span> -->
+        </a>
+      </li>
+      <li data-toggle="tooltip" data-placement="top" title="Perfil" (click)="profile()" id="ir-perfil" class="nav-item pointer">
+        <a class="btn nav-link">
+          <i  class="far fa-user color-white"></i>
+          <span class="link-text">Perfil</span>
+        </a>
+      </li>
+
+      <!--li data-toggle="tooltip" data-placement="top" title="Módulo PHMAN" (click)="changeMenuToAccessControl()" id="ir-phman" class="nav-item pointer">
+        <a class="btn nav-link">
+          <i   class="fas fa-owner-shield color-white color-white"></i>
+          <span class="link-text">Módulo PHMAN</span>
+        </a>
+      </li-->
+      <li>
+
+      </li>
+      <li data-toggle="tooltip" data-placement="top" title="Cerrar sesión" (click)="logout()" class="nav-item pointer" id="cerrar-session">
+        <a class="btn nav-link">
+
+          <i   class="fa fa-power-off color-white"></i>
+          <span class="link-text">Cerrar sesión</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+

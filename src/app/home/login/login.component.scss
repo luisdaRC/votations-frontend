@@ -1,0 +1,23 @@
+.enlace {
+  color: white;
+  text-transform: uppercase;
+}
+
+.enlace:hover {
+  color: #3ec1d5;
+  cursor: pointer;
+}
+
+.header-area {
+  width: 100%;
+  background: black;
+  z-index: 9;
+}
+
+footer {
+  position: absolute;
+}
+
+.container-login{
+  border: 1px solid oldlace;
+}

@@ -1,0 +1,17 @@
+<div class="row p-5 bg-white card-info">
+  <div class="col-12 text-center mb-2">
+    <p class="font-weight-bold titles"> ACTUALIZAR PERSONAS Y BIENES PRIVADOS </p>
+  </div>
+  <p>Con el siguiente botón usted podrá actualizar los datos de las
+    personas que habitan la propiedad y los bienes privados que la componen.</p>
+  <!--Parece ser que así está bien. Echar vistazo luego. Login con SuperAdmin-->
+  <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+    <button (click)="actualizar()" class="btn btn-primary w-50" id="registrar-admin" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+      ACTUALIZAR
+    </button>
+    <br>
+    <button type="button" class="btn btn-link text-dark">
+      <u [routerLink]="['../../inicio']">Volver</u>
+    </button>
+  </div>
+</div>

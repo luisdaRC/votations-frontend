@@ -1,9 +1,17 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { environment as defaultEnvironment } from './environment.defaults';
 
 export const environment = {
-  production: false
+  ...defaultEnvironment,
+  production: false,
+  url_sgph: 'https://sgph-services-dev.herokuapp.com/',
+  url_verificacion_identidad: '',
+  url_actividades_asamblearias: '',
+  url_votaciones: '',
+  url_control: ''
+
 };
 
 /*
