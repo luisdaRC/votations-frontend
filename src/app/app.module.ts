@@ -19,13 +19,15 @@ import localeEsCo from '@angular/common/locales/es';
 import { CalendarModule } from 'angular-calendar';
 import { OwnerComponent } from './owner/owner.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
+import { RevisorComponent } from './revisor/revisor.component';
 registerLocaleData(localeEsCo, 'es-CO');
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RevisorComponent
   ],
   imports: [
     BrowserAnimationsModule,

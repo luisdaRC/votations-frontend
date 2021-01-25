@@ -2,12 +2,23 @@
 // UPDATE: Realiza revisión del proceso cuando no hay más mociones en la asamblea. Cuando acaba(?)
 // Consultar fechaFin para saber si una asamblea está en curso y si ya se le pueden mostrar los resultados al revisor
 // (it means, cuando la asamblea haya finalizado).
+// Para devolver los datos de votaciones en la asamblea, permitir que se consulte por fecha de asamblea.
+// Estudiar si el secretario es quien inicia la asamblea, para saber quien debe tomar las huellas (él o admin).
+
+// Si una persona repite ser secretario de asamblea, que al momento de la inscripción se tenga en cuenta
+// el doc de identificación para sólo cambiarle el estado, correo y contraseña.
+// (Que se muestre un mensaje arribita como en registro revisor/sec que le aclare al user lo anterior)
+
+// Para revisor hacer inicio y este de abajo pidiendo fecha y mostrando
+// el listado de mociones y votos por opción (definir bien qué y el orden de las columnas en que se mostrará al revisor).
+
+// Listo módulos y routing revisor. Hoy seguir con html, .ts, inicio (el mismo de admin) y check/process
 export const REVISOR_FISCAL = [
   {
-    title: 'LISTAR',
+    title: 'REVISAR',
     subtitles: [
       {
-        name: 'Votación',
+        name: 'Proceso de votación',
         icon: 'fas fa-owner',
         route: '/list'
       }

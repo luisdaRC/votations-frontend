@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import ('src/app/admin/admin.module').then(m => m.AdminModule), canActivate: [SessionGuard, AdminGuard] },
   { path: 'owner', loadChildren: () => import ('src/app/owner/owner.module').then(m => m.OwnerModule), canActivate: [SessionGuard, OwnerGuard] },
   { path: 'super-admin', loadChildren: () => import ('src/app/super-admin/super-admin.module').then(m => m.SuperAdminModule), canActivate: [SessionGuard, SuperAdminGuard] },
+  { path: 'revisor', loadChildren: () => import ('src/app/revisor/revisor.module').then(m => m.RevisorModule), canActivate: [SessionGuard, RevisorGuard] },
   // Crear módulos en cada una de las rutas definidas
 //  { path: 'secretary', loadChildren: () => import ('src/app/secretary/secretary.module').then(m => m.SecretaryModule), canActivate: [SessionGuard, SecretaryGuard] },
-//  { path: 'revisor', loadChildren: () => import ('src/app/revisor/revisor.module').then(m => m.RevisorModule), canActivate: [SessionGuard, RevisorGuard] },
+
   { path: '' , redirectTo: '', pathMatch: 'full'},
 ];
 
