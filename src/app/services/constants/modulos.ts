@@ -40,5 +40,5 @@ export const MODULOS = {
   SUPER_ADMINISTRADOR: 'super-admin',
   SECRETARIO: 'secretary',
   PROPIETARIO: 'owner',
-  REVISOR: 'revisor'
+  REVISOR: 'super-admin'
 };

@@ -107,15 +107,15 @@ export class PropiedadHorizontalService {
 
   private getQueryParamsIdPh(ids: string) {
 
-    const queryParamsResult = '?idsPropiedadHorizontal='.concat(ids);
-/*    if (ids.length > 0) {
+/*    const queryParamsResult = '?idsPropiedadHorizontal='.concat(ids);
+      if (ids.length > 0) {
       queryParamsResult = queryParamsResult.concat(ids[0].toString());
       const listIds = this.withoutThis(ids, ids[0]);
       listIds.forEach(idPh => {
         queryParamsResult = queryParamsResult.concat('?idsPropiedadHorizontal=' + idPh.toString());
       });
     }*/
-    return queryParamsResult;
+    return '?idsPropiedadHorizontal='.concat(ids);
   }
 
 /*  private withoutThis(ids: number[], id: number){
@@ -143,13 +143,13 @@ export class PropiedadHorizontalService {
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'propiedad-horizontal/', {headers});
+    return this.http.get(environment.url_control + 'propiedad-horizontal/?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public postRevisor(revisor: any) {
     return this.http.post(environment.url_control + 'propiedad-horizontal/revisor', revisor, this.userService.getTokenHeaders());
   }
-
+  // Estar atento para saber si para realizar esta consulta es necesario el idPH
   public getRevisor() { // Para saber si hay ya un revisor registrado en esa propiedad
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
@@ -174,6 +174,17 @@ export class PropiedadHorizontalService {
 
   public postUpdate(persona: any) {
     return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, this.userService.getTokenHeaders());
+  }
+
+// Peticiones a microservicio de actividades asamblearias [REVISOR]
+// (hacer query para obtener todas las mociones de una asamblea daba la fecha de realización de esta)
+// [Y SECRETARIO] (Un montón xD)]
+
+  public getMocionesAsamblea(fecha: any){
+    let headers = this.userService.getTokenHeaders().headers;
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.http.get(environment.url_actividades_asamblearias + 'actividades/mociones?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal + '&fecha=' + fecha.toISOString(), {headers});
   }
 
   // Añadir aquí rest requests para actividades de negocio de revisor y secretario

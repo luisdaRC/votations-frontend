@@ -21,12 +21,12 @@ export class AdComponent implements OnInit {
   });
 
   public fileName = '...';
-  minDate: Date;
+  public minDate: Date;
 
   constructor(private phHorizontal: PropiedadHorizontalService,
               private router: Router) {
-/*    const currentDate = new Date().getMilliseconds(); https://material.angular.io/components/datepicker/overview#date-validation
-    this.minDate = new Date(currentDate + 15 * 86400000);*/
+/*    const currentDate = new Date().getMilliseconds(); // https://material.angular.io/components/datepicker/overview#date-validation
+    this.minDate = new Date(new Date(currentDate + 15 * 86400000)); */
   }
 
   public ngOnInit(): void {

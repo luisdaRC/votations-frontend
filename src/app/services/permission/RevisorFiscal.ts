@@ -13,13 +13,19 @@
 // el listado de mociones y votos por opción (definir bien qué y el orden de las columnas en que se mostrará al revisor).
 
 // Listo módulos y routing revisor. Hoy seguir con html, .ts, inicio (el mismo de admin) y check/process
+
+// Para mostrar la tabla, tomar en cuenta el endpoint getAllPropietario en donde se muestra algo similar.
+
+// Procurar empezar el primer microsevicio en el back (user-data) apenas termine lo del botón en process.html.
+// The better is barely coming here.
+
 export const REVISOR_FISCAL = [
   {
     title: 'REVISAR',
     subtitles: [
       {
-        name: 'Proceso de votación',
-        icon: 'fas fa-owner',
+        name: 'Procesos de votación',
+        icon: 'far fa-address-book',
         route: '/list'
       }
     ]
