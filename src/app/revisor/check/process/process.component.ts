@@ -20,14 +20,16 @@ export class ProcessComponent implements OnInit {
     mocion : ['Moción']
   };
   public dataSource;
+  public existe = false;
   constructor(private phHorizontal: PropiedadHorizontalService) {}
 
   ngOnInit() {
   }
 
   consultar(){
-    this.phHorizontal.getMocionesAsamblea(this.formProcess).subscribe((data:any) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.phHorizontal.getMocionesAsamblea(this.formProcess).subscribe((data: any) => {
+      this.existe = true;
+      this.dataSource = new MatTableDataSource(data); // Definir la manera en que se mostrará el listado de mociones de la asamblea consultada.
       });
   }
 
