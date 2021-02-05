@@ -147,25 +147,25 @@ export class PropiedadHorizontalService {
   }
 
   public postRevisor(revisor: any) {
-    return this.http.post(environment.url_control + 'propiedad-horizontal/revisor', revisor, this.userService.getTokenHeaders());
+    return this.http.post(environment.url_control + 'personal-apoyo/revisor', revisor, this.userService.getTokenHeaders());
   }
   // Estar atento para saber si para realizar esta consulta es necesario el idPH
   public getRevisor() { // Para saber si hay ya un revisor registrado en esa propiedad
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'propiedad-horizontal/revisor', {headers});
+    return this.http.get(environment.url_control + 'personal-apoyo/revisor', {headers});
   }
 
   public postSecretary(secretario: any) {
-    return this.http.post(environment.url_control + 'propiedad-horizontal/secretary', secretario, this.userService.getTokenHeaders());
+    return this.http.post(environment.url_control + 'personal-apoyo/secretary', secretario, this.userService.getTokenHeaders());
   }
 
   public getSecretary() { // Para saber si hay ya un secretario registrado en esa propiedad
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'propiedad-horizontal/secretary', {headers});
+    return this.http.get(environment.url_control + 'personal-apoyo/secretary', {headers});
   }
 
   public patchPersonalApoyo(personal: any){
