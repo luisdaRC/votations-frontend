@@ -169,7 +169,7 @@ export class PropiedadHorizontalService {
   }
 
   public patchPersonalApoyo(personal: any){
-    return this.http.patch(environment.url_control + 'propiedad-horizontal/personal' + personal, this.userService.getTokenHeaders());
+    return this.http.patch(environment.url_control + 'personal-apoyo/patch' + personal, this.userService.getTokenHeaders());
   }
 
   public postUpdate(persona: any) {
