@@ -50,7 +50,8 @@ export class RevisorComponent implements OnInit {
 
     const revisor = {
       revisorFiscal,
-      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal
+      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
+      rol: 'REVISOR'
     };
 
     this.phService.postRevisor(revisor).subscribe(

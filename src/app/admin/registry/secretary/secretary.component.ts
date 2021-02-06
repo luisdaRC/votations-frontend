@@ -50,7 +50,8 @@ export class SecretaryComponent implements OnInit {
 
     const completeSecretary = {
       secretary,
-      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal
+      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
+      rol: 'SECRETARIO'
     };
 
     this.phService.postSecretary(completeSecretary).subscribe(
