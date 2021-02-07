@@ -165,7 +165,7 @@ export class PropiedadHorizontalService {
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control+ 'personal-apoyo/secretary?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
+    return this.http.get(environment.url_control + 'personal-apoyo/secretary?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public patchPersonalApoyo(personal: any){
