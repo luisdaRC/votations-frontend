@@ -143,7 +143,7 @@ export class PropiedadHorizontalService {
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'propiedad-horizontal/?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
+    return this.http.get(environment.url_control + 'propiedad-horizontal?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public postRevisor(revisor: any) {
@@ -154,7 +154,7 @@ export class PropiedadHorizontalService {
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'personal-apoyo/revisor', {headers});
+    return this.http.get(environment.url_control + 'personal-apoyo/revisor?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal', {headers});
   }
 
   public postSecretary(secretario: any) {
@@ -165,7 +165,7 @@ export class PropiedadHorizontalService {
     let headers = this.userService.getTokenHeaders().headers;
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.http.get(environment.url_control + 'personal-apoyo/secretary', {headers});
+    return this.http.get(environment.url_control + 'personal-apoyo/secretary?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public patchPersonalApoyo(personal: any){
