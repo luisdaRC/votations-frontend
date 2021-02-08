@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
 
       },
       error => {
+        // Aquí es donde se ejecuta el aviso. Probar colocando el postLogin de votaciones para revisor y secretario .
         Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
       }
     );
