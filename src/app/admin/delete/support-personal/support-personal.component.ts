@@ -34,7 +34,11 @@ export class SupportPersonalComponent implements OnInit {
 
     const personal = {
       personalApoyo,
-      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal
+      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
+      email: '',
+      pass: '',
+      estado: false,
+      nombres: ''
     };
 
     this.phService.patchPersonalApoyo(personal).subscribe(
