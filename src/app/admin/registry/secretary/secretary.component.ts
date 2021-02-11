@@ -17,8 +17,7 @@ export class SecretaryComponent implements OnInit {
   // Form
   public formSecretary = new FormGroup({ // Rol y estado se ponen fijos en el back
     secretary: new FormGroup({
-      nombres: new FormControl('', [Validators.required]),
-      apellido: new FormControl('', [Validators.required]),
+      nombre: new FormControl('', [Validators.required]),
       tipoDocumento: new FormControl('', [Validators.required]),
       numeroDocumento: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
@@ -51,7 +50,8 @@ export class SecretaryComponent implements OnInit {
     const completeSecretary = {
       secretary,
       idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
-      rol: 'SECRETARIO'
+      rol: 'SECRETARIO',
+      estado: true
     };
 
     this.phService.postSecretary(completeSecretary).subscribe(
