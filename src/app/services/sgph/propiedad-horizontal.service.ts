@@ -136,44 +136,43 @@ export class PropiedadHorizontalService {
 // [usuarios(revisor-secretario) desde admin].
 
   public postPH(ph: any) {
-    return this.http.post(environment.url_control + 'propiedad-horizontal/', ph, this.userService.getTokenHeaders());
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'propiedad-horizontal/', ph, {headers});
   }
 
   public getPH() { // Para saber si la PH existe en nuestros registros
-    let headers = this.userService.getTokenHeaders().headers;
-    headers = headers.append('Content-Type', 'application/json');
-
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(environment.url_control + 'propiedad-horizontal?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public postRevisor(revisor: any) {
-    return this.http.post(environment.url_control + 'personal-apoyo/revisor', revisor, this.userService.getTokenHeaders());
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'personal-apoyo/revisor', revisor, {headers});
   }
   // Estar atento para saber si para realizar esta consulta es necesario el idPH
   public getRevisor() { // Para saber si hay ya un revisor registrado en esa propiedad
-    let headers = this.userService.getTokenHeaders().headers;
-    headers = headers.append('Content-Type', 'application/json');
-
-    return this.http.get(environment.url_control + 'personal-apoyo/revisor?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal', {headers});
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_control + 'personal-apoyo/revisor?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public postSecretary(secretario: any) {
-    return this.http.post(environment.url_control + 'personal-apoyo/secretary', secretario, this.userService.getTokenHeaders());
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'personal-apoyo/secretary', secretario, {headers});
   }
 
   public getSecretary() { // Para saber si hay ya un secretario registrado en esa propiedad
-    let headers = this.userService.getTokenHeaders().headers;
-    headers = headers.append('Content-Type', 'application/json');
-
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(environment.url_control + 'personal-apoyo/secretary?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
   }
 
   public patchPersonalApoyo(personal: any){
-    return this.http.patch(environment.url_control + 'personal-apoyo/patch' + personal, this.userService.getTokenHeaders());
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.patch(environment.url_control + 'personal-apoyo/patch', personal, {headers});
   }
 
-  public postUpdate(persona: any) {
-    return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, this.userService.getTokenHeaders());
+  public postUpdate(persona: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, {headers});
   }
 
 // Peticiones a microservicio de actividades asamblearias [REVISOR]
@@ -181,9 +180,7 @@ export class PropiedadHorizontalService {
 // [Y SECRETARIO] (Un montón xD)]
 
   public getMocionesAsamblea(fecha: any){
-    let headers = this.userService.getTokenHeaders().headers;
-    headers = headers.append('Content-Type', 'application/json');
-
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(environment.url_actividades_asamblearias + 'actividades/mociones?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal + '&fecha=' + fecha.toISOString(), {headers});
   }
 
