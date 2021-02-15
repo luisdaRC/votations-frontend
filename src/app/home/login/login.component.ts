@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   public iniciarSesion(): void {
 
-    this.userService.postIniciarSesion(this.form.value).subscribe( // Se puede hacer un llamado al otro método de iniciar sesión de revisor y secretario antes de que el error sea lanzado
+    this.userService.postIniciarSesion(this.form.value).subscribe(
 
       (data: any) => {
         if (data.roles.length === 0){
@@ -43,8 +43,17 @@ export class LoginComponent implements OnInit {
 
       },
       error => {
-        // Aquí es donde se ejecuta el aviso. Probar colocando el postLogin de votaciones para revisor y secretario .
-        Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
+        this.userService.postLoginControl(this.form.value).subscribe(
+          (data: any) => {
+            this.route.navigate([MODULOS[data.rol]]);
+            this.sidebarService.init();
+          },
+          error1 => {
+            Swal.fire('¡Error al iniciar Sesión!', error1.error, 'error');
+          }
+        );
+        // Aquí es donde se ejecuta el aviso. Probar colocando el postLoginControl.
+        // Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
       }
     );
   }

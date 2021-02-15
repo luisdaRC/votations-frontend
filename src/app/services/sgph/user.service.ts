@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/Usuario.interface';
+import { UsuarioControl} from '../../models/UsuarioControl.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -80,6 +81,11 @@ export class UserService {
     this.token = token;
   }
 
+  public saveStorageControl(usuario: UsuarioControl): void {
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    this.usuario = usuario;
+  }
+
   public logout(): void {
     this.usuario = null;
     this.token = '';
@@ -88,7 +94,7 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  public postIniciarSesion(user: Usuario) { // Planear cómo iniciar sesión mediante dos post. 1 al sgph y otro al microservicio de nosotros
+  public postIniciarSesion(user: Usuario) {
     return this.http.post(environment.url_sgph + 'auth/signin', user).pipe(map((data: any) => {
       this.saveStorage(data.token, data.refresh, {
         email: data.email,
@@ -101,6 +107,18 @@ export class UserService {
         cambiarContraseña: data.cambiarContraseña
       });
       return data;
+    }));
+  }
+
+  public postLoginControl(user: UsuarioControl) {
+    return this.http.post(environment.url_control + 'personal-apoyo/signin', user).pipe(map((data: any) => {
+      this.saveStorageControl({
+        nombres: data.nombres,
+        email: data.email,
+        rol: data.rol,
+        idPropiedadHorizontal: data.idPropiedadHorizontal,
+        nombrePH: data.nombrePH
+      });
     }));
   }
 
