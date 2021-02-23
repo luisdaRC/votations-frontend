@@ -5,11 +5,12 @@ import { environment as defaultEnvironment } from './environment.defaults';
 
 export const environment = {
   ...defaultEnvironment,
-  production: false,
+  production: true,
   url_sgph: 'https://sgph-services-dev.herokuapp.com/',
   url_verificacion_identidad: '',
   url_actividades_asamblearias: '',
   url_votaciones: '',
+  url_control: 'https://control-microservice.herokuapp.com/'
 
 };
 

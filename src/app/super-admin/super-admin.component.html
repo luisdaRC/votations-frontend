@@ -1,0 +1,10 @@
+<div class="wrapper default-theme custom-theme" [ngClass]="getClasses()">
+  <app-navbar></app-navbar>
+  <main>
+    <app-sidebar></app-sidebar>
+    <div class="pages">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="overlay" (click)="toggleSidebar()"></div>
+  </main>
+</div>

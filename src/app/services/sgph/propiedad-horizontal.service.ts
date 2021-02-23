@@ -48,7 +48,7 @@ export class PropiedadHorizontalService {
   }
 
   public pathPersona(persona: any, email: string) {
-    return this.http.patch(environment.url_sgph + 'persona/' + email, persona, this.userService.getTokenHeaders())
+    return this.http.patch(environment.url_sgph + 'persona/' + email, persona, this.userService.getTokenHeaders());
   }
 
 
@@ -65,8 +65,12 @@ export class PropiedadHorizontalService {
     return this.http.get(`${environment.url_sgph}residente?idPropiedadHorizontal=${this.userService.getUsuario().idPropiedadHorizontal}&size=${size}&page=${page}`, this.userService.getTokenHeaders());
   }
 
+  public getEstadisticas() {
+    return this.http.get(environment.url_sgph + 'propiedad-horizontal/estadisticas?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());
+  }
+
   public getBienPrivado(index: number) {
-    return this.http.get(environment.url_sgph + 'bien-privado/' + index, this.userService.getTokenHeaders())
+    return this.http.get(environment.url_sgph + 'bien-privado/' + index, this.userService.getTokenHeaders());
   }
 
   public postAnuncio(anuncio: any) {
@@ -93,10 +97,96 @@ export class PropiedadHorizontalService {
   }
 
   public getIdPh() {
-    return this.http.get(environment.url_sgph + 'propiedad-horizontal/list', this.userService.getTokenHeaders())
+    return this.http.get(environment.url_sgph + 'propiedad-horizontal/list', this.userService.getTokenHeaders());
   }
 
-  public getListPh(ids: number[]) {
-    return this.http.get(environment.url_sgph.concat("propiedad-horizontal/listNames").concat(this.getQueryParamsIdPh(ids)), this.userService.getTokenHeaders());
+  public getListPh(ids: string) {
+    return this.http.get(environment.url_sgph.concat('propiedad-horizontal/listNames').concat(this.getQueryParamsIdPh(ids)), this.userService.getTokenHeaders());
   }
+
+
+  private getQueryParamsIdPh(ids: string) {
+
+/*    const queryParamsResult = '?idsPropiedadHorizontal='.concat(ids);
+      if (ids.length > 0) {
+      queryParamsResult = queryParamsResult.concat(ids[0].toString());
+      const listIds = this.withoutThis(ids, ids[0]);
+      listIds.forEach(idPh => {
+        queryParamsResult = queryParamsResult.concat('?idsPropiedadHorizontal=' + idPh.toString());
+      });
+    }*/
+    return '?idsPropiedadHorizontal='.concat(ids);
+  }
+
+/*  private withoutThis(ids: number[], id: number){
+    const newArray = [];
+    let i;
+    for (i = 1; i < ids.length; i++){
+        newArray[i] = ids[i];
+    }
+    return newArray;
+  }*/
+
+  public getPersonaList() {
+    return this.http.get(environment.url_sgph + 'persona/list?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, this.userService.getTokenHeaders());
+
+  }
+
+// Peticiones a microservicio de [control de data(extraer de core e insertar en DB) desde superadmin] Y
+// [usuarios(revisor-secretario) desde admin].
+
+  public postPH(ph: any) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'propiedad-horizontal/', ph, {headers});
+  }
+
+  public getPH() { // Para saber si la PH existe en nuestros registros
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_control + 'propiedad-horizontal?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
+  }
+
+  public postRevisor(revisor: any) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'personal-apoyo/revisor', revisor, {headers});
+  }
+  // Estar atento para saber si para realizar esta consulta es necesario el idPH
+  public getRevisor() { // Para saber si hay ya un revisor registrado en esa propiedad
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_control + 'personal-apoyo/revisor?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
+  }
+
+  public postSecretary(secretario: any) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'personal-apoyo/secretary', secretario, {headers});
+  }
+
+  public getSecretary() { // Para saber si hay ya un secretario registrado en esa propiedad
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_control + 'personal-apoyo/secretary?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal, {headers});
+  }
+
+  public patchPersonalApoyo(personal: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.patch(environment.url_control + 'personal-apoyo/patch', personal, {headers});
+  }
+
+  public postUpdate(persona: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, {headers});
+  }
+
+// Peticiones a microservicio de actividades asamblearias [REVISOR]
+// (hacer query para obtener todas las mociones de una asamblea daba la fecha de realización de esta)
+// [Y SECRETARIO] (Un montón xD)]
+
+  public getMocionesAsamblea(fecha: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_actividades_asamblearias + 'actividades/mociones?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal + '&fecha=' + fecha.toISOString(), {headers});
+  }
+
+  // Añadir aquí rest requests para actividades de negocio de revisor y secretario
+  // ¿A qué microservicio corresponden estas requests? -Creo que a actividades asamblearias
+  // Yes. -Excepto al micro de verificación.
+  // -Propietario con su microservicio votar.
+
 }

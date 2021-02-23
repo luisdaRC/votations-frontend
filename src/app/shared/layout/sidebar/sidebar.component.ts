@@ -4,16 +4,12 @@ import { UserService } from '../../../services/sgph/user.service';
 import { SidebarService } from '../../../services/extras/sidebar.service';
 import { AppService } from '../../../services/extras/app.service';
 
-
-
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
 
   constructor(
     public appService: AppService,
@@ -25,18 +21,24 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {  }
 
-
   public perfil(): void {
 
     if (this.userService.getRol('PROPIETARIO')){
-      this.router.navigate(['/sgph-owner/mi-perfil']);
+      this.router.navigate(['/owner/profile']);
     }
-    if ( this.userService.getRol('ADMINISTRADOR')
-      || this.userService.getRol('SUPER_ADMINISTRADOR')){
-      this.router.navigate(['/sgph/mi-perfil']);
+    if (this.userService.getRol('ADMINISTRADOR')){
+      this.router.navigate(['/admin/profile']);
+    }
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+      this.router.navigate(['/super-admin/profile']);
+    }
+    if (this.userService.getRol('SECRETARIO')){
+      this.router.navigate(['/secretary/profile']);
+    }
+    if (this.userService.getRol('REVISOR')){
+      this.router.navigate(['/revisor/profile']);
     }
 
   }
-
 
 }

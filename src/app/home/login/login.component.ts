@@ -43,7 +43,17 @@ export class LoginComponent implements OnInit {
 
       },
       error => {
-        Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
+        this.userService.postLoginControl(this.form.value).subscribe(
+          (data: any) => {
+            this.route.navigate([MODULOS[data.rol]]);
+            this.sidebarService.init();
+          },
+          error1 => {
+            Swal.fire('¡Error al iniciar Sesión!', error1.error, 'error');
+          }
+        );
+        // Aquí es donde se ejecuta el aviso. Probar colocando el postLoginControl.
+        // Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
       }
     );
   }

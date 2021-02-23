@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/Usuario.interface';
+import { UsuarioControl} from '../../models/UsuarioControl.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -33,8 +34,11 @@ export class UserService {
   }
 
   public isAdmin(){
-    return this.getRoles().includes('ADMINISTRADOR')
-      ||  this.getRoles().includes('SUPER_ADMINISTRADOR');
+    return this.getRoles().includes('ADMINISTRADOR');
+  }
+
+  public isSuperAdmin(){
+    return this.getRoles().includes('SUPER_ADMINISTRADOR');
   }
 
   public getRoles(){
@@ -77,6 +81,11 @@ export class UserService {
     this.token = token;
   }
 
+  public saveStorageControl(usuario: UsuarioControl): void {
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    this.usuario = usuario;
+  }
+
   public logout(): void {
     this.usuario = null;
     this.token = '';
@@ -92,19 +101,31 @@ export class UserService {
         idPersona: data.id,
         roles: data.roles,
         nombre: data.nombre,
-        apellido: data.apellido ,
+        apellido: data.apellido,
         idPropiedadHorizontal: data.idPropiedadHorizontal,
-        nombrePH: data.nombrePH ,
+        nombrePH: data.nombrePH,
         cambiarContraseña: data.cambiarContraseña
       });
       return data;
     }));
   }
-/*
-  public postCambiarContrasena(pass){
-    return this.http.post(environment.url + 'auth/change-password',pass,this.getTokenHeaders());
 
-  }*/
+  public postLoginControl(user: UsuarioControl) {
+    return this.http.post(environment.url_control + 'personal-apoyo/signin', user).pipe(map((data: any) => {
+      this.saveStorageControl({
+        nombres: data.nombres,
+        email: data.email,
+        rol: data.rol,
+        idPropiedadHorizontal: data.idPropiedadHorizontal,
+        nombrePH: data.nombrePH
+      });
+    }));
+  }
+
+
+  public postCambiarContrasena(pass){ // Usar para realizar cambios de pass de revisor y secretario
+    return this.http.post(environment.url_sgph  + 'auth/change-password', pass, this.getTokenHeaders());
+  }
 
   public setPhByUser(idPropiedadHorizontal){
     this.usuario.idPropiedadHorizontal = idPropiedadHorizontal;

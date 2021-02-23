@@ -1,11 +1,7 @@
 
 export interface PropiedadHorizontal {
+  id: number;
   direccion: string;
   nombre: string;
-  secretario: {
-    email: string,
-    estado: boolean
-    password: string
-  };
   tipo: string;
 }

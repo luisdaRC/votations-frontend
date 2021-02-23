@@ -1,21 +1,31 @@
 export const ADMINISTRADOR = [
   {
-    title: 'REGISTRAR', // Añadir funciones de revisor y secretario
+    title: 'REGISTRAR',
     subtitles: [
       {
-        name:  'Anuncio',
+        name: 'Anuncio',
         icon: 'fas fa-ad',
-        route: '/sgph/registry/anuncio'
+        route: '/admin/registry/ad'
       },
       {
-        name:  'Revisor fiscal',
-        icon: 'fas fa-revisor',
-        route: '/sgph/registry/revisor'
+        name:  'Usuario para Revisor Fiscal',
+        icon: 'fas fa-user-tie',
+        route: '/admin/registry/revisor'
       },
       {
-        name:  'Secretario de asamblea',
-        icon: 'fas fa-secretary',
-        route: '/sgph/registry/secretary'
+        name:  'Usuario para Secretario',
+        icon: 'fas fa-user',
+        route: '/admin/registry/secretary'
+      }
+    ]
+  },
+  {
+    title: 'ELIMINAR',
+    subtitles: [
+      {
+        name: 'Personal de apoyo',
+        icon: 'fas fa-user',
+        route: '/admin/delete/support-personal'
       }
     ]
   }
