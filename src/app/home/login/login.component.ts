@@ -43,13 +43,12 @@ export class LoginComponent implements OnInit {
       },
      error => {
        this.loginControl();
-         // Swal.fire('¡Error al iniciar Sesión!', error1.error, 'error');
       }
     );
   }
 
   public loginControl(): void{
-    // public iniciarSesion(): void{
+    console.log('Entra a login control');
     this.userService.postLoginControl(this.form.value).subscribe(
       (data: any) => {
         this.route.navigate([MODULOS[data.rol]]);

@@ -14,8 +14,6 @@ const asignarRutas = (LISTA_REFERENCIA) => {
   return rutas;
 };
 
-// let RUTAS_SEGURIDAD_ADMIN = asignarRutas(ACCESSCONTROL_ADMIN);
-// let RUTAS_SUPER_ADMINISTRADOR = asignarRutas(SUPER_ADMINISTRADOR);
 let RUTAS_ADMINISTRADOR = asignarRutas(ADMINISTRADOR);
 
 
@@ -40,5 +38,5 @@ export const MODULOS = {
   SUPER_ADMINISTRADOR: 'super-admin',
   SECRETARIO: 'secretary',
   PROPIETARIO: 'owner',
-  REVISOR: 'super-admin'
+  REVISOR: 'revisor'
 };

@@ -7,7 +7,7 @@
     </div>
     <div class="profile-details text-center pb-4">
       <p class="text-uppercase name" id="usuario-nombre" >
-        {{ this.userService.getUsuario().nombre || this.userService.getUsuario().nombrePH  }} {{ this.userService.getUsuario().apellido || '' }}
+        {{ this.userService.getUsuario().nombre || this.userService.getUsuario().nombrePH }} {{ this.userService.getUsuario().apellido || '' }}
       </p>
       <small class="text-uppercase role" id="usuario-role" >{{this.userService.getUsuario().roles.toString().replace('_',' ')}}</small>
     </div>

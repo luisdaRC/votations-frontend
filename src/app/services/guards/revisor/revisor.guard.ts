@@ -13,7 +13,7 @@ export class RevisorGuard implements CanActivate  {
 
   public canActivate(): boolean{
 
-    if (this.userService.getRoles().includes('REVISOR')) {
+    if (this.userService.getRolControl().includes('REVISOR')) {
       return true;
     } else {
       this.router.navigate(['/']);

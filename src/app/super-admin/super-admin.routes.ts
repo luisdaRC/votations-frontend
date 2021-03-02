@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {SuperAdminComponent} from './super-admin.component';
 import {InicioComponent} from './inicio/inicio.component';
 import {ProfileSuperAdminComponent} from './profile/profile.component';
-import {DataComponent} from './update/data/data.component'; // Que quede así.
+import {DataComponent} from './update/data/data.component';
 
 const routes: Routes = [
   {
