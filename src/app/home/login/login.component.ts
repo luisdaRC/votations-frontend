@@ -40,20 +40,23 @@ export class LoginComponent implements OnInit {
           this.route.navigate( [MODULOS[ROL]]);
           this.sidebarService.init();
         }
+      },
+     error => {
+       this.loginControl();
+         // Swal.fire('¡Error al iniciar Sesión!', error1.error, 'error');
+      }
+    );
+  }
 
+  public loginControl(): void{
+    // public iniciarSesion(): void{
+    this.userService.postLoginControl(this.form.value).subscribe(
+      (data: any) => {
+        this.route.navigate([MODULOS[data.rol]]);
+        this.sidebarService.init();
       },
       error => {
-        this.userService.postLoginControl(this.form.value).subscribe(
-          (data: any) => {
-            this.route.navigate([MODULOS[data.rol]]);
-            this.sidebarService.init();
-          },
-          error1 => {
-            Swal.fire('¡Error al iniciar Sesión!', error1.error, 'error');
-          }
-        );
-        // Aquí es donde se ejecuta el aviso. Probar colocando el postLoginControl.
-        // Swal.fire('¡Error al iniciar Sesión!', error.error, 'error');
+        Swal.fire('¡Error al iniciar Sesión! Correo y/o contraseña incorrectos', error.error, 'error');
       }
     );
   }

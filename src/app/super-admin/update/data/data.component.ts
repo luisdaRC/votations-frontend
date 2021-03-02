@@ -25,18 +25,20 @@ export class DataComponent implements OnInit {
     // Hace get a persona/list y luego post a propiedad-horizontal/update
     this.phService.getPersonaList().subscribe((data: any) => {
       this.persona = data;
-    });
 
-    this.phService.postUpdate(this.persona).subscribe(data => {
+      console.dir(this.persona);
 
-      Swal.fire({
-        title: ' ¡Actualización Exitosa!',
-        text: 'Los datos de Personas y Bienes Privados han sido actualizada correctamente',
-        icon: 'success',
-        confirmButtonText: 'Listo',
-        onClose: () => {
-          this.router.navigate(['/super-admin']);
-        }
+      this.phService.postUpdate(this.persona).subscribe(data => {
+
+        Swal.fire({
+          title: ' ¡Actualización Exitosa!',
+          text: 'Los datos de Personas y Bienes Privados han sido actualizada correctamente',
+          icon: 'success',
+          confirmButtonText: 'Listo',
+          onClose: () => {
+            this.router.navigate(['/super-admin']);
+          }
+        });
       });
     });
   }
