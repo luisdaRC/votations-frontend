@@ -66,4 +66,6 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  // Buscar por qué no se está mostrando el accordion en revisor
+
 }

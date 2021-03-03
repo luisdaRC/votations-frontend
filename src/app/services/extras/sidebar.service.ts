@@ -47,11 +47,11 @@ export class SidebarService {
       this.menus = ADMINISTRADOR;
     }
 
-    if (this.userService.getRol('REVISOR')){ // Si no funciona igualando, probar con el push, como arriba.
+    if (this.userService.getRolCont('REVISOR')){ // Si no funciona igualando, probar con el push, como arriba.
       this.menus = REVISOR_FISCAL;
     }
 
-    if (this.userService.getRol('SECRETARIO')){
+    if (this.userService.getRolCont('SECRETARIO')){
       this.menus = SECRETARIO;
     }
     if (this.userService.getRol('SUPER_ADMINISTRADOR')){
