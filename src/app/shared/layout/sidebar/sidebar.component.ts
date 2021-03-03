@@ -32,13 +32,38 @@ export class SidebarComponent implements OnInit {
     if (this.userService.getRol('SUPER_ADMINISTRADOR')){
       this.router.navigate(['/super-admin/profile']);
     }
-    if (this.userService.getRol('SECRETARIO')){
+    if (this.userService.getRolCont('SECRETARIO')){
       this.router.navigate(['/secretary/profile']);
     }
-    if (this.userService.getRol('REVISOR')){
-      this.router.navigate(['/revisor/profile']);
+    if (this.userService.getRolCont('REVISOR')){
+      this.router.navigate(['/revisor/profile']); // Route doesn't exist
     }
+  }
 
+  public nombre(): string {
+    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+      return this.userService.getUsuario().nombrePH;
+    } else if (this.userService.getRolCont('SECRETARIO') || this.userService.getRolCont('REVISOR')){
+      return this.userService.getUsuarioControl().nombres;
+    } else {
+      return this.userService.getUsuario().nombre;
+    }
+  }
+
+  public apellido(): string {
+    if (this.userService.getRolCont('SECRETARIO') || this.userService.getRolCont('REVISOR')){
+      return '';
+    } else {
+      return this.userService.getUsuario().apellido || '';
+    }
+  }
+
+  public rol(): string {
+    if (this.userService.getRolCont('SECRETARIO') || this.userService.getRolCont('REVISOR')){
+      return this.userService.getUsuarioControl().rol;
+    } else {
+      return this.userService.getUsuario().roles.toString().replace('_', ' ');
+    }
   }
 
 }

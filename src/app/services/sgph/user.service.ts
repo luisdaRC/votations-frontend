@@ -61,6 +61,10 @@ export class UserService {
     return this.usuarioControl.rol;
   }
 
+  public getRolCont(rol: string): boolean{
+    return this.usuarioControl ? this.usuarioControl.rol.includes(rol) : false;
+  }
+
   public getRolPhMan(roles: string[]) {
 
     const ROLES_CORE = ['SUPER_ADMINISTRADOR', 'ADMINISTRADOR'];

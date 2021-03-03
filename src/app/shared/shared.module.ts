@@ -14,6 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CustomSidebarComponent } from './layout/custom-sidebar/custom-sidebar.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LoadingComponent,
     NavbarComponent,
     SidebarComponent,
-    RemoveBlanckPipe
+    RemoveBlanckPipe,
+    CustomSidebarComponent
   ],
   imports: [
     CommonModule,
