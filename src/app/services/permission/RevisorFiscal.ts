@@ -26,7 +26,7 @@ export const REVISOR_FISCAL = [
       {
         name: 'Procesos de votación',
         icon: 'far fa-address-book',
-        route: '/list'
+        route: '/revisor/check/process'
       }
     ]
   }

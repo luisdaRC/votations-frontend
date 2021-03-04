@@ -5,22 +5,22 @@ export const SECRETARIO = [ // En este secretario seguir las rutas del propitari
       {
         name: 'Lista de asistentes',
         icon: 'fas fa-owner',
-        route: '/votations/asistentes'
+        route: '/secretary/votations/asistentes'
       },
       {
         name: 'Control del quorum',
         icon: 'fas fa-chart-pie',
-        route: '/votations/quorum'
+        route: '/secretary/votations/quorum'
       },
       {
         name: 'Resumen de procesos de votación',
         icon: 'fas fa-building',
-        route: '/votations/procesos'
+        route: '/secretary/votations/procesos'
       },
       {
         name: 'Resultados última votación',
         icon: 'fas fa-chart-pie',
-        route: '/votations/resultados'
+        route: '/secretary/votations/resultados'
       }
     ]
   },
@@ -30,12 +30,12 @@ export const SECRETARIO = [ // En este secretario seguir las rutas del propitari
       {
         name: 'Proposiciones o candidatos',
         icon: 'fas fa-ad',
-        route: '/votations/proposicion'
+        route: '/secretary/votations/proposicion'
       },
       {
         name: 'Constancias de votación',
         icon: 'fas fa-ad',
-        route: '/votation/constancias'
+        route: '/secretary/votation/constancias'
       },
     ]
   }
