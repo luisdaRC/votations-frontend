@@ -181,7 +181,7 @@ export class PropiedadHorizontalService {
 
   public getMocionesAsamblea(fecha: any){
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(environment.url_actividades_asamblearias + 'actividades/mociones?idPropiedadHorizontal=' + this.userService.getUsuario().idPropiedadHorizontal + '&fecha=' + fecha.toISOString(), {headers});
+    return this.http.get(environment.url_actividades_asamblearias + 'actividades/mociones?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal + '&fecha=' + fecha.toISOString(), {headers});
   }
 
   // Añadir aquí rest requests para actividades de negocio de revisor y secretario

@@ -12,8 +12,8 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ProcessComponent implements OnInit {
 
-  public formProcess = new FormGroup({
-    fechaEvento: new FormControl('', [])
+  public formProcess = new FormGroup({ // Está saliendo un error por aquí al momento de entrar a componente check/process
+    fechaEvento: new FormControl('', [Validators.required])
   });
 
   displayedColumns = {
