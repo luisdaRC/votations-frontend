@@ -5,7 +5,7 @@ export const PROPIETARIO = [ // En este propietario seguir las rutas del propiet
       {
         name: 'Votar propuesta',
         icon: 'fas fa-chart-pie',
-        route: '/vote'
+        route: '/owner/vote'
       }
     ]
   }

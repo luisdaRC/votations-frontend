@@ -23,7 +23,6 @@ export class SidebarService {
 
 
   public init(){
-//    this.router.url.includes('phman') ? this.setValuesPHMAN() : this.setValuesSGPH();
     this.setValuesSGPH();
   }
 
@@ -32,10 +31,6 @@ export class SidebarService {
   public setValuesSGPH() {
     this.menus =  [];
 
-/*    if(this.userService.getRol('RESIDENTE')){
-      this.menus.push(RESIDENTE[0]);
-      this.menus.push(RESIDENTE[1]);
-    }*/
     if (this.userService.getRol('PROPIETARIO')) {
       this.menus.push(PROPIETARIO);
     }
@@ -47,30 +42,16 @@ export class SidebarService {
       this.menus = ADMINISTRADOR;
     }
 
-    if (this.userService.getRol('REVISOR')){ // Si no funciona igualando, probar con el push, como arriba.
+    if (this.userService.getRolCont('REVISOR')){
       this.menus = REVISOR_FISCAL;
     }
 
-    if (this.userService.getRol('SECRETARIO')){
+    if (this.userService.getRolCont('SECRETARIO')){
       this.menus = SECRETARIO;
     }
     if (this.userService.getRol('SUPER_ADMINISTRADOR')){
       this.menus = SUPER_ADMINISTRADOR;
     }
   }
-/*  public setValuesPHMAN() {
-    this.menus =  [];
-    const role: string = this.userService.getRolPhMan(this.userService.getUsuario().roles);
-
-    if (role === "VIGILANTE") {
-      this.menus = ACCESSCONTROL;
-
-    } else {
-      this.menus = ACCESSCONTROL_ADMIN;
-    }
-    return this.menus;
-  }*/
-
-
 
 }

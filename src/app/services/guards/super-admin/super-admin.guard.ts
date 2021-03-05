@@ -11,7 +11,7 @@ export class SuperAdminGuard implements CanActivate  {
 
   }
 
-  public canActivate(): boolean{ // Perfil de admin listo. Hacer perfil de SuperAdmin
+  public canActivate(): boolean{
 
     if ( this.userService.isSuperAdmin()) {
       return true;

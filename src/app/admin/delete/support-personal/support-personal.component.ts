@@ -32,20 +32,26 @@ export class SupportPersonalComponent implements OnInit {
   public patchPersonal(): void{
     const personalApoyo = Object.assign(this.formPatchPersonal.value.pApoyo);
 
-    const personal = {
-      personalApoyo,
-      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
+    const dataPersonal = {
+      nombres: '',
       email: '',
-      pass: '',
-      estado: false,
-      nombres: ''
+      password: '',
+      tipoDocumento: personalApoyo.tipoDocumento,
+      numeroDocumento: personalApoyo.numeroDocumento
+    };
+
+    const personal = {
+      dataPersonal,
+      idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
+      rol: personalApoyo.rol,
+      estado: false
     };
 
     this.phService.patchPersonalApoyo(personal).subscribe(
       (data: any) => {
 
         Swal.fire({
-          title: ' ¡Registro Exitoso!',
+          title: ' ¡Operación Exitosa!',
           text: data.rol + ' eliminado. Cree uno nuevo para realizar funciones de la asamblea',
           icon: 'success',
           showConfirmButton: true,
@@ -55,6 +61,9 @@ export class SupportPersonalComponent implements OnInit {
           }
         });
 
+      },
+      error => {
+        Swal.fire('El usuario no está registrado en el sistema');
       }
     );
 

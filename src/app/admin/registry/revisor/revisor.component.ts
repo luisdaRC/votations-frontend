@@ -17,7 +17,7 @@ export class RevisorComponent implements OnInit {
   // Form
   public formRevisor = new FormGroup({ // Rol y estado se ponen fijos en el back
     revisor: new FormGroup({
-      nombre: new FormControl('', [Validators.required]),
+      nombres: new FormControl('', [Validators.required]),
       tipoDocumento: new FormControl('', [Validators.required]),
       numeroDocumento: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
@@ -45,10 +45,10 @@ export class RevisorComponent implements OnInit {
   }
 
   public registrarRevisor(): void{
-    const revisorFiscal = Object.assign(this.formRevisor.value.revisor);
+    const dataPersonal = Object.assign(this.formRevisor.value.revisor);
 
     const revisor = {
-      revisorFiscal,
+      dataPersonal,
       idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
       rol: 'REVISOR',
       estado: true
@@ -59,7 +59,7 @@ export class RevisorComponent implements OnInit {
 
         Swal.fire({
           title: ' ¡Registro Exitoso!',
-          text: 'El revisor ' + data.nombres + ' ya puede iniciar sesión con el email y contraseña ingresados',
+          text: 'El revisor ya puede iniciar sesión con el email y contraseña ingresados',
           icon: 'success',
           showConfirmButton: true,
           onClose: () => {

@@ -37,19 +37,21 @@ export class InicioComponent implements OnInit {
   public post(){
     this.phService.getListPh(this.userService.getIdPh()).subscribe((data: any) => {
       this.ph = data;
-    });
-    this.phService.postPH(this.ph).subscribe(data => {// Quizá (sólo quizá) no esté funcionando por href en inicio
+      this.phService.postPH(this.ph).subscribe(data => {// Have into account the href in start
 
-      Swal.fire({
-        title: ' ¡Actualización Exitosa!',
-        text: 'La propiedad ha sido actualizada correctamente',
-        icon: 'success',
-        confirmButtonText: 'Listo',
-        onClose: () => {
-          this.router.navigate(['/super-admin']);
-        }
+        Swal.fire({
+          title: ' ¡Actualización Exitosa!',
+          text: 'La propiedad ha sido actualizada correctamente',
+          icon: 'success',
+          confirmButtonText: 'Listo',
+          onClose: () => {
+            this.router.navigate(['/super-admin']);
+          }
+        });
       });
+
     });
+
   }
 
   public getExistePH(){ // Si no existe se muestra el mensaje

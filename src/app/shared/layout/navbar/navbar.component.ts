@@ -24,9 +24,6 @@ export class NavbarComponent implements OnInit {
     public sidebarservice: SidebarService) {
   }
 
-
-
-
   ngOnInit() {
 
     this.picture = '../../../../assets/img/angular2.png';
@@ -47,11 +44,11 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/admin/inicio']);
     }else if (this.userService.getRol('PROPIETARIO')){
       this.router.navigate(['/owner/inicio']);
-    } /*else if (this.userService.getRol('SECRETARIO')){
-      this.router.navigate('/secretary/inicio');
+    } else if (this.userService.getRol('SECRETARIO')){
+      this.router.navigate(['/secretary/inicio']);
     }else if (this.userService.getRol('REVISOR')){
-      this.router.navigate('/revisor/inicio')
-    }*/
+      this.router.navigate(['/revisor/inicio']);
+    }
 
   }
 
@@ -63,11 +60,11 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/admin/profile']);
     } else if (this.userService.getRol('PROPIETARIO')) {
       this.router.navigate(['/owner/profile']);
-    } /*else if (this.userService.getRol('SECRETARIO')){
-      this.router.navigate('/secretary/profile');
+    } else if (this.userService.getRol('SECRETARIO')){
+      this.router.navigate(['/secretary/profile']);
     }else if (this.userService.getRol('REVISOR')){
-      this.router.navigate('/revisor/profile')
-    }*/
+      this.router.navigate(['/revisor/profile']);
+    }
   }
 
 

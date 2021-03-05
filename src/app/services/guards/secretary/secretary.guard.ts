@@ -13,7 +13,7 @@ export class SecretaryGuard implements CanActivate  {
 
   public canActivate(): boolean{
 
-    if (this.userService.getRoles().includes('SECRETARIO')) {
+    if (this.userService.getRolControl().includes('SECRETARIO')) {
       return true;
     } else {
       this.router.navigate(['/']);

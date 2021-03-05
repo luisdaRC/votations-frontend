@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SuperAdminComponent} from './super-admin.component';
+import {SecretaryComponent} from './secretary.component';
+
+
 import {InicioComponent} from './inicio/inicio.component';
-import {ProfileSuperAdminComponent} from './profile/profile.component';
-import {DataComponent} from './update/data/data.component';
+import {ListarAsistentesComponent} from './listar-asistentes/listar-asistentes.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SuperAdminComponent,
+    component: SecretaryComponent,
     children: [
       {path: 'inicio', component: InicioComponent},
-      {path: 'profile', component: ProfileSuperAdminComponent},
-      {path: 'update/data', component: DataComponent},
+      {path: 'listar-asistentes', component: ListarAsistentesComponent},
       {path: '', redirectTo: 'inicio', pathMatch: 'full'}
     ]
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SuperAdminRoutingModule { }
+export class SecretaryRoutingModule { }

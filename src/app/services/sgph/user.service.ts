@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
   public usuario: Usuario;
+  public usuarioControl: UsuarioControl;
   public token: string;
   public refresh: string;
 
@@ -23,8 +24,14 @@ export class UserService {
   public getIdPh(): string {
     return this.usuario.idPropiedadHorizontal || '';
   }
+  public getIdPhControl(): string {
+    return this.usuarioControl.idPropiedadHorizontal;
+  }
   public getUsuario(): Usuario {
     return this.usuario;
+  }
+  public getUsuarioControl(): UsuarioControl {
+    return this.usuarioControl;
   }
   public getToken(): string {
     return this.token;
@@ -50,6 +57,14 @@ export class UserService {
     return this.usuario ? this.usuario.roles.includes(rol) : false;
   }
 
+  public getRolControl(){
+    return this.usuarioControl.rol;
+  }
+
+  public getRolCont(rol: string): boolean{
+    return this.usuarioControl ? this.usuarioControl.rol.includes(rol) : false;
+  }
+
   public getRolPhMan(roles: string[]) {
 
     const ROLES_CORE = ['SUPER_ADMINISTRADOR', 'ADMINISTRADOR'];
@@ -69,6 +84,7 @@ export class UserService {
       this.token = '';
       this.refresh = '';
       this.usuario = null;
+      this.usuarioControl = JSON.parse(localStorage.getItem('usuario'));
     }
 
   }
@@ -83,11 +99,12 @@ export class UserService {
 
   public saveStorageControl(usuario: UsuarioControl): void {
     localStorage.setItem('usuario', JSON.stringify(usuario));
-    this.usuario = usuario;
+    this.usuarioControl = usuario;
   }
 
   public logout(): void {
     this.usuario = null;
+    this.usuarioControl = null;
     this.token = '';
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
@@ -119,6 +136,7 @@ export class UserService {
         idPropiedadHorizontal: data.idPropiedadHorizontal,
         nombrePH: data.nombrePH
       });
+      return data;
     }));
   }
 
@@ -134,7 +152,9 @@ export class UserService {
   }
 
   public inSession(): boolean {
-    if (this.token.length > 5) return true;
+    if (this.token.length > 5
+      || this.getRolControl().includes('REVISOR')
+      || this.getRolControl().includes('SECRETARIO')) return true;
     return false;
   }
   public getTokenHeaders(){

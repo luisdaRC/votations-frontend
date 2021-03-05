@@ -17,7 +17,7 @@ export class SecretaryComponent implements OnInit {
   // Form
   public formSecretary = new FormGroup({ // Rol y estado se ponen fijos en el back
     secretary: new FormGroup({
-      nombre: new FormControl('', [Validators.required]),
+      nombres: new FormControl('', [Validators.required]),
       tipoDocumento: new FormControl('', [Validators.required]),
       numeroDocumento: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
@@ -45,21 +45,21 @@ export class SecretaryComponent implements OnInit {
   }
 
   public registrarSecretary(): void{
-    const secretary = Object.assign(this.formSecretary.value.secretary);
+    const dataPersonal = Object.assign(this.formSecretary.value.secretary);
 
-    const completeSecretary = {
-      secretary,
+    const secretary = {
+      dataPersonal,
       idPropiedadHorizontal: this.userService.getUsuario().idPropiedadHorizontal,
       rol: 'SECRETARIO',
       estado: true
     };
 
-    this.phService.postSecretary(completeSecretary).subscribe(
+    this.phService.postSecretary(secretary).subscribe(
       (data: any) => {
 
         Swal.fire({
           title: ' ¡Registro Exitoso!',
-          text: 'El secretario ' + data.nombres + ' ya puede iniciar sesión con el email y contraseña ingresados',
+          text: 'El secretario ya puede iniciar sesión con el email y contraseña ingresados',
           icon: 'success',
           showConfirmButton: true,
           onClose: () => {
