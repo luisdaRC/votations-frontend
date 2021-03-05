@@ -1,4 +1,4 @@
-export const SECRETARIO = [ // En este secretario seguir las rutas del propitario de estos manes
+export const SECRETARIO = [
   {
     title: 'VER',
     subtitles: [
@@ -33,10 +33,13 @@ export const SECRETARIO = [ // En este secretario seguir las rutas del propitari
         route: '/secretary/votations/proposicion'
       },
       {
-        name: 'Constancias de votación',
-        icon: 'fas fa-ad',
-        route: '/secretary/votation/constancias'
-      },
+        name: 'Poderes cedidos',
+        icon: 'far fa-address-book',
+        route: '/secretary/votation/poderes'
+      }
     ]
   }
 ];
+
+
+// Para llevar el listado de los asistentes mostrar la lista de propietarios y un botón de asistió
