@@ -5,6 +5,7 @@ import {SecretaryComponent} from './secretary.component';
 
 import {InicioComponent} from './inicio/inicio.component';
 import {ListarAsistentesComponent} from './listar-asistentes/listar-asistentes.component';
+import {ControlQuorumComponent} from './control-quorum/control-quorum.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     component: SecretaryComponent,
     children: [
       {path: 'inicio', component: InicioComponent},
-      {path: 'listar-asistentes', component: ListarAsistentesComponent},
+      {path: 'list/asistentes', component: ListarAsistentesComponent},
+      {path: 'votations/quorum', component: ControlQuorumComponent},
       {path: '', redirectTo: 'inicio', pathMatch: 'full'}
     ]
   }

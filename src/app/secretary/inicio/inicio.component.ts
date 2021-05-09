@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { UserService } from '../../services/sgph/user.service';
 import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
+import { MatTableDataSource } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicio',
@@ -10,105 +12,55 @@ import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizo
 })
 export class InicioComponent implements OnInit {
 
-  public data: any;
-  public myPieChart: HTMLElement;
-  public myBarChart: HTMLElement;
-  public showPieChart = false;
-  public showBars = false;
+  public displayedColumns: string[] = ['nombres', 'apellido', 'tipoDocumento', 'numeroDocumento', 'acciones'];
+  public dataSource: any;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public userService: UserService,
     private phService: PropiedadHorizontalService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.getPropietarios();
+  }
 
-    this.phService.getEstadisticas().subscribe(data => {
-      this.data = data;
-      this.setData();
-      this.validateStats();
+  private getPropietarios(): void {
+    this.phService.getAllPropietarios().subscribe((data: any) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
     });
   }
 
-  private setData(): void {
-
-    const ctx2 = document.getElementById('myPieChart');
-    const bar = document.getElementById('myBarChart');
-    const objectPieChart = {
-      type: 'doughnut',
-      data: {
-        labels: ['Residentes', 'Propietarios', 'Habitantes'],
-        datasets: [{
-          data: [this.data.numeroResidentes, this.data.numeroPropietarios, this.data.numeroHabitantes],
-          backgroundColor: [
-            'tomato',
-            'cornflowerblue',
-            'green',
-          ]
-        }]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'PERSONAS EN LA PROPIEDAD HORIZONTAL'
-        }
-      }
-    };
-    const objectBarChart = {
-      type: 'bar',
-      data: {
-
-        labels: ['Hombres', 'Mujeres', 'Otros'],
-        datasets: [{
-          label: '# Personas',
-          data: [this.data.numeroGeneroMasculino, this.data.numeroGeneroFemenino, this.data.numeroGeneroOtro],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              callback: function(value) { if (Number.isInteger(value)) { return value; } },
-              stepSize: 1
-            }
-          }]
-        },
-        title: {
-          display: true,
-          text: 'HABITANTES POR GÉNERO'
-        }
-      }
-    };
-
-    this.myPieChart = new Chart(ctx2, objectPieChart);
-    this.myBarChart = new Chart(bar, objectBarChart);
+  public applyFilter(filterValue: string): void {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  public validateStats(){
-    this.data.numeroGeneroMasculino === 0 && this.data.numeroGeneroFemenino === 0
-    && this.data.numeroGeneroOtro === 0  ?
-      this.showBars = true : this.showBars = false;
+  public agregarAsistente(idPropietario: number): void{
+    const asistente = {
+      idPersona: idPropietario,
+      idPropiedadHorizontal: this.userService.getUsuarioControl().idPropiedadHorizontal
+    };
 
-    this.data.numeroResidentes === 0 && this.data.numeroHabitantes === 0
-    && this.data.numeroPropietarios === 0  ?
-      this.showPieChart = true : this.showPieChart = false;
+    Swal.fire({
+      title: '¿Seguro que quieres registrar a este propietario como asistente?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Registrar`,
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+      if (result.isConfirmed){
+        this.phService.postAgregarAsistente(asistente).subscribe(data => {
+          Swal.fire({
+            title: 'Propietario Registrado!',
+            text: 'El propietario ha sido agregado a la lista de asistentes de la asamblea',
+            icon: 'success',
+            showConfirmButton: true
+          });
+        });
+      }
+    });
   }
 
 }

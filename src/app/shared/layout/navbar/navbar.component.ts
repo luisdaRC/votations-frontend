@@ -38,15 +38,15 @@ export class NavbarComponent implements OnInit {
     this.title = 'SGPH';
     this.sidebarservice.setValuesSGPH();
 
-    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+    if (this.userService.getRolCont('SUPER_ADMINISTRADOR')){
       this.router.navigate(['/super-admin/inicio']);
-    }else if (this.userService.getRol('ADMINISTRADOR')){
+    }else if (this.userService.getRolCont('ADMINISTRADOR')){
       this.router.navigate(['/admin/inicio']);
-    }else if (this.userService.getRol('PROPIETARIO')){
+    }else if (this.userService.getRolCont('PROPIETARIO')){
       this.router.navigate(['/owner/inicio']);
-    } else if (this.userService.getRol('SECRETARIO')){
+    } else if (this.userService.getRolCont('SECRETARIO')){
       this.router.navigate(['/secretary/inicio']);
-    }else if (this.userService.getRol('REVISOR')){
+    }else if (this.userService.getRolCont('REVISOR')){
       this.router.navigate(['/revisor/inicio']);
     }
 
@@ -54,15 +54,15 @@ export class NavbarComponent implements OnInit {
 
   profile() {
     this.isCollapsed = true;
-    if (this.userService.getRol('SUPER_ADMINISTRADOR')){
+    if (this.userService.getRolCont('SUPER_ADMINISTRADOR')){
       this.router.navigate(['/super-admin/profile']);
-    }else if (this.userService.getRol('ADMINISTRADOR')) {
+    }else if (this.userService.getRolCont('ADMINISTRADOR')) {
       this.router.navigate(['/admin/profile']);
-    } else if (this.userService.getRol('PROPIETARIO')) {
+    } else if (this.userService.getRolCont('PROPIETARIO')) {
       this.router.navigate(['/owner/profile']);
-    } else if (this.userService.getRol('SECRETARIO')){
+    } else if (this.userService.getRolCont('SECRETARIO')){
       this.router.navigate(['/secretary/profile']);
-    }else if (this.userService.getRol('REVISOR')){
+    }else if (this.userService.getRolCont('REVISOR')){
       this.router.navigate(['/revisor/profile']);
     }
   }

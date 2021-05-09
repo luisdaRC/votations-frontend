@@ -32,11 +32,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ControlQuorumComponent } from './control-quorum/control-quorum.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -28,26 +28,14 @@
   <!-- right menu -->
   <div class="collapse navbar-collapse right-nav" id="collapseBasic" [collapse]="isCollapsed">
     <ul class="navbar-nav ">
-      <li data-toggle="tooltip" data-placement="top" title="Chat" (click)="isCollapsed = !isCollapsed" *ngIf="!userService.getRol('SUPER_ADMINISTRADOR')" [routerLink]="['chat']" id="ir-chat" class="nav-item pointer">
-        <a class="btn nav-link">
-          <i  class="far fa-envelope color-white"></i>
-          <span class="link-text">Chat</span>
-          <!-- <span class="badge badge-pill badge-success">5</span> -->
-        </a>
-      </li>
-      <li data-toggle="tooltip" data-placement="top" title="Perfil" (click)="profile()" id="ir-perfil" class="nav-item pointer">
+
+      <!--li data-toggle="tooltip" data-placement="top" title="Perfil" (click)="profile()" id="ir-perfil" class="nav-item pointer">
         <a class="btn nav-link">
           <i  class="far fa-user color-white"></i>
           <span class="link-text">Perfil</span>
         </a>
-      </li>
-
-      <!--li data-toggle="tooltip" data-placement="top" title="Módulo PHMAN" (click)="changeMenuToAccessControl()" id="ir-phman" class="nav-item pointer">
-        <a class="btn nav-link">
-          <i   class="fas fa-owner-shield color-white color-white"></i>
-          <span class="link-text">Módulo PHMAN</span>
-        </a>
       </li-->
+
       <li>
 
       </li>

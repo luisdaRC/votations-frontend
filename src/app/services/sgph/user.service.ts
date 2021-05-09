@@ -141,7 +141,7 @@ export class UserService {
   }
 
 
-  public postCambiarContrasena(pass){ // Usar para realizar cambios de pass de revisor y secretario
+  public postCambiarContrasena(pass){
     return this.http.post(environment.url_sgph  + 'auth/change-password', pass, this.getTokenHeaders());
   }
 

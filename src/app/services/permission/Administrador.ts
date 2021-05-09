@@ -16,6 +16,11 @@ export const ADMINISTRADOR = [
         name:  'Usuario para Secretario',
         icon: 'fas fa-user',
         route: '/admin/registry/secretary'
+      },
+      {
+        name:  'Coeficiente de copropiedad',
+        icon: 'fas fa-address-card',
+        route: '/admin/registry/coeficiente'
       }
     ]
   },
