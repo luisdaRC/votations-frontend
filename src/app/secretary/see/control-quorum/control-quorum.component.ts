@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-import {UserService} from '../../services/sgph/user.service';
-import {PropiedadHorizontalService} from '../../services/sgph/propiedad-horizontal.service';
+import {UserService} from '../../../services/sgph/user.service';
+import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horizontal.service';
 
 @Component({
   selector: 'app-control-quorum',

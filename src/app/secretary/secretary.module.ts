@@ -11,7 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // Components
 import { InicioComponent } from './inicio/inicio.component';
 import { SecretaryComponent } from './secretary.component';
-import { ListarAsistentesComponent } from './listar-asistentes/listar-asistentes.component';
+import { ListarAsistentesComponent } from './see/lista-asistentes/listar-asistentes.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,12 +32,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { ControlQuorumComponent } from './control-quorum/control-quorum.component';
+import { ControlQuorumComponent } from './see/control-quorum/control-quorum.component';
+import { ProposicionComponent } from './registry/proposicion/proposicion.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent],
   imports: [
     CommonModule,
     RouterModule,

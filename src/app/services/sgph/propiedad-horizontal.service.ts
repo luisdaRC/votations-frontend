@@ -219,6 +219,21 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/quorum?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
   }
 
+  public postRegisterProposition(proposition: any): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_actividades_asamblearias + 'asamblea/proposition', proposition, {headers});
+  }
+
+  public getMocion(): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/mocion?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
+  }
+
+  public detenerVotaciones(): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/detener/votacion?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
+  }
+
   // Añadir aquí rest requests para actividades de negocio de revisor y secretario
   // ¿A qué microservicio corresponden estas requests? -Creo que a actividades asamblearias
   // Yes. -Excepto al micro de verificación.

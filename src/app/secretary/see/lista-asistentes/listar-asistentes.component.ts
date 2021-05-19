@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { UserService } from '../../services/sgph/user.service';
-import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
+import { UserService } from '../../../services/sgph/user.service';
+import { PropiedadHorizontalService } from '../../../services/sgph/propiedad-horizontal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 
