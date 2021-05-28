@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {InicioComponent} from './inicio/inicio.component';
-import {ProfileOwnerComponent} from './profile/profile.component';
-import {VoteComponent} from './vote/vote.component';
+import {EstadisticasComponent} from './estadisticas/estadisticas.component';
+import {OwnerComponent} from './owner.component';
 
 const routes: Routes = [
-
-  { path: 'inicio', component: InicioComponent },
-  { path: 'profile', component: ProfileOwnerComponent },
-  { path: 'vote', component: VoteComponent },
-  { path: '' , redirectTo: 'inicio', pathMatch: 'full'},
+  {
+    path: '',
+    component: OwnerComponent,
+    children: [
+      {path: 'inicio', component: InicioComponent},
+      {path: 'estadisticas', component: EstadisticasComponent},
+      {path: '', redirectTo: 'inicio', pathMatch: 'full'}
+    ]
+  }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

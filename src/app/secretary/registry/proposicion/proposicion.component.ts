@@ -138,7 +138,7 @@ export class ProposicionComponent implements OnInit {
       if (result.isConfirmed){
         this.phService.postRegisterProposition(completeProposition).subscribe(data => {
           Swal.fire({
-            title: 'Propietario removido de la asamblea',
+            title: 'Proposición registrada correctamente',
             text: 'El propietario ha sido removido de la lista de asistentes de la asamblea.',
             icon: 'success',
             showConfirmButton: true

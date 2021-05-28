@@ -9,9 +9,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { ProfileOwnerComponent } from './profile/profile.component';
-import { VoteComponent } from './vote/vote.component';
 import { OwnerComponent } from './owner.component';
 
 // Angular Material
@@ -37,7 +36,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
-    OwnerComponent, VoteComponent, InicioComponent, ProfileOwnerComponent],
+    OwnerComponent, InicioComponent, EstadisticasComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -46,12 +45,12 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatGridListModule, // Si están en angular
+    MatGridListModule,
     OwnerRoutingModule,
     SharedModule,
     SweetAlert2Module,
-    BsDropdownModule.forRoot(),
-    CollapseModule.forRoot(),
+    BsDropdownModule,
+    CollapseModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

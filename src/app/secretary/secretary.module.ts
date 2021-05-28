@@ -47,7 +47,7 @@ import { ProposicionComponent } from './registry/proposicion/proposicion.compone
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatGridListModule, // Si están en angular
+    MatGridListModule,
     SecretaryRoutingModule,
     SharedModule,
     SweetAlert2Module,

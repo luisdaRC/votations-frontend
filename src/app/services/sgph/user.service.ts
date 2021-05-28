@@ -116,6 +116,7 @@ export class UserService {
       this.saveStorage(data.token, data.refresh, {
         email: data.email,
         idPersona: data.id,
+        idPropietario: data.idPersona,
         roles: data.roles,
         nombre: data.nombre,
         apellido: data.apellido,
