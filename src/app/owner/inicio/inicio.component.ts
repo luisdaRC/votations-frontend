@@ -22,15 +22,10 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMociones();
-    console.log(this.data);
-    console.dir(this.data);
-    //this.existeMocion = this.data.mocionActiva;
   }
 
   public getMociones(): void{
     this.phService.getMocionPropietario().subscribe((data: any) => {
-      // Assign data from back and play with mocionActiva and estado/opciones
-      console.log(data);
       this.existeMocion = data.mocionActiva;
       this.data = data;
     });
