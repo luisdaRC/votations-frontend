@@ -37,13 +37,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { RestrictionComponent } from './registry/restriction/restriction.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent,
     SupportPersonalComponent,
-    CoeficienteComponent],
+    CoeficienteComponent,
+    RestrictionComponent],
   imports: [
     CommonModule,
     RouterModule,

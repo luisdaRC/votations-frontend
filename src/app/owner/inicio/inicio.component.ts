@@ -48,12 +48,31 @@ export class InicioComponent implements OnInit {
         };
 
         this.phService.postVotar(votoCompleto).subscribe(data => {
-          Swal.fire({
-            title: 'Proposición votada correctamente',
-            text: 'Su elección se guardó en el sistema.',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 1){
+            Swal.fire({
+              title: 'Proposición votada correctamente',
+              text: 'Su elección se guardó en el sistema.',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          }
+          else if (data === 0){
+            Swal.fire({
+              title: 'Consulte con su admnistrador',
+              text: 'Hay una restricción que le impide votar.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
+          else{
+            Swal.fire({
+              title: 'Consulte con su admnistrador',
+              text: 'Error al intentar registrar el voto.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
+
         });
       }
     });

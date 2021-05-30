@@ -180,6 +180,11 @@ export class PropiedadHorizontalService {
     return this.http.post(environment.url_control + 'propiedad-horizontal/update', persona, {headers});
   }
 
+  public postRestriccion(restricciones: any): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_control + 'propiedad-horizontal/restriccion', restricciones, {headers});
+  }
+
 // Peticiones a microservicio de actividades asamblearias [REVISOR]
 // (hacer query para obtener todas las mociones de una asamblea daba la fecha de realización de esta)
 // [Y SECRETARIO] (Un montón xD)]
