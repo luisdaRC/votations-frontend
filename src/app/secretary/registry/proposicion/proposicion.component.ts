@@ -96,6 +96,11 @@ export class ProposicionComponent implements OnInit {
   }
 
   public submitProposicion(): void{
+
+    // Agregar campo de tipo de moción (admin, consejo de admin, presupuesto, proposicion general)
+    // al form para efectos de comparativa con la tabla restricción.
+
+
     // Como principio de perdón
 
     if (this.propositions.length < 2){
