@@ -24,7 +24,9 @@ export class RestrictionComponent implements OnInit {
     consejo: false,
     admin: false,
     presupuesto: false,
-    proposicionGeneral: false
+    proposicionGeneral: false,
+    comiteConvivencia: false,
+    revisor: false
   };
   estado: any;
 
@@ -44,6 +46,16 @@ export class RestrictionComponent implements OnInit {
     this.restricciones.admin = this.estado.target.checked;
   }
 
+  public comiteconvivenciaValue(event: Event): void{
+    this.estado = event;
+    this.restricciones.comiteConvivencia = this.estado.target.checked;
+  }
+
+  public revisorValue(event: Event): void{
+    this.estado = event;
+    this.restricciones.revisor = this.estado.target.checked;
+  }
+
   public presupuestoValue(event: Event): void{
     this.estado = event;
     this.restricciones.presupuesto = this.estado.target.checked;
@@ -57,13 +69,15 @@ export class RestrictionComponent implements OnInit {
   public save(): void{
     if (!this.restricciones.consejo && !this.restricciones.admin){
       if (!this.restricciones.presupuesto && !this.restricciones.proposicionGeneral){
-        Swal.fire({
-          title: 'No hay datos seleccionados',
-          text: 'Debe seleccionar al menos 1 restricción si desea registrar',
-          icon: 'warning',
-          showConfirmButton: true
-        });
-        return;
+        if (!this.restricciones.comiteConvivencia && !this.restricciones.revisor) {
+          Swal.fire({
+            title: 'No hay datos seleccionados',
+            text: 'Debe seleccionar al menos 1 restricción si desea registrar',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+          return;
+        }
       }
     }
     this.phService.postRestriccion(this.restricciones).subscribe((data: any) => {

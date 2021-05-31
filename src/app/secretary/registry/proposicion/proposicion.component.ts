@@ -21,6 +21,7 @@ export class ProposicionComponent implements OnInit {
   public formProposicion = new FormGroup({
     datos: new FormGroup({
       titulo: new FormControl('', [Validators.required]),
+      tipo: new FormControl('', [Validators.required]),
       proposicion: new FormControl('', [Validators.required])
     })
   });
@@ -114,6 +115,17 @@ export class ProposicionComponent implements OnInit {
     }
 
     const title = Object.assign(this.formProposicion.value.datos.titulo);
+    const tipoMocion = Object.assign(this.formProposicion.value.datos.tipo);
+
+    if (tipoMocion.toString() === 'CONSEJO_ADMIN' && this.propositions.length % 2 === 0){
+      Swal.fire({
+        title: 'Revise el número de candidatos inscritos!',
+        text: 'Los candidatos para consejo de administración deben ser impares, 3 o más.',
+        icon: 'warning',
+        showConfirmButton: true
+      });
+    }
+// Afinar consejo de admin para recibir por planchas. IMPORTANTE. Mejor crear otro component, qué piensas?
 
     if (title.toString().length === 0){
       Swal.fire({
@@ -127,6 +139,7 @@ export class ProposicionComponent implements OnInit {
 
     const completeProposition = {
       titulo: title.toString(),
+      tipo: tipoMocion.toString(),
       proposiciones: this.propositions,
       idPropiedadHorizontal: this.userService.getUsuarioControl().idPropiedadHorizontal
     };

@@ -58,7 +58,7 @@ export class InicioComponent implements OnInit {
           }
           else if (data === 0){
             Swal.fire({
-              title: 'Consulte con su admnistrador',
+              title: 'Consulte con su administrador',
               text: 'Hay una restricción que le impide votar.',
               icon: 'warning',
               showConfirmButton: true
