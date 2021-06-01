@@ -9,6 +9,7 @@ import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horiz
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
+  // Resultados guardados en tabla. Falta tomarlos y mostrarlos aquí
 
   public data: any;
   public myPieChart: HTMLElement;
@@ -66,7 +67,7 @@ export class ResultadosComponent implements OnInit {
     if (this.data.asistentes === 0){
       this.showPieChart = false;
     }
-    this.quorum = this.data.quorum;
+    this.quorum = this.data.quorum; // Change it
   }
 
 

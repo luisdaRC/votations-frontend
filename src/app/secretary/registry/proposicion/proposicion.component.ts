@@ -179,12 +179,29 @@ export class ProposicionComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.detenerVotaciones().subscribe(data => {
-          Swal.fire({
-            title: 'Votaciones detenidas',
-            text: 'El registro de votaciones ha sido detenido. Ahora puede inscribir nuevas proposiciones',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 0){
+            Swal.fire({
+              title: 'No hay votos registrados',
+              text: 'Debe haber más de 1 voto para poder terminar la votación',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+            return;
+          }else if (data === 1){
+            Swal.fire({
+              title: 'Votaciones detenidas',
+              text: 'El registro de votaciones ha sido detenido. Ahora puede inscribir nuevas proposiciones',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          }else{
+            Swal.fire({
+              title: 'Ocurrió un error',
+              text: 'Contacte con su administrador.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
         });
       }
     });
