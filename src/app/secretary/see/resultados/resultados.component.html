@@ -1,0 +1,17 @@
+<div *ngIf="existeMocion">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> NO HAY RESULTADOS AÚN </p>
+    </div>
+    <p>Actualmente se está llevandoa a cabo una votación. Debe esperar su finalización para ver los resultaods.
+      Si desea finalizar la recepción de votos lo puede hacer desde </p>
+    <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+      <button type="button" class="btn btn-link text-dark">
+        <u [routerLink]="['../../votations/proposicion']">Aquí.</u> // Probar esta ruta
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!existeMocion">
+
+</div>

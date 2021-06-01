@@ -34,11 +34,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ControlQuorumComponent } from './see/control-quorum/control-quorum.component';
 import { ProposicionComponent } from './registry/proposicion/proposicion.component';
+import { ResultadosComponent } from './see/resultados/resultados.component';
+import { ProcesosComponent } from './see/procesos/procesos.component';
+import { PoderesComponent } from './registry/poderes/poderes.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent],
   imports: [
     CommonModule,
     RouterModule,

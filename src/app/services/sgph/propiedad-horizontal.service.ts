@@ -239,6 +239,11 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/detener/votacion?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
   }
 
+  public getLastVotation(): any{// Secretario con idPH
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/obtener/votacion?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
+  }
+
   // Por ahora y con el fin de agilizar la finalización de la funcionalidad.
   // Este y el de consultar votación en propietario deben estar en el microservicio exclusivo de votaciones
 
@@ -252,7 +257,7 @@ export class PropiedadHorizontalService {
     return this.http.post(environment.url_actividades_asamblearias + 'asamblea/voto', voto, {headers});
   }
 
-  public getResults(): any{
+  public getResults(): any{ // Propietario con su idPersona
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/votacion?idPersona=' + this.userService.getUsuario().idPersona, {headers});
   }
