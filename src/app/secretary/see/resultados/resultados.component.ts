@@ -9,12 +9,17 @@ import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horiz
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
-  // Resultados guardados en tabla. Falta tomarlos y mostrarlos aquí
+  // Falta tomarlos y mostrarlos aquí. VAMOOOOOOOOOOOOOOOOOOOO HPTAAAAAA!!!
+
 
   public data: any;
-  public myPieChart: HTMLElement;
-  public showPieChart = false;
+  public coeficientesChart: HTMLElement;
+  public votosPersonaChart: HTMLElement;
   public existeMocion = false;
+  // azul, rojo, verde, amarillo, rosado, cian, gris, naranja, azul oscuro.
+  public colors = ['rgba(0, 128, 255, 1)', 'rgba(255, 51, 51, 1)', 'rgb(60, 179, 113)', 'rgb(255, 165, 0)',
+    'rgba(255, 153, 204, 1)', 'rgba(0, 255, 255, 1)', 'rgba(160, 159, 158, 1)',
+    'rgba(255, 155, 50, 1)', 'rgba(0, 0, 167, 0.5)'];
 
   constructor(
     public userService: UserService,
@@ -22,11 +27,11 @@ export class ResultadosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExisteMocion();
-    if (this.existeMocion) {
+    if (!this.existeMocion) {
       this.phService.getLastVotation().subscribe(data => {
         this.data = data;
-        this.setShowChart();
-        this.setChart();
+        this.setCoeficientesChart();
+        this.setVotosPersonaChart();
       });
     }
   }
@@ -37,37 +42,64 @@ export class ResultadosComponent implements OnInit {
     });
   }
 
-  public setChart(): void{
-    const doughnut = document.getElementById('myPieChart');
+  public getColorList(numColors: number): string[]{
+    const toReturn = [];
+    let cont = 0;
+    for (const color of this.colors) {
+      if (cont + 1 > numColors){
+        return toReturn;
+      }
+      toReturn.push(color);
+      cont++;
+    }
+  }
+
+  public setVotosPersonaChart(): void{
+    const numColors = this.data.descripciones.length;
+    const colorList = this.getColorList(numColors);
+    const doughnut = document.getElementById('votosPersonaChart');
     const objectPieChart = {
       type: 'doughnut',
       data: {
-        labels: ['Asistentes', 'Ausentes'],
+        labels: this.data.descripciones,
         datasets: [{
-          data: [this.data.asistentes, this.data.ausentes],
-          backgroundColor: [
-            'cornflowerblue',
-            'tomato'
-          ]
+          data: this.data.votosPorOpcion,
+          backgroundColor: colorList
         }]
       },
       options: {
         title: {
           display: true,
-          text: 'ASISTENTES EN LA ASAMBLEA'
+          text: 'VOTOS POR PERSONA'
         }
       }
     };
 
-    this.myPieChart = new Chart(doughnut, objectPieChart);
+    this.votosPersonaChart = new Chart(doughnut, objectPieChart);
   }
 
-  public setShowChart(): void {
-    this.showPieChart = true;
-    if (this.data.asistentes === 0){
-      this.showPieChart = false;
-    }
-    this.quorum = this.data.quorum; // Change it
+  public setCoeficientesChart(): void{
+    const numColors = this.data.descripciones.length;
+    const colorList = this.getColorList(numColors);
+    const doughnut = document.getElementById('coeficientesChart');
+    const objectPieChart = {
+      type: 'doughnut',
+      data: {
+        labels: this.data.descripciones,
+        datasets: [{
+          data: this.data.coeficientesPorOpcion,
+          backgroundColor: colorList
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: '% COEFICIENTES POR OPCIÓN'
+        }
+      }
+    };
+
+    this.coeficientesChart = new Chart(doughnut, objectPieChart);
   }
 
 

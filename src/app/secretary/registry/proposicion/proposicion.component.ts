@@ -179,7 +179,7 @@ export class ProposicionComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.detenerVotaciones().subscribe(data => {
-          if (data === 0){
+          if (data.result === 0){
             Swal.fire({
               title: 'No hay votos registrados',
               text: 'Debe haber más de 1 voto para poder terminar la votación',
@@ -187,7 +187,7 @@ export class ProposicionComponent implements OnInit {
               showConfirmButton: true
             });
             return;
-          }else if (data === 1){
+          }else if (data.result === 1){
             Swal.fire({
               title: 'Votaciones detenidas',
               text: 'El registro de votaciones ha sido detenido. Ahora puede inscribir nuevas proposiciones',

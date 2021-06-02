@@ -3,15 +3,50 @@
     <div class="col-12 text-center mb-2">
       <p class="font-weight-bold titles"> NO HAY RESULTADOS AÚN </p>
     </div>
-    <p>Actualmente se está llevandoa a cabo una votación. Debe esperar su finalización para ver los resultaods.
-      Si desea finalizar la recepción de votos lo puede hacer desde </p>
-    <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
-      <button type="button" class="btn btn-link text-dark">
-        <u [routerLink]="['../../votations/proposicion']">Aquí.</u> // Probar esta ruta
-      </button>
-    </div>
+    <p>Actualmente se está llevando a a cabo una votación. Debe esperar su finalización para ver los resultados.
+      Si desea finalizar la recepción de votos lo puede hacer <b>desde el registro de proposiciones/candidatos</b></p>
   </div>
 </div>
+
 <div *ngIf="!existeMocion">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4 class="text-muted mb-4 mt-4">{{data.titulo}}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="card-info">
+            <canvas id="coeficientesChart" width="200" height="200"></canvas>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card-info">
+            <canvas id="votosPersonaChart" width="200" height="200"></canvas>
+          </div>
+        </div>
+
+        <!--div *ngIf="showPieChart" class="col">
+          <div class="col-12 col-lg-10 offset-lg-1 mt-5">
+            <div class="alert alert-light text-center" role="alert">
+              <h4 class="alert-heading">El actual quorum de la asamblea es {{quorum.toFixed(2)}}%</h4>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!showPieChart" class="col">
+          <div class="col-12 col-lg-10 offset-lg-1 mt-5">
+            <div class="alert alert-light text-center" role="alert">
+              <h4 class="alert-heading">¡No hay asamblea realizandose en este momento!</h4>
+            </div>
+          </div>
+        </div-->
+      </div>
+    </div>
+  </div>
 
 </div>

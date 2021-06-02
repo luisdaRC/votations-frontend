@@ -55,6 +55,7 @@ export class InicioComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true
             });
+            this.router.navigate(['../estadisticas']);
           }
           else if (data === 0){
             Swal.fire({
@@ -63,6 +64,15 @@ export class InicioComponent implements OnInit {
               icon: 'warning',
               showConfirmButton: true
             });
+          }
+          else if (data === 3){
+            Swal.fire({
+              title: 'La proposición ya fue votada',
+              text: 'El voto del propietario se encuentra guardado.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+            this.router.navigate(['../estadisticas']);
           }
           else{
             Swal.fire({
