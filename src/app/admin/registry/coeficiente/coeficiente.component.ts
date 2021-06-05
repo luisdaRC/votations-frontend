@@ -17,7 +17,7 @@ export class CoeficienteComponent implements OnInit {
     datos: new FormGroup({
       tipoDocumento: new FormControl('', [Validators.required]),
       numeroDocumento: new FormControl('', [Validators.required]),
-      coeficiente: new FormControl('', [Validators.min(0.00001), Validators.max(0.5)])
+      coeficiente: new FormControl('', [Validators.min(0.00001), Validators.max(50)])
     })
   });
 
