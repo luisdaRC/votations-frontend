@@ -37,11 +37,12 @@ import { ProposicionComponent } from './registry/proposicion/proposicion.compone
 import { ResultadosComponent } from './see/resultados/resultados.component';
 import { ProcesosComponent } from './see/procesos/procesos.component';
 import { PoderesComponent } from './registry/poderes/poderes.component';
+import { CandidatoComponent } from './registry/candidato/candidato.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent, CandidatoComponent],
   imports: [
     CommonModule,
     RouterModule,

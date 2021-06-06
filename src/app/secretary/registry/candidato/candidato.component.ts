@@ -1,28 +1,34 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTable} from '@angular/material/table';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horizontal.service';
 import {UserService} from '../../../services/sgph/user.service';
-import { MatTable } from '@angular/material/table';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-proposicion',
-  templateUrl: './proposicion.component.html',
-  styleUrls: ['./proposicion.component.scss']
+  selector: 'app-candidato',
+  templateUrl: './candidato.component.html',
+  styleUrls: ['./candidato.component.scss']
 })
-export class ProposicionComponent implements OnInit {
+export class CandidatoComponent implements OnInit {
 
-  public displayedColumns: string[] = ['proposiciones', 'acciones'];
+  public displayedColumns: string[] = ['candidatos', 'acciones'];
+  // Ir ahora por la edición del html.
+
+  // Para hoy terminar separación de props y candidatos.
+  // INventar algo para votació en planchas y terminar de mostrar resultados en propietario.
+  // Hacer comprobación de requisitos de candidatos y publicación de los definitivos.
+
   @ViewChild(MatTable) table: MatTable<any> = null;
-  public propositions: string[] = [];
+  public candidates: string[] = [];
   public existeMocion = false;
 
   // Form
-  public formProposicion = new FormGroup({
+  public formCandidato = new FormGroup({
     datos: new FormGroup({
       titulo: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
-      proposicion: new FormControl('', [Validators.required])
+      candidato: new FormControl('', [Validators.required])
     })
   });
 
@@ -39,46 +45,46 @@ export class ProposicionComponent implements OnInit {
     });
   }
 
-  public addProposicion(): void{
-    const newProp = Object.assign(this.formProposicion.value.datos.proposicion);
+  public addCandidate(): void{
+    const newCandidate = Object.assign(this.formCandidato.value.datos.candidato);
 
-    if (newProp.length > 0 && this.propositions.length === 0){
-      this.propositions.push(newProp.toString());
+    if (newCandidate.length > 0 && this.candidates.length === 0){
+      this.candidates.push(newCandidate.toString());
       try{
         this.table.renderRows();
       } catch (Exception){}
       return;
     }
 
-    if (newProp.length > 0){
-      const propTrimed = newProp.toString().trim().toLowerCase();
-      for (const item of this.propositions) {
+    if (newCandidate.length > 0){
+      const propTrimed = newCandidate.toString().trim().toLowerCase();
+      for (const item of this.candidates) {
         console.log(item.trim().toLowerCase());
         console.log(propTrimed);
         if (item.trim().toLowerCase() === propTrimed){
           Swal.fire({
             title: 'Cuidado.',
-            text: 'La proposición ingresado ya está registrada',
+            text: 'El candidato ingresado ya está registrado',
             icon: 'warning',
             showConfirmButton: true
           });
           return;
         }
       }
-      this.propositions.push(newProp.toString());
-      console.log('Dentro, newProposition ', newProp);
-      console.log('Dentro, propositions ', this.propositions);
+      this.candidates.push(newCandidate.toString());
+      console.log('Dentro, newCandidate ', newCandidate);
+      console.log('Dentro, candidates ', this.candidates);
       try{
         this.table.renderRows();
       } catch (Exception){}
-      this.formProposicion.value.datos.proposicion = '';
+      this.formCandidato.value.datos.candidato = '';
     }
   }
 
-  public deleteProp(element: any): void{
+  public deleteCandidate(element: any): void{
 
     Swal.fire({
-      title: '¿Seguro que desea registrar esta proposición en la asamblea?',
+      title: '¿Seguro que desea registrar este candiato en la moción?',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonColor: '#d33',
@@ -87,9 +93,9 @@ export class ProposicionComponent implements OnInit {
     }).then((result) => {
 
       if (result.isConfirmed){
-        const index = this.propositions.indexOf(element.toString(), 0);
+        const index = this.candidates.indexOf(element.toString(), 0);
         if (index > -1) {
-          this.propositions.splice(index, 1);
+          this.candidates.splice(index, 1);
           this.table.renderRows();
         }
       }
@@ -98,44 +104,49 @@ export class ProposicionComponent implements OnInit {
 
   public submitProposicion(): void{
 
-    // Agregar campo de tipo de moción (admin, consejo de admin, presupuesto, proposicion general)
-    // al form para efectos de comparativa con la tabla restricción.
-
-
     // Como principio de perdón
-
-    if (this.propositions.length < 2){
+    if (this.candidates.length < 2){
       Swal.fire({
         title: 'Cuidado!',
-        text: 'El número de proposiciones a inscribir debe ser de mínimo 2.',
+        text: 'El número de candidatos a inscribir debe ser de mínimo 2.',
         icon: 'warning',
         showConfirmButton: true
       });
       return;
     }
 
-    const title = Object.assign(this.formProposicion.value.datos.titulo);
-    const tipoMocion = Object.assign(this.formProposicion.value.datos.tipo);
+    const title = Object.assign(this.formCandidato.value.datos.titulo);
+    const tipoMocion = Object.assign(this.formCandidato.value.datos.tipo);
+
+    if (tipoMocion.toString() === 'CONSEJO_ADMIN' && this.candidates.length < 3){
+      Swal.fire({
+        title: 'Revise el número de candidatos inscritos!',
+        text: 'Los candidatos para consejo de administración deben ser nínimo 3.',
+        icon: 'warning',
+        showConfirmButton: true
+      });
+    }
+// Afinar consejo de admin para recibir por planchas. IMPORTANTE. Mejor crear otro component, qué piensas? Yes.
 
     if (title.toString().length === 0){
       Swal.fire({
         title: 'Cuidado!',
-        text: 'El título de la proposición no puede estar vacío.',
+        text: 'El título de la moción no puede estar vacío.',
         icon: 'warning',
         showConfirmButton: true
       });
       return;
     }
 
-    const completeProposition = {
+    const completeCandidate = {
       titulo: title.toString(),
       tipo: tipoMocion.toString(),
-      proposiciones: this.propositions,
+      proposiciones: this.candidates,
       idPropiedadHorizontal: this.userService.getUsuarioControl().idPropiedadHorizontal
     };
 
     Swal.fire({
-      title: '¿Seguro que desea registrar esta proposición en la asamblea?',
+      title: '¿Seguro que desea registrar este candidato en la moción?',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonColor: '#d33',
@@ -144,10 +155,10 @@ export class ProposicionComponent implements OnInit {
     }).then((result) => {
 
       if (result.isConfirmed){
-        this.phService.postRegisterProposition(completeProposition).subscribe(data => {
+        this.phService.postRegisterProposition(completeCandidate).subscribe(data => {
           Swal.fire({
-            title: 'Proposición registrada correctamente',
-            text: 'La proposición está lista para ser votada',
+            title: 'Moción registrado correctamente',
+            text: 'La moción está lista para ser votada',
             icon: 'success',
             showConfirmButton: true
           });
@@ -180,7 +191,7 @@ export class ProposicionComponent implements OnInit {
           }else if (data.result === 1){
             Swal.fire({
               title: 'Votaciones detenidas',
-              text: 'El registro de votaciones ha sido detenido. Ahora puede inscribir nuevas proposiciones',
+              text: 'El registro de votaciones ha sido detenido. Ahora puede inscribir nuevos candidatos',
               icon: 'success',
               showConfirmButton: true
             });
