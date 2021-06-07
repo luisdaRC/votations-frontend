@@ -9,6 +9,7 @@ import {ControlQuorumComponent} from './see/control-quorum/control-quorum.compon
 import {ProposicionComponent} from './registry/proposicion/proposicion.component';
 import {ResultadosComponent} from './see/resultados/resultados.component';
 import {CandidatoComponent} from './registry/candidato/candidato.component';
+import {PlanchaComponent} from './registry/plancha/plancha.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
       {path: 'list/asistentes', component: ListarAsistentesComponent},
       {path: 'votations/quorum', component: ControlQuorumComponent},
       {path: 'votations/proposicion', component: ProposicionComponent},
-      {path: 'votations/candidato', component: CandidatoComponent},
+      {path: 'votations/candidatos', component: CandidatoComponent},
+      {path: 'votations/planchas', component: PlanchaComponent},
       {path: 'votations/resultados', component: ResultadosComponent},
       {path: '', redirectTo: 'inicio', pathMatch: 'full'}
     ]

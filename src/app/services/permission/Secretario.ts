@@ -28,9 +28,19 @@ export const SECRETARIO = [
     title: 'REGISTRAR',
     subtitles: [
       {
-        name: 'Proposiciones / candidatos',
-        icon: 'fas fa-ad',
+        name: 'Proposiciones',
+        icon: 'fas fa-hand-paper',
         route: '/secretary/votations/proposicion'
+      },
+      {
+        name: 'Candidatos individuales',
+        icon: 'fas fa-user',
+        route: '/secretary/votations/candidatos'
+      },
+      {
+        name: 'Planchas',
+        icon: 'fas fa-users',
+        route: '/secretary/votations/planchas'
       },
       {
         name: 'Poderes cedidos',
@@ -40,6 +50,3 @@ export const SECRETARIO = [
     ]
   }
 ];
-
-
-// Para llevar el listado de los asistentes mostrar la lista de propietarios y un botón de asistió

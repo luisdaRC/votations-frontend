@@ -38,11 +38,12 @@ import { ResultadosComponent } from './see/resultados/resultados.component';
 import { ProcesosComponent } from './see/procesos/procesos.component';
 import { PoderesComponent } from './registry/poderes/poderes.component';
 import { CandidatoComponent } from './registry/candidato/candidato.component';
+import { PlanchaComponent } from './registry/plancha/plancha.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent, CandidatoComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent, CandidatoComponent, PlanchaComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -22,6 +22,7 @@ export class CandidatoComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any> = null;
   public candidates: string[] = [];
   public existeMocion = false;
+  public selected: any;
 
   // Form
   public formCandidato = new FormGroup({
@@ -43,6 +44,13 @@ export class CandidatoComponent implements OnInit {
     this.phService.getMocion().subscribe((data: any) => {
       this.existeMocion = data.existeMocion;
     });
+  }
+
+  public tipoValue(event: Event): void{
+    console.log('What`s inside? ', event);
+    // Sirveeeeeeeeeeeeee. Terminar validación de si es elección de consejo o comité...
+    // Mejor añadir el tipo y número de documento en el form para enviar al back y verificar
+    // validez de postulación para todos los tipos de moción.
   }
 
   public addCandidate(): void{
@@ -102,7 +110,7 @@ export class CandidatoComponent implements OnInit {
     });
   }
 
-  public submitProposicion(): void{
+  public submitMocion(): void{
 
     // Como principio de perdón
     if (this.candidates.length < 2){

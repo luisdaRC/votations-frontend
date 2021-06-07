@@ -3,12 +3,12 @@
     <div formGroupName="datos" class="row p-5 bg-white card-info">
 
       <div class="col-12 text-center mb-2">
-        <p class="font-weight-bold titles"> REGISTRO DE MOCIONES O CANDIDATOS INDIVIDUALES</p>
+        <p class="font-weight-bold titles"> REGISTRO DE PROPOSICIONES </p>
       </div>
 
       <div class="col-12 col-md-6">
         <mat-form-field class="w-100">
-          <input matInput formControlName="titulo" id="titulo" placeholder="Ingrese título de proposición">
+          <input matInput formControlName="titulo" id="titulo" placeholder="Ingrese título de la moción">
         </mat-form-field>
       </div>
 
@@ -16,10 +16,6 @@
         <mat-form-field class="w-100">
           <mat-label> Tipo de moción</mat-label>
           <mat-select formControlName="tipo" id="tipo">
-            <mat-option id="ADMINISTRADOR" value="ADMINISTRADOR">Elección de administrador</mat-option>
-            <mat-option id="CONSEJO_ADMIN" value="CONSEJO_ADMIN">Elección de consejo de administación</mat-option>
-            <mat-option id="COMITE_CONVIVENCIA" value="COMITE_CONVIVENCIA">Elección de comité de convivencia</mat-option>
-            <mat-option id="REVISOR" value="REVISOR">Elección de revisor fiscal</mat-option>
             <mat-option id="PRESUPUESTO" value="PRESUPUESTO">Aprobación de presupuesto</mat-option>
             <mat-option id="PROPOSICIONES" value="PROPOSICIONES">Proposición en general</mat-option>
           </mat-select>
@@ -28,7 +24,7 @@
 
       <div class="col-12 col-lg-6">
         <mat-form-field class="w-100">
-          <input matInput formControlName="proposicion" id="proposicion" placeholder="Ingrese proposición/candidato">
+          <input matInput formControlName="proposicion" id="proposicion" placeholder="Ingrese proposición ">
         </mat-form-field>
       </div>
     </div>
