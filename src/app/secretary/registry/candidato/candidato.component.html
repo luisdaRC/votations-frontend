@@ -1,7 +1,12 @@
 <div *ngIf="!existeMocion">
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Tenga en cuenta:</strong> para registrar un candidato a comité de convivencia o consejo de administración se debe digitar el documento de dicho candidato.
+    <p>
+    <strong>Tenga en cuenta: </strong>
+    1. Para registrar un candidato a comité de convivencia o consejo de administración se debe digitar el tipo y número de documento de dicho candidato.
+    </p>
+    <p>2. El revisor fiscal no puede ser un poseedor de bien(es) en la PH de acuerdo a la ley 675 de 2001.</p>
   </div>
+
   <form [formGroup]="formCandidato" class="mt-4">
     <div formGroupName="datos" class="row p-5 bg-white card-info">
 
@@ -27,23 +32,44 @@
         </mat-form-field>
       </div>
 
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-md-6" *ngIf="needTipoYNumero">
+        <mat-form-field class="w-100">
+          <mat-label> Tipo de documento</mat-label>
+          <mat-select formControlName="tipoDocumento" id="tipoDocumento">
+            <mat-option id="CC" value="CC">CC</mat-option>
+            <mat-option id="CE" value="CE">Cedula de extranjeria</mat-option>
+            <mat-option id="Pasaporte" value="Pasaporte">Pasaporte</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6" *ngIf="needTipoYNumero">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="numeroDocumento" id="revisor-numero-documento" placeholder="Número de documento">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-6" *ngIf="!needTipoYNumero">
         <mat-form-field class="w-100">
           <input matInput formControlName="candidato" id="candidato" placeholder="Ingrese candidato ">
         </mat-form-field>
       </div>
+
     </div>
   </form>
+
   <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
     <button (click)="addCandidate()" class="btn btn-outline-secondary w-50" id="add" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
       AGREGAR
     </button>
     <br>
   </div>
+
   <br><br>
+
   <div *ngIf="this.candidates.length != 0" class="col-12">
     <mat-table [dataSource]="this.candidates" matSort class="mat-elevation-z2 w-100">
-      <ng-container matColumnDef="proposiciones">
+      <ng-container matColumnDef="candidatos">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Lista de candidatos </mat-header-cell>
         <mat-cell *matCellDef="let element" id="item-proposicion">
           <span class="mobile-label"> Candidato</span>

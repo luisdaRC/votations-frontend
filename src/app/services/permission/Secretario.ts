@@ -38,14 +38,14 @@ export const SECRETARIO = [
         route: '/secretary/votations/candidatos'
       },
       {
-        name: 'Planchas',
+        name: 'Planchas de candidatos',
         icon: 'fas fa-users',
         route: '/secretary/votations/planchas'
       },
       {
         name: 'Poderes cedidos',
         icon: 'far fa-address-book',
-        route: '/secretary/votations/poderes'
+        route: '/secretary/registry/poderes'
       }
     ]
   }

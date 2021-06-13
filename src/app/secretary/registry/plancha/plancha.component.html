@@ -1,1 +1,118 @@
-<p>plancha works!</p>
+<div *ngIf="!existeMocion">
+  <form [formGroup]="formPlancha" class="mt-0 pt-0">
+    <div formGroupName="datos" class="row p-5 bg-white card-info">
+
+      <div class="col-12 text-center mb-2">
+        <p class="font-weight-bold titles"> REGISTRO DE CANDIDATOS POR PLANCHAS</p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="titulo" id="titulo" placeholder="Ingrese título de la moción">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label> Tipo de moción</mat-label>
+          <mat-select formControlName="tipo" id="tipo">
+            <mat-option id="CONSEJO_ADMIN" value="CONSEJO_ADMIN">Elección de consejo de administación</mat-option>
+            <mat-option id="COMITE_CONVIVENCIA" value="COMITE_CONVIVENCIA">Elección de comité de convivencia</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label> Tipo de documento</mat-label>
+          <mat-select formControlName="tipoDocumento" id="tipoDocumento">
+            <mat-option id="CC" value="CC">CC</mat-option>
+            <mat-option id="CE" value="CE">Cedula de extranjeria</mat-option>
+            <mat-option id="Pasaporte" value="Pasaporte">Pasaporte</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="numeroDocumento" id="plancha-numero-documento" placeholder="Número de documento">
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+
+  <div class="row align-content-center">
+    <div class="text-center col mt-3">
+      <button (click)="addCandidate()" class="btn btn-outline-secondary w-50" id="add" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        AGREGAR CANDIDATO
+      </button>
+      <br>
+    </div>
+
+    <div class="text-center col mt-3">
+      <button (click)="registryPlancha()" class="btn btn-outline-secondary w-50" id="reg-plancha" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        AGREGAR PLANCHA
+      </button>
+      <br>
+    </div>
+  </div>
+
+  <br><br>
+
+  <!--------------------------Fuera del card------------------------------>
+
+  <div *ngIf="this.planchas.length != 0" class="col-12">
+    <mat-table [dataSource]="this.planchas" matSort class="mat-elevation-z2 w-100">
+      <ng-container matColumnDef="planchas">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lista de planchas </mat-header-cell>
+        <mat-cell *matCellDef="let element" id="item-plancha">
+          <span class="mobile-label">Plancha</span>
+          <span class="overflow-auto">
+            {{element}}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label"> Acciones:</span>
+          <button type="button" class="btn btn-outline-dark" (click)="deletePlancha(element)">
+            Eliminar
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="text-center col mt-3">
+      <button (click)="submitPlanchas()" class="btn btn-outline-success w-50" id="submit-planchas" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        REGISTRAR PLANCHAS
+      </button>
+      <br>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="existeMocion">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> INHABILITAR RECEPCIÓN DE VOTACIONES </p>
+    </div>
+    <p>Con el siguiente botón usted podrá detener las votaciones para la moción que se
+      realiza actualmente.</p>
+    <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+      <button (click)="detenerVotaciones()" class="btn btn-primary w-50" id="registrar-admin" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        INHABILITAR
+      </button>
+      <br>
+      <button type="button" class="btn btn-link text-dark">
+        <u [routerLink]="['../../inicio']">Volver</u>
+      </button>
+    </div>
+  </div>
+</div>

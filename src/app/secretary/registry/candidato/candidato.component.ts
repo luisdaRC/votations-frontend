@@ -13,22 +13,21 @@ import Swal from 'sweetalert2';
 export class CandidatoComponent implements OnInit {
 
   public displayedColumns: string[] = ['candidatos', 'acciones'];
-  // Ir ahora por la edición del html.
 
-  // Para hoy terminar separación de props y candidatos.
-  // INventar algo para votació en planchas y terminar de mostrar resultados en propietario.
-  // Hacer comprobación de requisitos de candidatos y publicación de los definitivos.
+  // Inventar algo para votació en planchas y terminar de mostrar resultados en propietario.
 
   @ViewChild(MatTable) table: MatTable<any> = null;
   public candidates: string[] = [];
   public existeMocion = false;
-  public selected: any;
+  public needTipoYNumero: boolean;
 
   // Form
   public formCandidato = new FormGroup({
     datos: new FormGroup({
       titulo: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
+      tipoDocumento: new FormControl('', [Validators.required]),
+      numeroDocumento: new FormControl('', [Validators.required]),
       candidato: new FormControl('', [Validators.required])
     })
   });
@@ -47,15 +46,73 @@ export class CandidatoComponent implements OnInit {
   }
 
   public tipoValue(event: Event): void{
-    console.log('What`s inside? ', event);
-    // Sirveeeeeeeeeeeeee. Terminar validación de si es elección de consejo o comité...
-    // Mejor añadir el tipo y número de documento en el form para enviar al back y verificar
-    // validez de postulación para todos los tipos de moción.
+    if ((event as unknown as string) === 'CONSEJO_ADMIN' || (event as unknown as string) === 'COMITE_CONVIVENCIA'){
+      this.needTipoYNumero = true;
+    } else {
+      this.needTipoYNumero = false;
+    }
   }
 
   public addCandidate(): void{
-    const newCandidate = Object.assign(this.formCandidato.value.datos.candidato);
 
+    if (this.needTipoYNumero){
+      const tipoDoc = Object.assign(this.formCandidato.value.datos.tipoDocumento);
+      const numDoc = Object.assign(this.formCandidato.value.datos.numeroDocumento);
+
+      const completeDocumento = {
+        tipo: tipoDoc.toString(),
+        numero: numDoc.toString()
+      };
+
+      this.phService.postVerificarCandidato(completeDocumento).subscribe(data => {
+        if (data.id === 0) {
+          Swal.fire({
+            title: 'Revise los datos ingresados.',
+            text: 'Los datos ingresados no corresponden a ningún propietario',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+          return;
+        } else if (data.id === 1){
+          Swal.fire({
+            title: 'Este propietario es moroso.',
+            text: '¿Desea registrarlo de igual manera?',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonText: `Si`,
+            cancelButtonText: 'No'
+          }).then((result) => {
+            if (result.isConfirmed){
+              const newCandidate = data.nombre;
+              this.verifyCandidate(newCandidate);
+            } else {
+              return;
+            }
+          });
+        } else if (data.id === 2){
+          const newCandidate = Object.assign(data.nombre);
+          this.verifyCandidate(newCandidate);
+          console.log('Dentro de id 2: ', newCandidate);
+        } else {
+          Swal.fire({
+            title: 'Ha ocurrido un error al intentar verificar el candidato.',
+            text: 'Comuníquese con el administrador del sistema',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+        }
+      });
+
+    } else {
+      const newCandidate = Object.assign(this.formCandidato.value.datos.candidato);
+      this.verifyCandidate(newCandidate);
+    }
+
+  }
+
+  public verifyCandidate(newCandidate: any): void{
+    console.log('Dentro de verify candidato: ', newCandidate);
     if (newCandidate.length > 0 && this.candidates.length === 0){
       this.candidates.push(newCandidate.toString());
       try{
@@ -92,12 +149,12 @@ export class CandidatoComponent implements OnInit {
   public deleteCandidate(element: any): void{
 
     Swal.fire({
-      title: '¿Seguro que desea registrar este candiato en la moción?',
+      title: '¿Seguro que desea eliminar este candiato?',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonColor: '#d33',
       confirmButtonText: `Si`,
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'No'
     }).then((result) => {
 
       if (result.isConfirmed){
@@ -134,7 +191,6 @@ export class CandidatoComponent implements OnInit {
         showConfirmButton: true
       });
     }
-// Afinar consejo de admin para recibir por planchas. IMPORTANTE. Mejor crear otro component, qué piensas? Yes.
 
     if (title.toString().length === 0){
       Swal.fire({
@@ -164,12 +220,14 @@ export class CandidatoComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.postRegisterProposition(completeCandidate).subscribe(data => {
-          Swal.fire({
-            title: 'Moción registrado correctamente',
-            text: 'La moción está lista para ser votada',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === '1') {
+            Swal.fire({
+              title: 'Moción registrado correctamente',
+              text: 'La moción está lista para ser votada',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          }
         });
       }
     });

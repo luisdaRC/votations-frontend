@@ -26,7 +26,8 @@ export class RestrictionComponent implements OnInit {
     presupuesto: false,
     proposicionGeneral: false,
     comiteConvivencia: false,
-    revisor: false
+    revisor: false,
+    estados: false
   };
   estado: any;
 
@@ -66,10 +67,15 @@ export class RestrictionComponent implements OnInit {
     this.restricciones.proposicionGeneral = this.estado.target.checked;
   }
 
+  public estadosValue(event: Event): void{
+    this.estado = event;
+    this.restricciones.estados = this.estado.target.checked;
+  }
+
   public save(): void{
     if (!this.restricciones.consejo && !this.restricciones.admin){
       if (!this.restricciones.presupuesto && !this.restricciones.proposicionGeneral){
-        if (!this.restricciones.comiteConvivencia && !this.restricciones.revisor) {
+        if (!this.restricciones.comiteConvivencia && !this.restricciones.revisor && !this.restricciones.estados) {
           Swal.fire({
             title: 'No hay datos seleccionados',
             text: 'Debe seleccionar al menos 1 restricción si desea registrar',

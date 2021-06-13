@@ -262,6 +262,11 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/votacion?idPersona=' + this.userService.getUsuario().idPersona, {headers});
   }
 
+  public postVerificarCandidato(completeDocumento: any): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_actividades_asamblearias + 'asamblea/verificarCandidato', completeDocumento, {headers});
+  }
+
   // Añadir aquí rest requests para actividades de negocio de revisor y secretario
   // ¿A qué microservicio corresponden estas requests? -Creo que a actividades asamblearias
   // Yes. -Excepto al micro de verificación.
