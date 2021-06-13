@@ -9,13 +9,15 @@ import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horiz
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
-  // Falta tomarlos y mostrarlos aquí. VAMOOOOOOOOOOOOOOOOOOOO HPTAAAAAA!!!
-
 
   public data: any;
   public coeficientesChart: HTMLElement;
   public votosPersonaChart: HTMLElement;
   public existeMocion = false;
+  public esPlancha = false;
+  public numPlanchas: string[] = [];
+  public fixedLabels: string[] = [];
+
   // azul, rojo, verde, amarillo, rosado, cian, gris, naranja, azul oscuro.
   public colors = ['rgba(0, 128, 255, 1)', 'rgba(255, 51, 51, 1)', 'rgb(60, 179, 113)', 'rgb(255, 165, 0)',
     'rgba(255, 153, 204, 1)', 'rgba(0, 255, 255, 1)', 'rgba(160, 159, 158, 1)',
@@ -30,6 +32,16 @@ export class ResultadosComponent implements OnInit {
     if (!this.existeMocion) {
       this.phService.getLastVotation().subscribe(data => {
         this.data = data;
+        this.esPlancha = data.esPlancha;
+        if (this.esPlancha){
+          for (const planchita of data.opciones) {
+            const planchaNumero = planchita.split(':');
+            this.numPlanchas.push(planchaNumero[0]);
+          }
+          this.fixedLabels = this.numPlanchas;
+        } else {
+          this.fixedLabels = this.data.descripciones;
+        }
         this.setCoeficientesChart();
         this.setVotosPersonaChart();
       });
@@ -61,7 +73,7 @@ export class ResultadosComponent implements OnInit {
     const objectPieChart = {
       type: 'doughnut',
       data: {
-        labels: this.data.descripciones,
+        labels: this.fixedLabels,
         datasets: [{
           data: this.data.votosPorOpcion,
           backgroundColor: colorList
@@ -85,7 +97,7 @@ export class ResultadosComponent implements OnInit {
     const objectPieChart = {
       type: 'doughnut',
       data: {
-        labels: this.data.descripciones,
+        labels: this.fixedLabels,
         datasets: [{
           data: this.data.coeficientesPorOpcion,
           backgroundColor: colorList

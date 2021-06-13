@@ -9,6 +9,13 @@
 </div>
 
 <div *ngIf="!existeMocion">
+
+  <div *ngIf="esPlancha" class="row pt-5 pb-0 bg-white card-info">
+    <p class="row" *ngFor="let plancha of data.opciones;">{{plancha}}</p>
+  </div>
+
+  <br><br>
+
   <div class="container">
     <div class="row">
       <div class="col">
@@ -30,21 +37,6 @@
             <canvas id="votosPersonaChart" width="200" height="200"></canvas>
           </div>
         </div>
-
-        <!--div *ngIf="showPieChart" class="col">
-          <div class="col-12 col-lg-10 offset-lg-1 mt-5">
-            <div class="alert alert-light text-center" role="alert">
-              <h4 class="alert-heading">El actual quorum de la asamblea es {{quorum.toFixed(2)}}%</h4>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="!showPieChart" class="col">
-          <div class="col-12 col-lg-10 offset-lg-1 mt-5">
-            <div class="alert alert-light text-center" role="alert">
-              <h4 class="alert-heading">¡No hay asamblea realizandose en este momento!</h4>
-            </div>
-          </div>
-        </div-->
       </div>
     </div>
   </div>

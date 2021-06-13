@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div *ngIf="existeMocion">
+<div *ngIf="existeMocion && !esPlancha">
   <div class="row pt-5 pb-0 bg-white card-info">
     <div class="col-12 text-center mb-2">
       <p class="font-weight-bold titles">{{data.titulo}}</p>
@@ -23,6 +23,29 @@
     <div class="text-center d-grid d-md-block justify-content-around mx-auto">
       <div class="col">
         <button class="btn btn-primary btn-lg btn-block" type="button" style="display: block;" *ngFor="let opcion of data.opciones;" (click)="sendVote(opcion)">{{opcion}}</button>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="existeMocion && esPlancha">
+
+  <div class="row pt-5 pb-0 bg-white card-info">
+    <p class="row" *ngFor="let plancha of data.opciones;">{{plancha}}</p>
+  </div>
+
+  <br><br>
+
+  <div class="row pt-5 pb-0 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles">{{data.titulo}}</p>
+    </div>
+  </div>
+  <div class="row p-5 bg-white card-info">
+    <div class="text-center d-grid d-md-block justify-content-around mx-auto">
+      <div class="col">
+        <button class="btn btn-primary btn-lg btn-block" type="button" style="display: block;" *ngFor="let opcion of numPlanchas;" (click)="sendVotePlancha(opcion)">{{opcion}}</button>
         <br>
       </div>
     </div>
