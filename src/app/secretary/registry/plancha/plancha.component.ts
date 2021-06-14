@@ -184,6 +184,7 @@ export class PlanchaComponent implements OnInit {
         icon: 'success',
         showConfirmButton: true
       });
+      this.formPlancha.value.datos.numeroDocumento = '';
     }
   }
 
@@ -236,7 +237,7 @@ export class PlanchaComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.postRegisterProposition(completePlanchas).subscribe(data => {
-          if (data === '1'){
+          if (data === 1){
             Swal.fire({
               title: 'Planchas registradas correctamente',
               text: 'Las planchas están listas para ser votada',

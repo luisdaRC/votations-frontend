@@ -34,7 +34,7 @@ export class ResultadosComponent implements OnInit {
         this.data = data;
         this.esPlancha = data.esPlancha;
         if (this.esPlancha){
-          for (const planchita of data.opciones) {
+          for (const planchita of data.descripciones) {
             const planchaNumero = planchita.split(':');
             this.numPlanchas.push(planchaNumero[0]);
           }

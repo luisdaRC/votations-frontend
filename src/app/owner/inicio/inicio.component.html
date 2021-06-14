@@ -4,12 +4,6 @@
       <p class="font-weight-bold titles"> ESTADO DE LA ASAMBLEA </p>
     </div>
     <p class="text-center">{{data.estado}}</p>
-    <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
-      <br>
-      <button type="button" class="btn btn-link text-dark">
-        <u [routerLink]="['../../inicio']">Volver</u>
-      </button>
-    </div>
   </div>
 </div>
 
@@ -31,8 +25,11 @@
 
 <div *ngIf="existeMocion && esPlancha">
 
-  <div class="row pt-5 pb-0 bg-white card-info">
-    <p class="row" *ngFor="let plancha of data.opciones;">{{plancha}}</p>
+  <div class="row pt-3 pb-0 bg-white card-info">
+    <div class="row text-center">
+      <p class="col-12 font-weight-bold titles">Planchas registradas</p>
+      <p class="col-12" *ngFor="let plancha of data.opciones;">{{plancha}}</p>
+    </div>
   </div>
 
   <br><br>

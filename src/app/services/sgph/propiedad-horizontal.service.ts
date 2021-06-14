@@ -259,7 +259,7 @@ export class PropiedadHorizontalService {
 
   public getResults(): any{ // Propietario con su idPersona
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/votacion?idPersona=' + this.userService.getUsuario().idPersona, {headers});
+    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/votacion?idPersona=' + this.userService.getUsuario().idPropietario, {headers});
   }
 
   public postVerificarCandidato(completeDocumento: any): any{

@@ -13,7 +13,7 @@ export const PROPIETARIO = [
     title: 'VER',
     subtitles: [
       {
-        name: 'Actual votación',
+        name: 'Última votación',
         icon: 'fas fa-chart-pie',
         route: '/owner/estadisticas'
       }

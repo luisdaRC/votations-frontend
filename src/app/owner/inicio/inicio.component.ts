@@ -64,7 +64,7 @@ export class InicioComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true
             });
-            this.router.navigate(['../estadisticas']);
+            this.router.navigate(['owner/estadisticas']);
           }
           else if (data === 0){
             Swal.fire({
@@ -81,7 +81,7 @@ export class InicioComponent implements OnInit {
               icon: 'warning',
               showConfirmButton: true
             });
-            this.router.navigate(['../estadisticas']);
+            this.router.navigate(['owner/estadisticas']);
           }
           else{
             Swal.fire({
@@ -127,7 +127,7 @@ export class InicioComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true
             });
-            this.router.navigate(['../estadisticas']);
+            this.router.navigate(['owner/estadisticas']);
           }
           else if (data === 0){
             Swal.fire({
@@ -144,7 +144,7 @@ export class InicioComponent implements OnInit {
               icon: 'warning',
               showConfirmButton: true
             });
-            this.router.navigate(['../estadisticas']);
+            this.router.navigate(['owner/estadisticas']);
           }
           else{
             Swal.fire({

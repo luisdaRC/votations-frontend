@@ -11,6 +11,7 @@ import {ResultadosComponent} from './see/resultados/resultados.component';
 import {CandidatoComponent} from './registry/candidato/candidato.component';
 import {PlanchaComponent} from './registry/plancha/plancha.component';
 import {PoderesComponent} from './registry/poderes/poderes.component';
+import {ProcesosComponent} from './see/procesos/procesos.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'votations/planchas', component: PlanchaComponent},
       {path: 'votations/resultados', component: ResultadosComponent},
       {path: 'registry/poderes', component: PoderesComponent},
+      {path: 'votations/procesos', component: ProcesosComponent},
       {path: '', redirectTo: 'inicio', pathMatch: 'full'}
     ]
   }
