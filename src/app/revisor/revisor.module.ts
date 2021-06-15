@@ -11,7 +11,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // Components
 import {RevisorComponent} from './revisor.component';
 import {InicioComponent} from './inicio/inicio.component';
-import {ProcessComponent} from './check/process/process.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,7 +34,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
-    RevisorComponent, InicioComponent, ProcessComponent],
+    RevisorComponent, InicioComponent],
   imports: [
     CommonModule,
     RouterModule,

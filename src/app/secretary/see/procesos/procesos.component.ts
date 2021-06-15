@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../services/sgph/user.service';
+import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horizontal.service';
 
 @Component({
   selector: 'app-procesos',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProcesosComponent implements OnInit {
 
-  constructor() { }
+  public data: any;
+
+  constructor(
+    public userService: UserService,
+    private phService: PropiedadHorizontalService) { }
 
   ngOnInit(): void {
+    this.phService.getAllVotationsRevisor().subscribe((data: any) => {
+      this.data = data;
+    });
   }
 
 }
