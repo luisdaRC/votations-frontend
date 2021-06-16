@@ -249,6 +249,11 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/revisor?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
   }
 
+  public postPoder(poder: any): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.url_actividades_asamblearias + 'asamblea/poder', poder, {headers});
+  }
+
   // Por ahora y con el fin de agilizar la finalización de la funcionalidad.
   // Este y el de consultar votación en propietario deben estar en el microservicio exclusivo de votaciones
 
