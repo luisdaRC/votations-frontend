@@ -52,12 +52,28 @@ export class InicioComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.postAgregarAsistente(asistente).subscribe(data => {
-          Swal.fire({
-            title: 'Propietario Registrado!',
-            text: 'El propietario ha sido agregado a la lista de asistentes de la asamblea',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 1){
+            Swal.fire({
+              title: 'Propietario previamente registrado.',
+              text: 'El Propietario ya se encuentra registrado en la lista de asistentes de la asamblea',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          } else if (data === 2){
+            Swal.fire({
+              title: 'Propietario Registrado!',
+              text: 'El propietario ha sido agregado a la lista de asistentes de la asamblea',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          } else if (data === 3){
+            Swal.fire({
+              title: 'Cuidado!',
+              text: 'No hay asamblea transcurriendo en este momento',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
         });
       }
     });
