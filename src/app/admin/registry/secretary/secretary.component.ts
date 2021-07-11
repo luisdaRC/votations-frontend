@@ -27,7 +27,6 @@ export class SecretaryComponent implements OnInit {
 
   // Attributes
   public existeSecretary = false;
-// Decidí hacer un registro secretario y revisor separados, porque es más claro para el usuario(admin) saber lo que hará
   constructor(private phService: PropiedadHorizontalService,
               private router: Router,
               public userService: UserService) { }
@@ -35,10 +34,8 @@ export class SecretaryComponent implements OnInit {
   public ngOnInit(): void {
     this.getExisteSecretary();
   }
-// Una tabla revisor y una tabla secretario con todos los datos que los identifiquen
-// como ciudadanos y el idPropiedad y en base a ellos iniciar sesión o permitir acciones.
 
-  public getExisteSecretary(){
+  public getExisteSecretary(): void{
     this.phService.getSecretary().subscribe((data: any) => {
       this.existeSecretary = data.existeSecretary;
     });

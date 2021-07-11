@@ -4,8 +4,8 @@ export const SECRETARIO = [
     subtitles: [
       {
         name: 'Lista de asistentes',
-        icon: 'fas fa-owner',
-        route: '/secretary/votations/asistentes'
+        icon: 'fas fa-list',
+        route: '/secretary/list/asistentes'
       },
       {
         name: 'Control del quorum',
@@ -13,12 +13,12 @@ export const SECRETARIO = [
         route: '/secretary/votations/quorum'
       },
       {
-        name: 'Resumen de procesos de votación',
+        name: 'Procesos de votación',
         icon: 'fas fa-building',
         route: '/secretary/votations/procesos'
       },
       {
-        name: 'Resultados última votación',
+        name: 'Última votación',
         icon: 'fas fa-chart-pie',
         route: '/secretary/votations/resultados'
       }
@@ -28,18 +28,25 @@ export const SECRETARIO = [
     title: 'REGISTRAR',
     subtitles: [
       {
-        name: 'Proposiciones o candidatos',
-        icon: 'fas fa-ad',
+        name: 'Proposiciones',
+        icon: 'fas fa-hand-paper',
         route: '/secretary/votations/proposicion'
+      },
+      {
+        name: 'Candidatos individuales',
+        icon: 'fas fa-user',
+        route: '/secretary/votations/candidatos'
+      },
+      {
+        name: 'Planchas de candidatos',
+        icon: 'fas fa-users',
+        route: '/secretary/votations/planchas'
       },
       {
         name: 'Poderes cedidos',
         icon: 'far fa-address-book',
-        route: '/secretary/votation/poderes'
+        route: '/secretary/registry/poderes'
       }
     ]
   }
 ];
-
-
-// Para llevar el listado de los asistentes mostrar la lista de propietarios y un botón de asistió

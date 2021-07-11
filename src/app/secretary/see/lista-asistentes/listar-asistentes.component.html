@@ -1,0 +1,80 @@
+<div *ngIf="this.dataSource?.data?.length === 0" class="col-12 col-lg-10 offset-lg-1 mt-5">
+  <div class="alert alert-light text-center" role="alert">
+    <h4 class="alert-heading">No hay propietarios registrados en la asamblea.</h4>
+  </div>
+</div>
+
+<div *ngIf="this.dataSource?.data?.length != 0" class="col-12">
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-dark" (click)="terminarAsamblea()">
+        Finalizar Asamblea
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.dataSource?.data?.length != 0" class="col-12">
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2 w-100">
+
+    <ng-container matColumnDef="nombres">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nombres </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-propietarios-nombres">
+        <span class="mobile-label"> Nombres:</span>
+        <span class="overflow-auto">
+          {{element.nombres}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="apellido">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-propietarios-apellido">
+        <span class="mobile-label"> Apellidos:</span>
+        <span class="overflow-auto">
+          {{element.apellidos}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoDocumento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de documento </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-propietarios-tipo-documento">
+        <span class="mobile-label"> Tipo de documento:</span>
+        <span class="overflow-auto">
+          {{element.tipoDocumento}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroDocumento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. Documento </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-propietarios-numero-documento">
+        <span class="mobile-label"> No. de documento:</span>
+        <span class="overflow-auto">
+          {{element.numeroDocumento}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef> Registrar </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="mobile-label"> Acciones:</span>
+        <button type="button" class="btn btn-outline-dark" (click)="registrarAbandono(element.idPersona)">
+          Abandono
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>

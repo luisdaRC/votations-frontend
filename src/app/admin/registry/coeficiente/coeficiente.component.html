@@ -1,0 +1,44 @@
+<form [formGroup]="formCoeficiente" class="mt-4">
+  <div formGroupName="datos" class="row p-5 bg-white card-info">
+
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> REGISTRO DE COEFICIENTE DE COPROPIEDAD </p>
+    </div>
+
+    <div class="col-12 col-md-6">
+
+      <mat-form-field class="w-100">
+        <mat-label> Tipo de documento</mat-label>
+        <mat-select formControlName="tipoDocumento" id="tipoDocumento">
+          <mat-option id="CC" value="CC">CC</mat-option>
+          <mat-option id="CE" value="CE">Cedula de extranjeria</mat-option>
+          <mat-option id="Pasaporte" value="Pasaporte">Pasaporte</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="col-12 col-md-6">
+      <mat-form-field class="w-100">
+        <input matInput formControlName="numeroDocumento" id="numero-documento" placeholder="Número de documento">
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <mat-form-field class="w-100">
+        <input matInput formControlName="coeficiente" id="coeficiente" placeholder="Coeficiente de copropiedad">
+      </mat-form-field>
+    </div>
+
+  </div>
+</form>
+
+<div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+  <button [disabled]="formCoeficiente.invalid" (click)="registrarCoeficiente()" class="btn btn-primary w-50" id="registrar" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+    REGISTRAR
+  </button>
+  <br>
+  <button type="button" class="btn btn-link text-dark">
+    <u [routerLink]="['../../inicio']">Volver</u>
+  </button>
+</div>

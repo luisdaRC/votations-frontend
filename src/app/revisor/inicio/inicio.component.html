@@ -1,164 +1,35 @@
-
-<h4 class="text-muted mb-4 mt-4">Bienvenido, Propiedad Horizontal
+<h4 class="text-muted mb-4 mt-4">Bienvenido, Revisor Fiscal de
   <strong id="ph-nombre">{{this.userService.getUsuarioControl().nombrePH}}</strong>
 </h4>
-<hr>
-<div class="row no-gutters" id="ph-estadisticas">
+<br>
+<h3 class="mt-3 mb-4 text-center">RESUMEN DE LOS PROCESOS DE VOTACIÓN</h3>
 
-  <div class="col-6 col-lg-3  mb-2 text-center p-2">
-    <div class="card-info">
-      <div class="col my-auto">
-        <em class="fas fa-users fa-3x" aria-hidden="true"></em>
-      </div>
+<hr class="mb-4">
 
-      <div class="col">
-        <h1 class="font-weight-bolder">{{data?.numeroResidentes}}</h1>
-        <p class="font-16"> <span class="badge badge-success">Residentes</span></p>
+<div *ngIf="data.length">
+  <div *ngFor="let resultado of data;">
+    <div class="row pt-3 pb-0 bg-white card-info">
+      <div class="col-12 text-center mb-2">
+        <p class="font-weight-bold titles">{{resultado.titulo}}</p>
       </div>
     </div>
+    <div class="row p-3 bg-white card-info">
+      <div class="text-center d-grid d-md-block justify-content-around mx-auto">
+        <p class="col-12" *ngFor="let descripcion of resultado.descripciones; index as i;">
+          La proposición <b>{{descripcion}}</b> obtuvo un <b>{{resultado.coeficientesPorOpcion[i]}}%</b> del total
+          del quorum de la asamblea y un total de <b>{{resultado.votosPorOpcion[i]}}</b> votos.
+        </p>
+      </div>
+    </div>
+    <br><br>
   </div>
-
-
-  <div class="col-6 col-lg-3 mb-2 text-center p-2">
-    <div class="card-info">
-      <div class="col my-auto">
-        <em class="fas fa-home fa-3x" aria-hidden="true"></em>
-      </div>
-
-      <div class="col">
-        <h1 class="font-weight-bolder">{{data?.numeroHabitantes}}</h1>
-        <p class="font-16"> <span class="badge badge-success">Habitantes</span></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-6 col-lg-3   mb-2 text-center p-2">
-    <div class="card-info">
-      <div class="col my-auto">
-        <em class="fas fa-user fa-3x" aria-hidden="true"></em>
-      </div>
-
-      <div class="col">
-        <h1 class="font-weight-bolder">{{data?.numeroPropietarios}}</h1>
-        <p class="font-16"> <span class="badge badge-success">Propietarios</span></p>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="col-6 col-lg-3  mb-2 text-center p-2">
-    <div class="card-info">
-
-      <div class="col my-auto">
-        <em class="fas fa-swimming-pool fa-3x"></em>
-      </div>
-
-      <div class="col">
-        <h1 class="font-weight-bolder">{{data?.numeroBienesComunes}}</h1>
-        <p class="font-16"> <span class="badge badge-success">Bienes comunes</span></p>
-      </div>
-    </div>
-  </div>
-
-
-
-</div>
-<h4 class="text-muted mb-4 mt-4">
-  Accesos rápidos
-</h4>
-<hr>
-<div class="row no-gutters">
-
-
-  <div  class="col-6 col-lg-3  mb-2 p-2 pointer">
-    <div [routerLink]="[ '/sgph/listar/bien-privado' ]" class="card-info pt-0 border border-info">
-      <div class="col-12 bg-light container-title">
-        <span>BIENES PRIVADOS</span>
-      </div>
-
-      <div class="col mx-auto mt-3 mb-3 text-center">
-        <em class="fas fa-building fa-3x"></em>
-      </div>
-    </div>
-  </div>
-
-  <div  class="col-6 col-lg-3  mb-2 p-2 pointer">
-    <div [routerLink]="[ '/sgph/listar/bien-comun' ]" class="card-info pt-0 border border-info">
-      <div class="col-12 bg-light container-title">
-        <span>BIENES COMUNES</span>
-      </div>
-
-      <div class="col mx-auto mt-3 mb-3 text-center">
-        <em class="fas fa-swimmer fa-3x"></em>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="this.userService.getRol('SUPER_ADMINISTRADOR')"  class="col-6 col-lg-3  mb-2 p-2 pointer">
-    <div [routerLink]="[ '/sgph/listar/propietarios' ]" class="card-info pt-0 border border-info">
-      <div class="col-12 bg-light container-title">
-        <span>PROPIETARIOS</span>
-      </div>
-
-      <div class="col mx-auto mt-3 mb-3 text-center">
-        <em class="fas fa-user-tie fa-3x"></em>
-      </div>
-    </div>
-  </div>
-
-  <!--div *ngIf="!this.userService.getRol('SUPER_ADMINISTRADOR')" class="col-6 col-lg-3  mb-2 p-2 pointer">
-    <div [routerLink]="[ '/sgph/chat' ]" class="card-info pt-0 border border-info">
-      <div class="col-12 bg-light container-title">
-        <span>CHAT</span>
-      </div>
-
-      <div class="col mx-auto mt-3 mb-3 text-center">
-        <em class="far fa-comments fa-3x"></em>
-      </div>
-    </div>
-  </div-->
-
-
-  <!--div   class="col-6 col-lg-3  mb-2 p-2 pointer">
-    <div (click)="navigatePHMAN()" class="card-info pt-0 border border-info">
-      <div class="col-12 bg-light container-title">
-        <span>MÓDULO PHMAN</span>
-      </div>
-
-      <div class="col mx-auto mt-3 mb-3 text-center">
-        <em class="fas fa-user-shield fa-3x"></em>
-      </div>
-    </div>
-  </div-->
-
 </div>
 
-
-<h4 class="text-muted mb-4 mt-4">Estadísticas</h4>
-<hr>
-<div class="row no-gutters">
-
-  <div [ngClass]="{'d-none': showPieChart}" class="col-12 col-md-6 col-xl-5 offset-xl-1 mt-4">
-
-    <div class="card-info">
-      <canvas id="myPieChart" width="200" height="200"></canvas>
+<div *ngIf="!data.length">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> NO SE ENCONTRARON RESULTADOS. </p>
     </div>
-
+    <p>Asegúrese de que la asamblea de la que intenta obtener resultados se está llevando a cabo o ya ha finalizado</p>
   </div>
-
-
-  <div [ngClass]="{'d-none': showBars}" class="col-12 col-md-6 col-xl-5 mt-4">
-
-    <div class="card-info">
-      <canvas id="myBarChart" width="200" height="200"></canvas>
-    </div>
-
-  </div>
-
-  <div *ngIf="showBars && showPieChart" class="col-12 col-lg-10 offset-lg-1 mt-5">
-    <div class="alert alert-light text-center" role="alert">
-      <h4 class="alert-heading">No hay estadísticas para mostrar</h4>
-    </div>
-  </div>
-
 </div>

@@ -16,15 +16,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
 import {registerLocaleData} from '@angular/common';
 import localeEsCo from '@angular/common/locales/es';
-import { CalendarModule } from 'angular-calendar';
-import { LandingPageComponent } from './home/landing-page/landing-page.component';
 registerLocaleData(localeEsCo, 'es-CO');
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    LandingPageComponent
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,

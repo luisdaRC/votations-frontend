@@ -14,8 +14,18 @@ export const ADMINISTRADOR = [
       },
       {
         name:  'Usuario para Secretario',
-        icon: 'fas fa-user',
+        icon:  'fas fa-user',
         route: '/admin/registry/secretary'
+      },
+      {
+        name:  'Restricción',
+        icon:  'fas fa-ban',
+        route: '/admin/registry/restriction'
+      },
+      {
+        name:  'Coef. de copropiedad',
+        icon:  'fas fa-address-card',
+        route: '/admin/registry/coeficiente'
       }
     ]
   },
@@ -23,8 +33,8 @@ export const ADMINISTRADOR = [
     title: 'ELIMINAR',
     subtitles: [
       {
-        name: 'Personal de apoyo',
-        icon: 'fas fa-user',
+        name:  'Personal de apoyo',
+        icon:  'fas fa-user',
         route: '/admin/delete/support-personal'
       }
     ]

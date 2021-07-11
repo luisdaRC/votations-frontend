@@ -9,11 +9,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components
-
-import { DataComponent } from './update/data/data.component'; // Componente listo?
+import { DataComponent } from './update/data/data.component';
 import { SuperAdminComponent } from './super-admin.component';
-import { InicioComponent } from './inicio/inicio.component'; // Componente listo?
-import { ProfileSuperAdminComponent } from './profile/profile.component'; // Componente listo?
+import { InicioComponent } from './inicio/inicio.component';
+import { ProfileSuperAdminComponent } from './profile/profile.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -48,7 +47,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     SuperAdminRoutingModule,
     SharedModule,
     SweetAlert2Module,
-    BsDropdownModule, // Ver si sirve sin el forRoot()
+    BsDropdownModule,
     CollapseModule,
     MatDialogModule,
     MatFormFieldModule,

@@ -21,22 +21,22 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {  }
 
-  public perfil(): void {
+  public inicio(): void {
 
     if (this.userService.getRol('PROPIETARIO')){
-      this.router.navigate(['/owner/profile']);
+      this.router.navigate(['/owner/inicio']);
     }
     if (this.userService.getRol('ADMINISTRADOR')){
-      this.router.navigate(['/admin/profile']);
+      this.router.navigate(['/admin/inicio']);
     }
     if (this.userService.getRol('SUPER_ADMINISTRADOR')){
-      this.router.navigate(['/super-admin/profile']);
+      this.router.navigate(['/super-admin/inicio']);
     }
     if (this.userService.getRolCont('SECRETARIO')){
-      this.router.navigate(['/secretary/profile']);
+      this.router.navigate(['/secretary/inicio']);
     }
     if (this.userService.getRolCont('REVISOR')){
-      this.router.navigate(['/revisor/profile']); // Route doesn't exist
+      this.router.navigate(['/revisor/inicio']); // Route doesn't exist
     }
   }
 
@@ -66,6 +66,5 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  // Buscar por qué no se está mostrando el accordion en revisor
 
 }

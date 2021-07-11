@@ -1,0 +1,67 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Tenga en cuenta:</strong> de acuerdo a la ley 675 de 2001, las restricciones a los propietarios
+  para ejercer su derecho al voto sólo pueden ser determinadas por la asamblea general de propietarios bajo
+  las condiciones estalecidas por la ley.
+</div>
+
+<div class="row p-5 bg-white card-info">
+  <div class="col-12 text-center mb-2">
+    <p class="font-weight-bold titles"> AGREGAR RESTRICCIÓN(ES) </p>
+  </div>
+  <div class="d-grid d-md-block justify-content-around mx-auto">
+    <div class="col">
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="consejo" id="consejo" (change)="consejoValue($event)">
+        <label class="custom-control-label" for="consejo">
+          Consejo de Administración
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="admin" id="admin" (change)="adminValue($event)">
+        <label class="custom-control-label" for="admin">
+          Administrador
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="presupuesto" id="presupuesto" (change)="presupuestoValue($event)">
+        <label class="custom-control-label" for="presupuesto">
+          Aprobación de presupuesto
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="proposicion" id="proposicion" (change)="proposicionGeneralValue($event)">
+        <label class="custom-control-label" for="proposicion">
+          Proposición general
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="comite" id="comite" (change)="comiteconvivenciaValue($event)">
+        <label class="custom-control-label" for="comite">
+          Comité de convivencia
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="revisor" id="revisor" (change)="revisorValue($event)">
+        <label class="custom-control-label" for="revisor">
+          Revisor fiscal
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox checkbox-lg">
+        <input class="custom-control-input" type="checkbox" value="estados" id="estados" (change)="estadosValue($event)">
+        <label class="custom-control-label" for="estados">
+          Estados financieros
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+  <button (click)="save()" class="btn btn-outline-success w-50" id="registrar" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+    REGISTRAR RESTRICCIÓN
+  </button>
+  <br>
+  <button type="button" class="btn btn-link text-dark">
+    <u [routerLink]="['../../inicio']">Volver</u>
+  </button>
+</div>

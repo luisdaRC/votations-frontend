@@ -1,0 +1,47 @@
+<div *ngIf="existeMocion">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> NO HAY RESULTADOS AÚN </p>
+    </div>
+    <p>Actualmente se está llevando a a cabo una votación. Debe esperar su finalización para ver los resultados.
+      Si desea finalizar la recepción de votos lo puede hacer <b>desde el registro de proposiciones/candidatos</b></p>
+  </div>
+</div>
+
+<div *ngIf="!existeMocion">
+
+  <div *ngIf="esPlancha" class="row pt-3 pb-0 bg-white card-info">
+    <div class="row text-center">
+      <p class="col-12 font-weight-bold titles">Planchas votadas</p>
+      <p class="col-12" *ngFor="let plancha of data.descripciones;">{{plancha}}</p>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4 class="text-muted mb-4 mt-4">{{data.titulo}}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="card-info">
+            <canvas id="coeficientesChart" width="200" height="200"></canvas>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card-info">
+            <canvas id="votosPersonaChart" width="200" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

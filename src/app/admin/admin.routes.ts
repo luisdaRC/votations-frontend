@@ -6,7 +6,9 @@ import {ProfileAdminComponent} from './profile/profile.component';
 import {AdComponent} from './registry/ad/ad.component';
 import {RevisorComponent} from './registry/revisor/revisor.component';
 import {SecretaryComponent} from './registry/secretary/secretary.component';
+import {CoeficienteComponent} from './registry/coeficiente/coeficiente.component';
 import {SupportPersonalComponent} from './delete/support-personal/support-personal.component';
+import {RestrictionComponent} from './registry/restriction/restriction.component';
 
 const routes: Routes = [
   {
@@ -16,8 +18,10 @@ const routes: Routes = [
       {path: 'inicio', component: InicioComponent},
       {path: 'profile', component: ProfileAdminComponent},
       {path: 'registry/ad', component: AdComponent},
+      {path: 'registry/restriction', component: RestrictionComponent},
       {path: 'registry/revisor', component: RevisorComponent},
       {path: 'registry/secretary', component: SecretaryComponent},
+      {path: 'registry/coeficiente', component: CoeficienteComponent},
       {path: 'delete/support-personal', component: SupportPersonalComponent},
       {path: '', redirectTo: 'inicio', pathMatch: 'full'}
     ]

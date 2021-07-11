@@ -5,8 +5,8 @@ import { SessionGuard } from './services/guards/session/session.guard';
 import { OwnerGuard } from './services/guards/owner/owner.guard';
 import { AdminGuard } from './services/guards/admin/admin.guard';
 import { SuperAdminGuard } from './services/guards/super-admin/super-admin.guard';
-import { SecretaryGuard } from './services/guards/secretary/secretary.guard'; // Pending for module creation
-import { RevisorGuard } from './services/guards/revisor/revisor.guard'; // Pending for module creation
+import { SecretaryGuard } from './services/guards/secretary/secretary.guard';
+import { RevisorGuard } from './services/guards/revisor/revisor.guard';
 
 
 const routes: Routes = [
@@ -16,8 +16,7 @@ const routes: Routes = [
   { path: 'owner', loadChildren: () => import ('src/app/owner/owner.module').then(m => m.OwnerModule), canActivate: [SessionGuard, OwnerGuard] },
   { path: 'super-admin', loadChildren: () => import ('src/app/super-admin/super-admin.module').then(m => m.SuperAdminModule), canActivate: [SessionGuard, SuperAdminGuard] },
   { path: 'revisor', loadChildren: () => import ('src/app/revisor/revisor.module').then(m => m.RevisorModule), canActivate: [SessionGuard, RevisorGuard] },
-  // Crear módulos en cada una de las rutas definidas
-  // { path: 'secretary', loadChildren: () => import ('src/app/secretary/secretary.module').then(m => m.SecretaryModule), canActivate: [SessionGuard, SecretaryGuard] },
+  { path: 'secretary', loadChildren: () => import ('src/app/secretary/secretary.module').then(m => m.SecretaryModule), canActivate: [SessionGuard, SecretaryGuard] },
 
   { path: '' , redirectTo: '', pathMatch: 'full'}
 ];

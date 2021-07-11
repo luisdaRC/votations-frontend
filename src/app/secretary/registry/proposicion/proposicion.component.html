@@ -1,0 +1,95 @@
+<div *ngIf="!existeMocion">
+  <form [formGroup]="formProposicion" class="mt-0 pt-0">
+    <div formGroupName="datos" class="row p-5 bg-white card-info">
+
+      <div class="col-12 text-center mb-2">
+        <p class="font-weight-bold titles"> REGISTRO DE PROPOSICIONES </p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="titulo" id="titulo" placeholder="Ingrese título de la moción">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label> Tipo de moción</mat-label>
+          <mat-select formControlName="tipo" id="tipo">
+            <mat-option id="PRESUPUESTO" value="PRESUPUESTO">Aprobación de presupuesto</mat-option>
+            <mat-option id="PROPOSICIONES" value="PROPOSICIONES">Proposición en general</mat-option>
+            <mat-option id="ESTADOS_FINANCIEROS" value="ESTADOS_FINANCIEROS">Aprobación de estados financieros</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="proposicion" id="proposicion" placeholder="Ingrese proposición ">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+    <button (click)="addProposicion()" class="btn btn-outline-secondary w-50" id="add" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+      AGREGAR
+    </button>
+    <br>
+  </div>
+  <br><br>
+  <div *ngIf="this.propositions.length != 0" class="col-12">
+    <mat-table [dataSource]="this.propositions" matSort class="mat-elevation-z2 w-100">
+      <ng-container matColumnDef="proposiciones">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lista de proposiciones </mat-header-cell>
+        <mat-cell *matCellDef="let element" id="item-proposicion">
+          <span class="mobile-label"> Proposición</span>
+          <span class="overflow-auto">
+            {{element}}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label"> Acciones:</span>
+          <button type="button" class="btn btn-outline-dark" (click)="deleteProp(element)">
+            Eliminar
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
+
+  <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+    <button (click)="submitProposicion()" class="btn btn-outline-success w-50" id="registrar" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+      REGISTRAR PROPOSICIÓN
+    </button>
+    <br>
+    <button type="button" class="btn btn-link text-dark">
+      <u [routerLink]="['../../inicio']">Volver</u>
+    </button>
+  </div>
+</div>
+<div *ngIf="existeMocion">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> INHABILITAR RECEPCIÓN DE VOTACIONES </p>
+    </div>
+    <p>Con el siguiente botón usted podrá detener las votaciones para la moción que se
+      realiza actualmente.</p>
+    <div class="text-center col-12 col-lg-4 offset-lg-4 mt-3">
+      <button (click)="detenerVotaciones()" class="btn btn-primary w-50" id="registrar-admin" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        INHABILITAR
+      </button>
+      <br>
+      <button type="button" class="btn btn-link text-dark">
+        <u [routerLink]="['../../inicio']">Volver</u>
+      </button>
+    </div>
+  </div>
+</div>

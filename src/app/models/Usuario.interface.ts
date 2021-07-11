@@ -5,6 +5,7 @@ export interface Usuario {
   apellido?: string;
   email: string;
   idPersona?: number;
+  idPropietario?: number;
   password?: string;
   roles?: string[];
   idPropiedadHorizontal?: string;

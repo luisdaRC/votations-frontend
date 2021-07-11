@@ -11,7 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // Components
 import { InicioComponent } from './inicio/inicio.component';
 import { SecretaryComponent } from './secretary.component';
-import { ListarAsistentesComponent } from './listar-asistentes/listar-asistentes.component';
+import { ListarAsistentesComponent } from './see/lista-asistentes/listar-asistentes.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,11 +32,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ControlQuorumComponent } from './see/control-quorum/control-quorum.component';
+import { ProposicionComponent } from './registry/proposicion/proposicion.component';
+import { ResultadosComponent } from './see/resultados/resultados.component';
+import { ProcesosComponent } from './see/procesos/procesos.component';
+import { PoderesComponent } from './registry/poderes/poderes.component';
+import { CandidatoComponent } from './registry/candidato/candidato.component';
+import { PlanchaComponent } from './registry/plancha/plancha.component';
 
 
 @NgModule({
   declarations: [
-    SecretaryComponent, InicioComponent, ListarAsistentesComponent],
+    SecretaryComponent, InicioComponent, ListarAsistentesComponent, ControlQuorumComponent, ProposicionComponent, ResultadosComponent, ProcesosComponent, PoderesComponent, CandidatoComponent, PlanchaComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -45,7 +52,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatGridListModule, // Si están en angular
+    MatGridListModule,
     SecretaryRoutingModule,
     SharedModule,
     SweetAlert2Module,

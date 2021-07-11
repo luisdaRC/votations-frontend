@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { UserService } from '../../services/sgph/user.service';
+import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
+import { MatTableDataSource } from '@angular/material/table';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicio',
@@ -7,9 +12,71 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  public displayedColumns: string[] = ['nombres', 'apellido', 'tipoDocumento', 'numeroDocumento', 'acciones'];
+  public dataSource: any;
+  @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit(): void {
+  constructor(
+    public userService: UserService,
+    private phService: PropiedadHorizontalService) { }
+
+  public ngOnInit(): void {
+    this.getPropietarios();
+  }
+
+  private getPropietarios(): void {
+    this.phService.getAllPropietarios().subscribe((data: any) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  public applyFilter(filterValue: string): void {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public agregarAsistente(idPropietario: number): void{
+    const asistente = {
+      idPersona: idPropietario,
+      idPropiedadHorizontal: this.userService.getUsuarioControl().idPropiedadHorizontal
+    };
+
+    Swal.fire({
+      title: '¿Seguro que quieres registrar a este propietario como asistente?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Registrar`,
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+      if (result.isConfirmed){
+        this.phService.postAgregarAsistente(asistente).subscribe(data => {
+          if (data === 1){
+            Swal.fire({
+              title: 'Propietario previamente registrado.',
+              text: 'El Propietario ya se encuentra registrado en la lista de asistentes de la asamblea',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          } else if (data === 2){
+            Swal.fire({
+              title: 'Propietario Registrado!',
+              text: 'El propietario ha sido agregado a la lista de asistentes de la asamblea',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          } else if (data === 3){
+            Swal.fire({
+              title: 'Cuidado!',
+              text: 'No hay asamblea transcurriendo en este momento',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
+        });
+      }
+    });
   }
 
 }

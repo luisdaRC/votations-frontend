@@ -26,17 +26,12 @@ export class SidebarService {
     this.setValuesSGPH();
   }
 
-
-
   public setValuesSGPH() {
     this.menus =  [];
 
     if (this.userService.getRol('PROPIETARIO')) {
-      this.menus.push(PROPIETARIO);
+      this.menus = PROPIETARIO;
     }
-/*    if(this.userService.getRol('CONSEJO')){
-      this.menus.push(PROPIETARIO_CONSEJO);
-    }*/
 
     if (this.userService.getRol('ADMINISTRADOR')){
       this.menus = ADMINISTRADOR;

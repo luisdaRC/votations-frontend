@@ -9,13 +9,14 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // Components
 
-import { AdComponent } from './registry/ad/ad.component'; // Componente listo?
-import { RevisorComponent } from './registry/revisor/revisor.component'; // Componente listo?
-import { SecretaryComponent } from './registry/secretary/secretary.component'; // Componente listo?
+import { AdComponent } from './registry/ad/ad.component';
+import { RevisorComponent } from './registry/revisor/revisor.component';
+import { SecretaryComponent } from './registry/secretary/secretary.component';
 import { AdminComponent } from './admin.component';
 import { InicioComponent } from './inicio/inicio.component'; // Componente listo?
 import { ProfileAdminComponent } from './profile/profile.component'; // Componente listo?
 import { SupportPersonalComponent } from './delete/support-personal/support-personal.component';
+import { CoeficienteComponent } from './registry/coeficiente/coeficiente.component';
 
 // Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,12 +37,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { RestrictionComponent } from './registry/restriction/restriction.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent, AdComponent, RevisorComponent, SecretaryComponent, InicioComponent, ProfileAdminComponent,
-    SupportPersonalComponent],
+    SupportPersonalComponent,
+    CoeficienteComponent,
+    RestrictionComponent],
   imports: [
     CommonModule,
     RouterModule,
