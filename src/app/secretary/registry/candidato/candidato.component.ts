@@ -222,9 +222,23 @@ export class CandidatoComponent implements OnInit {
         this.phService.postRegisterProposition(completeCandidate).subscribe(data => {
           if (data === '1') {
             Swal.fire({
-              title: 'Moción registrado correctamente',
+              title: 'Moción registrada correctamente',
               text: 'La moción está lista para ser votada',
               icon: 'success',
+              showConfirmButton: true
+            });
+          } else if (data === '2') {
+            Swal.fire({
+              title: 'Moción transcurriendo',
+              text: 'Hay una moción activa en este momento en la asamblea.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          } else if (data === '3') {
+            Swal.fire({
+              title: 'Comuníquese con el administrador de la propiedad',
+              text: 'Los coeficientes de copropiedad no están debidamente registrados.',
+              icon: 'warning',
               showConfirmButton: true
             });
           }

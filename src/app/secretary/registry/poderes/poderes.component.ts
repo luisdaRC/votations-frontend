@@ -72,6 +72,28 @@ export class PoderesComponent implements OnInit {
               this.router.navigate(['/secretary/inicio']);
             }
           });
+        } else if (data === 3){
+          Swal.fire({
+            title: 'Propietario registrado!',
+            text: 'El propietario ingresado ya se encuentra registrado en la asamblea.',
+            icon: 'warning',
+            showConfirmButton: true,
+            onClose: () => {
+              this.formPoder.reset();
+              this.router.navigate(['/secretary/inicio']);
+            }
+          });
+        } else if (data === 4){
+          Swal.fire({
+            title: 'Comuníquese con el administrador de la propiedad',
+            text: 'Los coeficientes de copropiedad no están debidamente registrados.',
+            icon: 'warning',
+            showConfirmButton: true,
+            onClose: () => {
+              this.formPoder.reset();
+              this.router.navigate(['/secretary/inicio']);
+            }
+          });
         }
       }
     );

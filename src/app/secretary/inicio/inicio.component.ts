@@ -73,6 +73,20 @@ export class InicioComponent implements OnInit {
               icon: 'warning',
               showConfirmButton: true
             });
+          } else if (data === 4){
+            Swal.fire({
+              title: 'Hay un delegado registrado!',
+              text: 'El propietario esta siendo representado por un delegado',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          } else if (data === 5){
+            Swal.fire({
+              title: 'Los coeficientes de copropiedad no están registrados correctamente.',
+              text: 'Es necesario que su administrador registre todos los coeficientes de los propietarios de manera que sumen 100%',
+              icon: 'warning',
+              showConfirmButton: true
+            });
           }
         });
       }
