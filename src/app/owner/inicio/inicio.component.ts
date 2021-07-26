@@ -74,6 +74,15 @@ export class InicioComponent implements OnInit {
               showConfirmButton: true
             });
           }
+          else if (data === 2){
+            Swal.fire({
+              title: 'No se puede registrar el voto.',
+              text: 'El propietario no se encuentra presente en la asamblea.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+            this.router.navigate(['owner/estadisticas']);
+          }
           else if (data === 3){
             Swal.fire({
               title: 'La proposición ya fue votada',

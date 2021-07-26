@@ -145,12 +145,28 @@ export class ProposicionComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.postRegisterProposition(completeProposition).subscribe(data => {
-          Swal.fire({
-            title: 'Proposición registrada correctamente',
-            text: 'La proposición está lista para ser votada',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 1){
+            Swal.fire({
+              title: 'Proposición registrada correctamente',
+              text: 'La proposición está lista para ser votada',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          }else if (data === 2){
+            Swal.fire({
+              title: 'Moción transcurriendo',
+              text: 'Hay una moción activa en este momento en la asamblea.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          } else if (data === 3) {
+            Swal.fire({
+              title: 'Comuníquese con el administrador de la propiedad',
+              text: 'Los coeficientes de copropiedad no están debidamente registrados.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
         });
       }
     });

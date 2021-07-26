@@ -35,7 +35,7 @@ export class CoeficienteComponent implements OnInit {
       (data: any) => {
 
         Swal.fire({
-          title: ' ¡Registro Exitoso!',
+          title: '¡Registro Exitoso!',
           text: 'El coeficiente del propietario se registró en la base de datos',
           icon: 'success',
           showConfirmButton: true,

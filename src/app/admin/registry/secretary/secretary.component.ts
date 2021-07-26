@@ -53,18 +53,46 @@ export class SecretaryComponent implements OnInit {
 
     this.phService.postSecretary(secretary).subscribe(
       (data: any) => {
-
-        Swal.fire({
-          title: ' ¡Registro Exitoso!',
-          text: 'El secretario ya puede iniciar sesión con el email y contraseña ingresados',
-          icon: 'success',
-          showConfirmButton: true,
-          onClose: () => {
-            this.formSecretary.reset();
-            this.router.navigate(['/admin']);
-          }
-        });
-
+        if (data === 1) {
+          Swal.fire({
+            title: 'Cuidado.',
+            text: 'No existe la propiedad horizontal referenciada.',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+        } else if (data === 2) {
+          Swal.fire({
+            title: 'Existe un secretario',
+            text: 'Un usuario con el rol de secretario está activo en el sistema. Elimínelo',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+        } else if (data === 3) {
+          Swal.fire({
+            title: 'Cuidado!',
+            text: 'Existe un usuario con el email ingresado.',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+        }else if (data === 4){
+          Swal.fire({
+            title: 'Registro Exitoso!',
+            text: 'El secretario ya puede iniciar sesión con el email y contraseña ingresados',
+            icon: 'success',
+            showConfirmButton: true,
+            onClose: () => {
+              this.formSecretary.reset();
+              this.router.navigate(['/admin']);
+            }
+          });
+        }else if (data === 5) {
+          Swal.fire({
+            title: 'Registre los coeficientes para proceder con esta operación',
+            text: 'Los coeficientes de copropiedad no están debidamente registrados. El sistema ha detectado que no suman 100%.',
+            icon: 'warning',
+            showConfirmButton: true
+          });
+        }
       }
     );
 
