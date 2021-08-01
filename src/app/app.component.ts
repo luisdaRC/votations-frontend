@@ -21,9 +21,11 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
 
       if (event instanceof RouteConfigLoadStart) {
-        this.spinner.classList.add('d-block');
+        this.spinner.classList.add('d-block'); // Try stuff with it
+        console.log('Cargando esta vuelta');
       } else if (event instanceof RouteConfigLoadEnd) {
         this.spinner.classList.remove('d-block');
+        console.log('Deja de cargar esta vuelta');
       }
     });
   }

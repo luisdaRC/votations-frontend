@@ -34,6 +34,8 @@
   </nav>
   <!-- Fin nav -->
 
+  <app-loading #loading id="app-loading"  class="d-none"></app-loading>
+
   <div class="col-12 col-md-4 offset-md-4 mt-5 text-center p-md-4 container-login">
 
     <form class="mt-3" [formGroup]="form" (ngSubmit)="iniciarSesion()">

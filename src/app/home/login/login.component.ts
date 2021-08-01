@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/sgph/user.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MODULOS } from 'src/app/services/constants/modulos';
 import { SidebarService } from '../../services/extras/sidebar.service';
@@ -12,6 +12,7 @@ import { SidebarService } from '../../services/extras/sidebar.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  private spinner: HTMLElement;
 
   // Form
   public form = new FormGroup({
@@ -22,14 +23,28 @@ export class LoginComponent implements OnInit {
   constructor(
     private sidebarService: SidebarService,
     private userService: UserService,
-    private route: Router) { }
+    private router: Router) { }
 
   public ngOnInit(): void {
+    this.spinner = document.getElementById('app-loading');
+    this.loadingMainModule();
   }
 
+  private loadingMainModule(): void {
+    this.router.events.subscribe(event => {
+
+      if (event instanceof RouteConfigLoadStart) {
+        this.spinner.classList.add('d-block');
+        console.log('Cargando esta vuelta');
+      } else if (event instanceof RouteConfigLoadEnd) {
+        this.spinner.classList.remove('d-block');
+        console.log('Deja de cargar esta vuelta');
+      }
+    });
+  }
 
   public iniciarSesion(): void {
-
+    this.spinner.classList.add('d-block');
     this.userService.postIniciarSesion(this.form.value).subscribe(
 
       (data: any) => {
@@ -37,7 +52,7 @@ export class LoginComponent implements OnInit {
           Swal.fire('¡Error al iniciar Sesión!', 'El usuario no cuenta con roles', 'error');
         }else{
           const ROL = this.userService.getRolPhMan(data.roles);
-          this.route.navigate( [MODULOS[ROL]]);
+          this.router.navigate( [MODULOS[ROL]]);
           this.sidebarService.init();
         }
       },
@@ -48,15 +63,16 @@ export class LoginComponent implements OnInit {
   }
 
   public loginControl(): void{
-    console.log('Entra a login control');
+    this.spinner.classList.add('d-block');
     this.userService.postLoginControl(this.form.value).subscribe(
       (data: any) => {
-        this.route.navigate([MODULOS[data.rol]]);
+        this.router.navigate([MODULOS[data.rol]]);
         this.sidebarService.init();
       },
       error => {
         Swal.fire('¡Error al iniciar Sesión! Correo y/o contraseña incorrectos', error.error, 'error');
       }
     );
+    this.spinner.classList.remove('d-block');
   }
 }
