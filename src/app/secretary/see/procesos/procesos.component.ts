@@ -10,14 +10,24 @@ import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horiz
 export class ProcesosComponent implements OnInit {
 
   public data: any;
+  public existeMocion = false; // Mocion activa
 
   constructor(
     public userService: UserService,
     private phService: PropiedadHorizontalService) { }
 
   ngOnInit(): void {
-    this.phService.getAllVotationsRevisor().subscribe((data: any) => {
-      this.data = data;
+    this.getExisteMocion();
+    if (!this.existeMocion) {
+      this.phService.getAllVotationsRevisor().subscribe((data: any) => {
+        this.data = data;
+      });
+    }
+  }
+
+  public getExisteMocion(): void{
+    this.phService.getMocion().subscribe((data: any) => {
+      this.existeMocion = data.existeMocion;
     });
   }
 

@@ -15,6 +15,7 @@ export class EstadisticasComponent implements OnInit {
   public votosPersonaChart: HTMLElement;
   public existeMocion = false;
   public esPlancha = false;
+  public ausente = false;
   public numPlanchas: string[] = [];
   public fixedLabels: string[] = [];
 
@@ -29,8 +30,9 @@ export class EstadisticasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExisteMocion();
-    if (!this.existeMocion) {
+    if (!this.existeMocion) { // existeMocion se refiere a moción activa.
       this.phService.getResults().subscribe(data => {
+        this.ausente = data.ausente;
         this.data = data;
         this.esPlancha = data.esPlancha;
         if (this.esPlancha){

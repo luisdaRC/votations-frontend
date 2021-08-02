@@ -13,7 +13,8 @@ export class ResultadosComponent implements OnInit {
   public data: any;
   public coeficientesChart: HTMLElement;
   public votosPersonaChart: HTMLElement;
-  public existeMocion = false;
+  public existeMocion = false; // Mocion activa
+  public hayMocion = true; // No hay mociones aún (apenas comenzando asamblea)
   public esPlancha = false;
   public numPlanchas: string[] = [];
   public fixedLabels: string[] = [];
@@ -31,6 +32,10 @@ export class ResultadosComponent implements OnInit {
     this.getExisteMocion();
     if (!this.existeMocion) {
       this.phService.getLastVotation().subscribe(data => {
+        if (data.hayMocion === false){
+          this.hayMocion = false;
+          return;
+        }
         this.data = data;
         this.esPlancha = data.esPlancha;
         if (this.esPlancha){

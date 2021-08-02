@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div *ngIf="!existeMocion">
+<div *ngIf="!existeMocion && hayMocion">
 
   <div *ngIf="esPlancha" class="row pt-3 pb-0 bg-white card-info">
     <div class="row text-center">
@@ -19,7 +19,7 @@
 
   <br><br>
 
-  <div class="container">
+  <div *ngIf="data.titulo" class="container">
     <div class="row">
       <div class="col">
         <h4 class="text-muted mb-4 mt-4">{{data.titulo}}</h4>
@@ -43,5 +43,13 @@
       </div>
     </div>
   </div>
+</div>
 
+<div *ngIf="!existeMocion && !hayMocion">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> No hay resultados en el transcurso de la asamblea. </p>
+    </div>
+    <p>Debe someterse a votación una moción para poder ver resultados.</p>
+  </div>
 </div>

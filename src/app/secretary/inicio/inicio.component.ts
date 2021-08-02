@@ -14,6 +14,7 @@ export class InicioComponent implements OnInit {
 
   public displayedColumns: string[] = ['nombres', 'apellido', 'tipoDocumento', 'numeroDocumento', 'acciones'];
   public dataSource: any;
+  public asambleaActiva = false;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
@@ -21,7 +22,14 @@ export class InicioComponent implements OnInit {
     private phService: PropiedadHorizontalService) { }
 
   public ngOnInit(): void {
-    this.getPropietarios();
+    this.phService.asambleaActiva().subscribe((data: any) => {
+      if (data === 1){
+        this.asambleaActiva = true;
+        this.getPropietarios();
+      }else if (data === 0){
+        this.asambleaActiva = false;
+      }
+    });
   }
 
   private getPropietarios(): void {

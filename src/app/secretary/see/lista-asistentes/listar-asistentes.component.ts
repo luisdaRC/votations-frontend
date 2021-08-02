@@ -14,6 +14,7 @@ export class ListarAsistentesComponent implements OnInit {
 
   public displayedColumns: string[] = ['nombres', 'apellido', 'tipoDocumento', 'numeroDocumento', 'acciones'];
   public dataSource: any;
+  public asambleaActiva = false;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
@@ -21,7 +22,16 @@ export class ListarAsistentesComponent implements OnInit {
     private phService: PropiedadHorizontalService) { }
 
   public ngOnInit(): void {
-    this.getAsistentes();
+    this.phService.asambleaActiva().subscribe((data: any) => {
+      if (data === 1){
+        this.asambleaActiva = true;
+      }else if (data === 0){
+        this.asambleaActiva = false;
+      }
+    });
+    if (this.asambleaActiva === true){
+      this.getAsistentes();
+    }
   }
 
   private getAsistentes(): void {
@@ -75,12 +85,21 @@ export class ListarAsistentesComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.getTerminarAsamblea().subscribe(data => {
-          Swal.fire({
-            title: 'Propietario removido de la asamblea',
-            text: 'El propietario ha sido removido de la lista de asistentes de la asamblea.',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 1){
+            Swal.fire({
+              title: 'Asamblea finalizada',
+              text: 'La asamblea ha sido marcada como finalizada exitosamente.',
+              icon: 'success',
+              showConfirmButton: true
+            });
+          } else if (data === 0){
+            Swal.fire({
+              title: 'Asamblea finalizada',
+              text: 'Asamblea ya ha sido finalizada previamente.',
+              icon: 'warning',
+              showConfirmButton: true
+            });
+          }
         });
       }
     });

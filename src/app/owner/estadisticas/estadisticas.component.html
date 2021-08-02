@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div *ngIf="!existeMocion">
+<div *ngIf="!existeMocion && !ausente">
 
   <div *ngIf="esPlancha" class="row pt-3 pb-0 bg-white card-info">
     <div class="row text-center">
@@ -42,5 +42,15 @@
       </div>
     </div>
   </div>
-
 </div>
+
+<div *ngIf="ausente">
+  <div class="row p-5 bg-white card-info">
+    <div class="col-12 text-center mb-2">
+      <p class="font-weight-bold titles"> PROPIETARIO AUSENTE </p>
+    </div>
+    <p>{{data.message}}</p>
+  </div>
+</div>
+
+
