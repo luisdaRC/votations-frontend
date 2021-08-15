@@ -14,15 +14,23 @@
       </div>
     </div>
     <div class="row p-3 bg-white card-info">
-      <div class="text-center d-grid d-md-block justify-content-around mx-auto">
-        <p class="col-12" *ngFor="let descripcion of resultado.descripciones; index as i;">
-          La proposición <b>{{descripcion}}</b> obtuvo un <b>{{resultado.coeficientesPorOpcion[i]}}%</b> del total
-          del quorum de la asamblea y un total de <b>{{resultado.votosPorOpcion[i]}}</b> votos.
-        </p>
+        <div class="text-center d-grid d-md-block justify-content-around mx-auto">
+          <p class="col-12" *ngFor="let descripcion of resultado.descripciones; index as i;">
+            La proposición <b>{{descripcion}}</b> obtuvo un <b>{{resultado.coeficientesPorOpcion[i]}}%</b> del total
+            del quorum de la asamblea y un total de <b>{{resultado.votosPorOpcion[i]}}</b> votos.
+          </p>
+        </div>
+    </div>
+    <div class="row p-3 bg-white card-info">
+      <div class="col-xs-12">
+        <div class="text-right">
+          <button type="button" class="btn btn-primary" (click)="detalles(resultado.idMocion)">Ver detalles</button>
+        </div>
       </div>
     </div>
-    <br><br>
+
   </div>
+  <br><br>
 </div>
 
 <div *ngIf="!data.length">

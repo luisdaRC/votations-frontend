@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
 import { UserService } from '../../services/sgph/user.service';
+import { Router } from '@angular/router';
 import { PropiedadHorizontalService } from '../../services/sgph/propiedad-horizontal.service';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-inicio',
@@ -14,6 +13,7 @@ export class InicioComponent implements OnInit {
   public data: any;
 
   constructor(
+    private router: Router,
     public userService: UserService,
     private phService: PropiedadHorizontalService) { }
 
@@ -21,6 +21,11 @@ export class InicioComponent implements OnInit {
     this.phService.getAllVotationsRevisor().subscribe((data: any) => {
       this.data = data;
     });
+  }
+
+  public detalles(idMocion: any): void {
+    console.log('Implementar feature', idMocion);
+    this.router.navigate(['/revisor/mociones/' + idMocion + '/detalle']);
   }
 
 

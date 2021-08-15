@@ -25,13 +25,11 @@ export class ListarAsistentesComponent implements OnInit {
     this.phService.asambleaActiva().subscribe((data: any) => {
       if (data === 1){
         this.asambleaActiva = true;
+        this.getAsistentes();
       }else if (data === 0){
         this.asambleaActiva = false;
       }
     });
-    if (this.asambleaActiva === true){
-      this.getAsistentes();
-    }
   }
 
   private getAsistentes(): void {
