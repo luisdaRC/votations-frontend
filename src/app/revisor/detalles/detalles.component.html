@@ -1,0 +1,68 @@
+<div *ngIf="data.tituloMocion" class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="text-muted mb-4 mt-4">{{data.tituloMocion}}</h4>
+    </div>
+  </div>
+</div>
+
+<hr class="mb-4">
+<br>
+
+<div *ngIf="this.dataSource?.data?.length != 0" class="col-12">
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2 w-100">
+
+    <ng-container matColumnDef="nombres">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nombres </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-votante-nombres">
+        <span class="mobile-label"> Nombres:</span>
+        <span class="overflow-auto">
+            {{element.nombres}}
+          </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="documento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-votante-documento">
+        <span class="mobile-label"> Documento:</span>
+        <span class="overflow-auto">
+            {{element.documento}}
+          </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="eleccion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Eleccion </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-votante-eleccion">
+        <span class="mobile-label"> Eleccion:</span>
+        <span class="overflow-auto">
+            {{element.eleccion}}
+          </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="coeficiente">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Coeficiente coprop. </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-votante-coeficiente">
+        <span class="mobile-label"> Coeficiente coprop:</span>
+        <span class="overflow-auto">
+            {{element.coeficiente}}
+          </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="direccionIp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Dirección IP </mat-header-cell>
+      <mat-cell *matCellDef="let element" id="item-votante-direccion-ip">
+        <span class="mobile-label"> Dirección IP:</span>
+        <span class="overflow-auto">
+            {{element.direccionIp}}
+          </span>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

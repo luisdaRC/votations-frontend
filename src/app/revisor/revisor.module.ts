@@ -31,7 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { DetallesComponent } from './detalles/detalles/detalles.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 @NgModule({
   declarations: [

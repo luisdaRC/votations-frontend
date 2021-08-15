@@ -1,4 +1,4 @@
-<h4 class="text-muted mb-4 mt-4">Bienvenido, Revisor Fiscal de
+<h4 class="text-muted mb-4">Bienvenido, Revisor Fiscal de
   <strong id="ph-nombre">{{this.userService.getUsuarioControl().nombrePH}}</strong>
 </h4>
 <br>
@@ -19,14 +19,8 @@
             La proposición <b>{{descripcion}}</b> obtuvo un <b>{{resultado.coeficientesPorOpcion[i]}}%</b> del total
             del quorum de la asamblea y un total de <b>{{resultado.votosPorOpcion[i]}}</b> votos.
           </p>
+          <button type="button" class="btn btn-outline-primary" (click)="detalles(resultado.idMocion)">Ver detalles</button>
         </div>
-    </div>
-    <div class="row p-3 bg-white card-info">
-      <div class="col-xs-12">
-        <div class="text-right">
-          <button type="button" class="btn btn-primary" (click)="detalles(resultado.idMocion)">Ver detalles</button>
-        </div>
-      </div>
     </div>
 
   </div>

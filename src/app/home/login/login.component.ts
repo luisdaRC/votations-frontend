@@ -35,10 +35,8 @@ export class LoginComponent implements OnInit {
 
       if (event instanceof RouteConfigLoadStart) {
         this.spinner.classList.add('d-block');
-        console.log('Cargando esta vuelta');
       } else if (event instanceof RouteConfigLoadEnd) {
         this.spinner.classList.remove('d-block');
-        console.log('Deja de cargar esta vuelta');
       }
     });
   }

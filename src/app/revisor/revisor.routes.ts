@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RevisorComponent} from './revisor.component';
 import {InicioComponent} from './inicio/inicio.component';
-import {DetallesComponent} from './detalles/detalles/detalles.component';
+import {DetallesComponent} from './detalles/detalles.component';
 
 const routes: Routes = [
   {

@@ -209,6 +209,11 @@ export class PropiedadHorizontalService {
     return this.http.get(environment.url_actividades_asamblearias + 'persona/listarAsistentes?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
   }
 
+  public getDetailedResultsRevisor(idMocion: string): any{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(environment.url_actividades_asamblearias + 'asamblea/results/detailed/revisor?idMocion=' + idMocion, {headers});
+  }
+
   public asambleaActiva(): any{
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(environment.url_actividades_asamblearias + 'asamblea/activa?idPropiedadHorizontal=' + this.userService.getUsuarioControl().idPropiedadHorizontal, {headers});
