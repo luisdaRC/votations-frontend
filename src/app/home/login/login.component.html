@@ -15,18 +15,12 @@
     <div class="navbar-collapse collapse" id="myNavbar">
 
       <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item">
-          <button [routerLink]="['/']" type="button" class="btn btn-outline-info text-white mr-2">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            VOLVER
-          </button>
-        </li>
-
         <li class="nav-item mt-2 mt-lg-0">
-          <button [routerLink]="[ '/registry' ]" routerl type="button" class="btn  btn-info text-white">
-            <em class="fas fa-sign-in-alt"></em>
-            REGÍSTRATE
+          <button type="button" class="btn  btn-info text-white">
+            <a href="http://sgph-dev.herokuapp.com/registro" target="_blank" class="text-white">
+              <em class="fas fa-sign-in-alt"></em>
+              REGÍSTRATE
+            </a>
           </button>
         </li>
       </ul>
@@ -55,4 +49,7 @@
     </form>
   </div>
 </div>
+
+<h6 class="mt-3 text-center">Haciendo uso de esta aplicación, usted acepta los <a routerLink="/terminos-condiciones">términos y condiciones</a>.</h6>
+
 <!--/body-->

@@ -16,12 +16,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { ToastrModule } from 'ngx-toastr';
 import {registerLocaleData} from '@angular/common';
 import localeEsCo from '@angular/common/locales/es';
+import { TerminosCondicionesComponent } from './home/terminos-condiciones/terminos-condiciones.component';
 registerLocaleData(localeEsCo, 'es-CO');
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    TerminosCondicionesComponent
   ],
   imports: [
     BrowserAnimationsModule,
