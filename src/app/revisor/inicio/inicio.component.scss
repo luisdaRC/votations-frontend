@@ -13,3 +13,12 @@ em{
   align-items: center;
   font-size: 15px;
 }
+
+table {
+  width: 100%;
+}
+
+.row2 {
+  display: flex!important;
+  flex-direction: column!important;
+}

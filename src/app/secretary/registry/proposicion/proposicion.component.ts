@@ -4,6 +4,7 @@ import {PropiedadHorizontalService} from '../../../services/sgph/propiedad-horiz
 import {UserService} from '../../../services/sgph/user.service';
 import { MatTable } from '@angular/material/table';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-proposicion',
@@ -27,6 +28,7 @@ export class ProposicionComponent implements OnInit {
   });
 
   constructor(private phService: PropiedadHorizontalService,
+              private router: Router,
               public userService: UserService) { }
 
   ngOnInit(): void {
@@ -200,6 +202,7 @@ export class ProposicionComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true
             });
+            this.router.navigate(['/secretary/votations/resultados']);
           }else{
             Swal.fire({
               title: 'Ocurrió un error',

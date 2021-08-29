@@ -11,6 +11,7 @@ export class ProcesosComponent implements OnInit {
 
   public data: any;
   public existeMocion = false; // Mocion activa
+  public displayedColumns: string[] = ['descripcion', 'coeficientes', 'numeroVotos'];
 
   constructor(
     public userService: UserService,
