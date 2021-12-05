@@ -62,11 +62,12 @@ export class InicioComponent implements OnInit {
         this.phService.postAgregarAsistente(asistente).subscribe(data => {
           if (data === 1){
             Swal.fire({
-              title: 'Propietario previamente registrado.',
-              text: 'El Propietario ya se encuentra registrado en la lista de asistentes de la asamblea',
-              icon: 'warning',
+              title: 'Propietario reingresado a la asamblea!',
+              text: 'El propietario ha sido reingresado a la lista de asistentes de la asamblea',
+              icon: 'success',
               showConfirmButton: true
             });
+            this.ngOnInit();
           } else if (data === 2){
             Swal.fire({
               title: 'Propietario Registrado!',
