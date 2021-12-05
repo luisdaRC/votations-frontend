@@ -74,6 +74,7 @@ export class InicioComponent implements OnInit {
               icon: 'success',
               showConfirmButton: true
             });
+            this.ngOnInit();
           } else if (data === 3){
             Swal.fire({
               title: 'Cuidado!',

@@ -60,12 +60,15 @@ export class ListarAsistentesComponent implements OnInit {
 
       if (result.isConfirmed){
         this.phService.postAsistenteAbandona(abandonaAsamblea).subscribe(data => {
-          Swal.fire({
-            title: 'Propietario removido de la asamblea',
-            text: 'El propietario ha sido removido de la lista de asistentes de la asamblea.',
-            icon: 'success',
-            showConfirmButton: true
-          });
+          if (data === 1) {
+            Swal.fire({
+              title: 'Propietario removido de la asamblea',
+              text: 'El propietario ha sido removido de la lista de asistentes de la asamblea.',
+              icon: 'success',
+              showConfirmButton: true
+            });
+            this.ngOnInit();
+          }
         });
       }
     });
