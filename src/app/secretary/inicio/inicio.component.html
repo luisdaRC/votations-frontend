@@ -4,9 +4,19 @@
 </h4>
 <hr>
 
-<div *ngIf="this.dataSource?.data?.length === 0" class="col-12 col-lg-10 offset-lg-1 mt-5">
-  <div class="alert alert-light text-center" role="alert">
-    <h4 class="alert-heading">No hay propietarios registrados en la propiedad.</h4>
+<div *ngIf="!asambleaActiva">
+  <div *ngIf="this.dataSource?.data?.length === 0" class="col-12 col-lg-10 offset-lg-1 mt-5">
+    <div class="alert alert-light text-center" role="alert">
+      <h4 class="alert-heading">No hay propietarios registrados en la propiedad.</h4>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="asambleaActiva">
+  <div *ngIf="this.dataSource?.data?.length === 0" class="col-12 col-lg-10 offset-lg-1 mt-5">
+    <div class="alert alert-light text-center" role="alert">
+      <h4 class="alert-heading">Todos los propietarios están registrados en la asamblea.</h4>
+    </div>
   </div>
 </div>
 
