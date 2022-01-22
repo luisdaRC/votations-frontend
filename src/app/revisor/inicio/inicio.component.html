@@ -6,7 +6,7 @@
 
 <hr class="mb-4">
 
-<div *ngIf="data.length">
+<div *ngIf="!!data && data.length">
   <div *ngFor="let resultado of data;">
     <div class="row pt-3 pb-0 bg-white card-info">
       <div class="col-12 text-center mb-2">
@@ -44,7 +44,7 @@
   <br><br>
 </div>
 
-<div *ngIf="!data.length">
+<div *ngIf="!data || !data.length">
   <div class="row p-5 bg-white card-info">
     <div class="col-12 text-center mb-2">
       <p class="font-weight-bold titles"> NO SE ENCONTRARON RESULTADOS. </p>
