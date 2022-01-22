@@ -4,7 +4,7 @@ export const ADMINISTRADOR = [
     subtitles: [
       {
         name: 'Anuncio',
-        icon: 'fas fa-ad',
+        icon: 'fab fa-adversal',
         route: '/admin/registry/ad'
       },
       {
