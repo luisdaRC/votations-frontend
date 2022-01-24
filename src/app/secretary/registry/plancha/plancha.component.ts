@@ -227,7 +227,7 @@ export class PlanchaComponent implements OnInit {
     };
 
     Swal.fire({
-      title: '¿Seguro que desea registrar este candidato en la moción?',
+      title: '¿Seguro que desea registrar estas planchas?',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonColor: '#d33',
@@ -240,7 +240,7 @@ export class PlanchaComponent implements OnInit {
           if (data === 1){
             Swal.fire({
               title: 'Planchas registradas correctamente',
-              text: 'Las planchas están listas para ser votada',
+              text: 'Las planchas están listas para ser votadas',
               icon: 'success',
               showConfirmButton: true
             });
